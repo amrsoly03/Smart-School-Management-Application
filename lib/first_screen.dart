@@ -5,11 +5,9 @@ class FirstScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('First Screen'),
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('First Screen'),
       ),
     );
   }

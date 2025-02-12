@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:nexura/Features/Student/presentation/views/products_view.dart';
 
 
 import '../../Features/Admin/presentation/views/create_account_view.dart';
@@ -9,7 +10,7 @@ abstract class AppRouter {
     routes: [
       GoRoute(
         path: '/',
-        builder: (context, state) => CreateAccountView(),
+        builder: (context, state) => ProductsView(),
       ),
       // GoRoute(
       //   path: kLoginView,
