@@ -9,12 +9,12 @@ class CustomFormField extends StatelessWidget {
     required this.labelText,
     this.onSaved,
     this.validator,
-    required this.icon,
+    this.icon,
     required this.controller,
   });
 
   final String labelText;
-  final IconData icon;
+  final IconData? icon;
   final void Function(String?)? onSaved;
   final String? Function(String?)? validator;
   final TextEditingController controller;
