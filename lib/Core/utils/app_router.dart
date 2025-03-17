@@ -1,5 +1,5 @@
 import 'package:go_router/go_router.dart';
-import 'package:nexura/Features/Admin/presentation/views/edit_user_view.dart';
+import 'package:nexura/Features/Admin/presentation/views/admin_home_view.dart';
 import 'package:nexura/Features/Auth/presentation/views/login_view.dart';
 
 abstract class AppRouter {
@@ -8,7 +8,7 @@ abstract class AppRouter {
     routes: [
       GoRoute(
         path: '/',
-        builder: (context, state) => EditUserView(),
+        builder: (context, state) => AdminHomeView(),
       ),
       // GoRoute(
       //   path: kLoginView,

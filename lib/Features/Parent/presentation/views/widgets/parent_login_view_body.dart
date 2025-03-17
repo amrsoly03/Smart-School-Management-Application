@@ -3,6 +3,7 @@ import 'package:nexura/Core/functions/capitalize.dart';
 import 'package:nexura/Core/widgets/custom_appBar.dart';
 
 import '../../../../../Core/utils/styles.dart';
+import '../../../../../Core/utils/theme.dart';
 import 'parent_login_card.dart';
 
 class ParentLoginViewBody extends StatelessWidget {
@@ -13,7 +14,7 @@ class ParentLoginViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'parent login'),
+      appBar: const CustomAppBar(title: 'parent login'),
       body: Center(
         child: SingleChildScrollView(
             child: Column(
@@ -33,7 +34,7 @@ class ParentLoginViewBody extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
                   capitalize('login to your account'),
-                  style: Styles.textStyle18,
+                  style: Styles.textStyle18.copyWith(color: darkBlue),
                   textAlign: TextAlign.start,
                 ),
               ),

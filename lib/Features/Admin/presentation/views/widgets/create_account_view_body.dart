@@ -3,6 +3,7 @@ import 'package:nexura/Core/functions/capitalize.dart';
 import 'package:nexura/Core/widgets/custom_appBar.dart';
 
 import '../../../../../Core/utils/styles.dart';
+import '../../../../../Core/utils/theme.dart';
 import 'create_account_form.dart';
 
 class CreateAccountViewBody extends StatelessWidget {
@@ -33,7 +34,7 @@ class CreateAccountViewBody extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
                   capitalize('create new account'),
-                  style: Styles.textStyle18,
+                  style: Styles.textStyle18.copyWith(color: darkBlue),
                   textAlign: TextAlign.start,
                 ),
               ),

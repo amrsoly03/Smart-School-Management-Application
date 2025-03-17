@@ -29,11 +29,11 @@ class ProductCard extends StatelessWidget {
               children: [
                 Text(
                   capitalize(name),
-                  style: Styles.textStyle18.copyWith(color: Colors.white),
+                  style: Styles.textStyle18,
                 ),
                 Text(
                   capitalize('price: $price'),
-                  style: Styles.textStyle16.copyWith(color: Colors.white),
+                  style: Styles.textStyle16,
                 ),
               ],
             ),

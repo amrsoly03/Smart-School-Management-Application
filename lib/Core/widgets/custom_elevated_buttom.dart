@@ -21,7 +21,7 @@ class CustomElevatedButton extends StatelessWidget {
     return ElevatedButton.icon(
       onPressed: onPressed,
       icon: icon,
-      label: Text(label, style: Styles.textStyle18.copyWith(color: white)),
+      label: Text(label, style: Styles.textStyle18),
       style: ElevatedButton.styleFrom(
         backgroundColor: darkBlue,
         foregroundColor: white,

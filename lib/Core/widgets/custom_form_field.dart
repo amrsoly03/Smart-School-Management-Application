@@ -24,7 +24,7 @@ class CustomFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      style: Styles.textStyle18,
+      style: Styles.textStyle18.copyWith(color: darkBlue),
       controller: controller,
       decoration: InputDecoration(
         labelText: labelText,

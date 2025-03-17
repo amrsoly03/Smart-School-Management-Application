@@ -37,20 +37,19 @@ class TransactionCard extends StatelessWidget {
                     capitalize(product),
                     overflow: TextOverflow.ellipsis,
                     style: Styles.textStyle20.copyWith(
-                      color: white,
                       fontSize: 22,
                     ),
                   ),
                 ),
                 Text(
                   capitalize(productType),
-                  style: Styles.textStyle18.copyWith(color: white),
+                  style: Styles.textStyle18,
                 ),
               ],
             ),
             Text(
               '$price EGP',
-              style: Styles.textStyle20.copyWith(color: white),
+              style: Styles.textStyle20,
             ),
           ],
         ),

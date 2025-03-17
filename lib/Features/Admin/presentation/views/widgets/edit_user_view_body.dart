@@ -3,6 +3,7 @@ import 'package:nexura/Features/Admin/presentation/views/widgets/edit_user_form.
 
 import '../../../../../Core/functions/capitalize.dart';
 import '../../../../../Core/utils/styles.dart';
+import '../../../../../Core/utils/theme.dart';
 import '../../../../../Core/widgets/custom_appBar.dart';
 
 class EditUserViewBody extends StatelessWidget {
@@ -31,7 +32,7 @@ class EditUserViewBody extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
                   capitalize('edit user account'),
-                  style: Styles.textStyle18,
+                  style: Styles.textStyle18.copyWith(color: darkBlue),
                   textAlign: TextAlign.start,
                 ),
               ),
