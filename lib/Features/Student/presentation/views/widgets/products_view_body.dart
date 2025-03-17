@@ -11,8 +11,16 @@ class ProductsViewBody extends StatelessWidget {
       appBar: CustomAppBar(title: 'Meals'),
       body: Column(
         children: [
-          ProductCard(),
-          ProductCard(),
+          ProductCard(
+            name: 'chocolate bar',
+            price: 10,
+            image: 'assets/chocolate_bar.jpg',
+          ),
+          ProductCard(
+            name: 'pancakes',
+            price: 25,
+            image: 'assets/pancakes.jpg',
+          ),
         ],
       ),
     );

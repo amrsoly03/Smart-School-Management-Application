@@ -4,8 +4,8 @@ import '../../../../../Core/widgets/custom_elevated_buttom.dart';
 import '../../../../../Core/widgets/custom_form_field.dart';
 
 // ignore: must_be_immutable
-class CreateAccountCard extends StatelessWidget {
-  CreateAccountCard({super.key});
+class CreateAccountForm extends StatelessWidget {
+  CreateAccountForm({super.key});
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -30,6 +30,7 @@ class CreateAccountCard extends StatelessWidget {
               CustomFormField(
                 controller: _enteredName,
                 labelText: 'full name',
+                keyboardType: TextInputType.name,
                 //onSaved: (value) => _enteredEmail = value!,
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
@@ -42,6 +43,7 @@ class CreateAccountCard extends StatelessWidget {
               CustomFormField(
                 controller: _enteredEmail,
                 labelText: 'email',
+                keyboardType: TextInputType.emailAddress,
                 //onSaved: (value) => _enteredEmail = value!,
                 validator: (value) {
                   if (value == null ||
@@ -56,6 +58,7 @@ class CreateAccountCard extends StatelessWidget {
               CustomFormField(
                 controller: _enteredId,
                 labelText: 'ID',
+                keyboardType: TextInputType.number,
                 //onSaved: (value) => _enteredEmail = value!,
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
@@ -68,6 +71,7 @@ class CreateAccountCard extends StatelessWidget {
               CustomFormField(
                 controller: _enteredStdPass,
                 labelText: 'student password',
+                keyboardType: TextInputType.name,
                 //onSaved: (value) => _enteredPassword = value!,
                 validator: (value) {
                   if (value == null || value.trim().length < 6) {
@@ -80,6 +84,7 @@ class CreateAccountCard extends StatelessWidget {
               CustomFormField(
                 controller: _enteredParentPass,
                 labelText: 'parent password',
+                keyboardType: TextInputType.name,
                 //onSaved: (value) => _enteredPassword = value!,
                 validator: (value) {
                   if (value == null || value.trim().length < 6) {

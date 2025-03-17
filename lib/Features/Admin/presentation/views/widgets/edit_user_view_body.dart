@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:nexura/Core/functions/capitalize.dart';
-import 'package:nexura/Core/widgets/custom_appBar.dart';
+import 'package:nexura/Features/Admin/presentation/views/widgets/edit_user_form.dart';
 
+import '../../../../../Core/functions/capitalize.dart';
 import '../../../../../Core/utils/styles.dart';
-import 'create_account_form.dart';
+import '../../../../../Core/widgets/custom_appBar.dart';
 
-class CreateAccountViewBody extends StatelessWidget {
-  const CreateAccountViewBody({
-    super.key,
-  });
+class EditUserViewBody extends StatelessWidget {
+  const EditUserViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(title: 'create account'),
+      appBar: const CustomAppBar(title: 'edit account'),
       body: Center(
         child: SingleChildScrollView(
             child: Column(
@@ -32,13 +30,13 @@ class CreateAccountViewBody extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
-                  capitalize('create new account'),
+                  capitalize('edit user account'),
                   style: Styles.textStyle18,
                   textAlign: TextAlign.start,
                 ),
               ),
             ),
-            CreateAccountForm(),
+            EditUserForm(),
           ],
         )),
       ),

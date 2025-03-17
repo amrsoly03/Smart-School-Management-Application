@@ -29,6 +29,7 @@ class LoginCard extends StatelessWidget {
                 controller: _enteredEmail,
                 labelText: 'Email',
                 icon: Icons.email_outlined,
+                keyboardType: TextInputType.emailAddress,
                 //onSaved: (value) => _enteredEmail = value!,
                 validator: (value) {
                   if (value == null ||
@@ -44,6 +45,7 @@ class LoginCard extends StatelessWidget {
                 controller: _enteredPassword,
                 labelText: 'Password',
                 icon: Icons.remove_red_eye_outlined,
+                keyboardType: TextInputType.name,
                 //onSaved: (value) => _enteredPassword = value!,
                 validator: (value) {
                   if (value == null || value.trim().length < 6) {

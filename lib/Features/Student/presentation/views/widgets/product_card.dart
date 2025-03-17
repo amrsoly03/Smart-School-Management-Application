@@ -5,13 +5,17 @@ import 'package:nexura/Core/utils/theme.dart';
 import '../../../../../Core/utils/styles.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({super.key});
+  const ProductCard({super.key, required this.name, required this.price, required this.image});
+
+  final String name;
+  final int price;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
     return Card(
       color: darkBlue,
-      margin: EdgeInsets.all(15),
+      margin: const EdgeInsets.all(15),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(25),
       ),
@@ -24,11 +28,11 @@ class ProductCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  capitalize('chocolate bar'),
+                  capitalize(name),
                   style: Styles.textStyle18.copyWith(color: Colors.white),
                 ),
                 Text(
-                  capitalize('price: 50'),
+                  capitalize('price: $price'),
                   style: Styles.textStyle16.copyWith(color: Colors.white),
                 ),
               ],
@@ -36,7 +40,7 @@ class ProductCard extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: Image.asset(
-                'assets/chocolate_bar.jpg',
+                image,
                 fit: BoxFit.cover,
                 height: 100,
                 width: 120,

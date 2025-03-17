@@ -31,6 +31,7 @@ class ParentLoginCard extends StatelessWidget {
                 controller: _enteredId,
                 labelText: 'ID',
                 icon: Icons.perm_identity_outlined,
+                keyboardType: TextInputType.number,
                 //onSaved: (value) => _enteredEmail = value!,
                 validator: (value) {
                   if (value == null ||
@@ -45,6 +46,7 @@ class ParentLoginCard extends StatelessWidget {
                 controller: _enteredPassword,
                 labelText: 'Password',
                 icon: Icons.remove_red_eye_outlined,
+                keyboardType: TextInputType.name,
                 //onSaved: (value) => _enteredPassword = value!,
                 validator: (value) {
                   if (value == null || value.trim().length < 6) {
