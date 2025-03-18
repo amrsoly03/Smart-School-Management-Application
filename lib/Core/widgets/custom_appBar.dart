@@ -29,7 +29,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       title: Text(
         capitalize(title),
-        style: Styles.textStyle20,
+        style: Styles.textStyle25,
       ),
       actions: actions,
       leading: canPop

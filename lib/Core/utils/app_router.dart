@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:nexura/Features/Admin/presentation/views/admin_home_view.dart';
 import 'package:nexura/Features/Auth/presentation/views/login_view.dart';
+import 'package:nexura/Features/Student/presentation/views/schedule_view.dart';
 
 abstract class AppRouter {
   //static const kSplashScreen = '/SplashScreen';
@@ -8,7 +9,7 @@ abstract class AppRouter {
     routes: [
       GoRoute(
         path: '/',
-        builder: (context, state) => AdminHomeView(),
+        builder: (context, state) => ScheduleView(),
       ),
       // GoRoute(
       //   path: kLoginView,
