@@ -3,6 +3,8 @@ import 'package:nexura/Core/widgets/custom_appBar.dart';
 import 'package:nexura/Core/widgets/custom_button.dart';
 import 'package:nexura/Core/widgets/custom_form_field.dart';
 
+import '../../../../../Core/utils/theme.dart';
+
 // ignore: must_be_immutable
 class AddDegreeViewBody extends StatelessWidget {
   AddDegreeViewBody({super.key});
@@ -22,7 +24,7 @@ class AddDegreeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffD6E7EE),
+       
       appBar: const CustomAppBar(title: 'Add Degree'),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -43,12 +45,12 @@ class AddDegreeViewBody extends StatelessWidget {
                     child: DropdownButtonFormField<String>(
                       decoration: InputDecoration(
                         filled: true,
-                        fillColor: const Color(0xff014479),
+                        fillColor: darkBlue,
                         hintStyle: const TextStyle(color: Colors.white),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10)),
                       ),
-                      dropdownColor: const Color(0xff014479),
+                      dropdownColor: darkBlue,
                       hint: const Text('Choose test',
                           style: TextStyle(color: Colors.white)),
                       value: selectedTest,
@@ -70,12 +72,12 @@ class AddDegreeViewBody extends StatelessWidget {
                     child: DropdownButtonFormField<String>(
                       decoration: InputDecoration(
                         filled: true,
-                        fillColor: const Color(0xff014479),
+                        fillColor: darkBlue,
                         hintStyle: const TextStyle(color: Colors.white),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10)),
                       ),
-                      dropdownColor: const Color(0xff014479),
+                      dropdownColor: darkBlue,
                       hint: const Text('Choose subject',
                           style: TextStyle(color: Colors.white)),
                       value: selectedSubject,

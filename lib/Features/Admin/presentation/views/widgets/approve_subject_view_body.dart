@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nexura/Core/widgets/custom_appBar.dart';
 
+import '../../../../../Core/utils/theme.dart';
+
 class ApproveSubjectViewBody extends StatelessWidget {
   final List<Map<String, String>> subjects = [
     {
@@ -25,7 +27,7 @@ class ApproveSubjectViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffD6E7EE),
+       
       appBar: const CustomAppBar(title: 'Approve Subject'),
       body: Padding(
         padding: const EdgeInsets.all(12.0),
@@ -37,7 +39,7 @@ class ApproveSubjectViewBody extends StatelessWidget {
               margin: const EdgeInsets.only(bottom: 16),
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: const Color(0xff014479),
+                color: darkBlue,
                 borderRadius: BorderRadius.circular(16),
               ),
               child: Column(
@@ -71,7 +73,7 @@ class ApproveSubjectViewBody extends StatelessWidget {
                         // Add logic to approve subject here
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xffD6E7EE),
+                         
                         foregroundColor: Colors.black,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),

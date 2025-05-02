@@ -10,7 +10,7 @@
 //   Widget build(BuildContext context) {
 //     return Scaffold(
 //       appBar: const CustomAppBar(title: 'Student'),
-//       backgroundColor: const Color(0xffD6E7EE),
+//        
 //       body: Center(
 //         child: SingleChildScrollView(
 //           padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -92,7 +92,7 @@
 //                       );
 //                     },
 //                     style: ElevatedButton.styleFrom(
-//                       backgroundColor: const Color(0xff014479),
+//                       backgroundColor: darkBlue,
 //                       shape: RoundedRectangleBorder(
 //                         borderRadius: BorderRadius.circular(8),
 //                       ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nexura/Core/widgets/custom_appBar.dart';
 import 'package:nexura/Core/widgets/custom_form_field.dart';
 
+import '../../../../../Core/utils/theme.dart';
 import 'question_card.dart';
 
 // ignore: must_be_immutable
@@ -32,7 +33,7 @@ class AddExamViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffD6E7EE),
+       
       appBar: const CustomAppBar(title: 'Add Exam'),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
@@ -61,10 +62,10 @@ class AddExamViewBody extends StatelessWidget {
                             style: const TextStyle(color: Colors.white)),
                       );
                     }).toList(),
-                    dropdownColor: const Color(0xff014479),
+                    dropdownColor: darkBlue,
                     decoration: InputDecoration(
                       filled: true,
-                      fillColor: const Color(0xff014479),
+                      fillColor: darkBlue,
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10)),
                       hintText: 'Select level',
@@ -87,10 +88,10 @@ class AddExamViewBody extends StatelessWidget {
                             style: const TextStyle(color: Colors.white)),
                       );
                     }).toList(),
-                    dropdownColor: const Color(0xff014479),
+                    dropdownColor: darkBlue,
                     decoration: InputDecoration(
                       filled: true,
-                      fillColor: const Color(0xff014479),
+                      fillColor: darkBlue,
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10)),
                       hintText: 'Select subject',
@@ -125,7 +126,7 @@ class AddExamViewBody extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xff014479),
+                  backgroundColor: darkBlue,
                   padding: const EdgeInsets.symmetric(vertical: 14),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)),

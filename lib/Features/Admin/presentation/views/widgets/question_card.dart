@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../Core/utils/theme.dart';
+
 class Question {
   String questionText;
   int? selectedAnswer;
@@ -21,7 +23,7 @@ class QuestionCard extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: const Color(0xff014479),
+        color: darkBlue,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Column(

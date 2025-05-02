@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nexura/Core/widgets/custom_appBar.dart';
 
+import '../../../../../Core/utils/theme.dart';
+
 // ignore: must_be_immutable
 class ActivitiesNotificationViewBody extends StatelessWidget {
   ActivitiesNotificationViewBody({super.key});
@@ -12,7 +14,7 @@ class ActivitiesNotificationViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffD6E7EE),
+       
       appBar: const CustomAppBar(title: 'Activties Notification'),
       body: Container(
         color: Colors.lightBlue[50],
@@ -30,14 +32,14 @@ class ActivitiesNotificationViewBody extends StatelessWidget {
               child: DropdownButtonFormField<String>(
                 decoration: InputDecoration(
                   filled: true,
-                  fillColor: const Color(0xff014479),
+                  fillColor: darkBlue,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: BorderSide.none,
                   ),
                 ),
                 isExpanded: true,
-                dropdownColor: const Color(0xff014479),
+                dropdownColor: darkBlue,
                 iconEnabledColor: Colors.white,
                 hint: const Text(
                   "Select Activity",
@@ -92,7 +94,7 @@ class ActivitiesNotificationViewBody extends StatelessWidget {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20),
                             ),
-                            backgroundColor: const Color(0xff014479)),
+                            backgroundColor: darkBlue),
                         child: const Text(
                           'Send',
                           style: TextStyle(color: Colors.white),
