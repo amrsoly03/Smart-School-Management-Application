@@ -13,12 +13,12 @@ class ProcessButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const bool isSelected = true;
+    //const bool isSelected = true;
     return Expanded(
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: isSelected ? darkBlue : Colors.white,
-          foregroundColor: isSelected ? Colors.white : darkBlue,
+          //backgroundColor: isSelected ? darkBlue : Colors.white,
+          //foregroundColor: isSelected ? Colors.white : darkBlue,
           side: const BorderSide(color: darkBlue),
         ),
         onPressed: () {},
