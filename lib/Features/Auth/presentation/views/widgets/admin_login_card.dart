@@ -4,8 +4,8 @@ import '../../../../../Core/widgets/custom_elevated_buttom.dart';
 import '../../../../../Core/widgets/custom_form_field.dart';
 
 // ignore: must_be_immutable
-class LoginCard extends StatelessWidget {
-  LoginCard({super.key});
+class AdminLoginCard extends StatelessWidget {
+  AdminLoginCard({super.key});
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 

@@ -2,15 +2,15 @@
 
 import 'package:flutter/material.dart';
 
-import 'widgets/login_view_body.dart';
+import 'widgets/admin_login_view_body.dart';
 
-class LoginView extends StatelessWidget {
-  LoginView({super.key});
+class AdminLoginView extends StatelessWidget {
+  AdminLoginView({super.key});
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    return LoginViewBody();
+    return AdminLoginViewBody();
   }
 }

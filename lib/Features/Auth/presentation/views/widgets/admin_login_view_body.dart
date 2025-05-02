@@ -6,8 +6,8 @@ import '../../../../../Core/utils/styles.dart';
 import '../../../../../Core/widgets/custom_appBar.dart';
 import 'login_card.dart';
 
-class LoginViewBody extends StatelessWidget {
-  const LoginViewBody({
+class AdminLoginViewBody extends StatelessWidget {
+  const AdminLoginViewBody({
     super.key,
   });
 
@@ -39,7 +39,7 @@ class LoginViewBody extends StatelessWidget {
                 ),
               ),
             ),
-            LoginCard(),
+            AdminLoginCard(),
           ],
         )),
       ),
