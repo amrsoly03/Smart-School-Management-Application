@@ -4,12 +4,15 @@ import 'package:nexura/Core/utils/theme.dart';
 
 import '../../../../../Core/utils/styles.dart';
 import '../../../../../Core/widgets/custom_appBar.dart';
-import 'login_card.dart';
+import 'admin_login_card.dart';
 
-class AdminLoginViewBody extends StatelessWidget {
-  const AdminLoginViewBody({
+class LoginViewBody extends StatelessWidget {
+  const LoginViewBody({
     super.key,
+    required this.user,
   });
+
+  final String user;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +32,6 @@ class AdminLoginViewBody extends StatelessWidget {
             ),
             Align(
               alignment: Alignment.centerLeft,
-              
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
