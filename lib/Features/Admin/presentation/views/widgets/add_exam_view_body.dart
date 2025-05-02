@@ -3,7 +3,7 @@ import 'package:nexura/Core/widgets/custom_appBar.dart';
 import 'package:nexura/Core/widgets/custom_form_field.dart';
 
 import '../../../../../Core/utils/theme.dart';
-import 'question_card.dart';
+import 'add_question_card.dart';
 
 // ignore: must_be_immutable
 class AddExamViewBody extends StatelessWidget {
@@ -105,7 +105,7 @@ class AddExamViewBody extends StatelessWidget {
             const SizedBox(height: 16),
 
             // Question Cards
-            ...questions.map((q) => QuestionCard(question: q)).toList(),
+            ...questions.map((q) => AddQuestionCard(question: q)).toList(),
 
             const SizedBox(height: 10),
 

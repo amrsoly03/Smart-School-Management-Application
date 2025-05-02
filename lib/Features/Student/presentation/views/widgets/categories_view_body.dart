@@ -17,7 +17,7 @@ class CategoriesViewBody extends StatelessWidget {
           onPressed: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (BuildContext context) {
-              return const StudentPage();
+              return const QuizzesAndDegreesViewBody();
             }));
           },
         ),

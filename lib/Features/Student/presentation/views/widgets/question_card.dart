@@ -1,57 +1,48 @@
 import 'package:flutter/material.dart';
-
 import '../../../../../Core/utils/theme.dart';
 
-class Question {
-  String questionText;
-  int? selectedAnswer;
-
-  Question({required this.questionText});
-}
-
-// ignore: must_be_immutable
 class QuestionCard extends StatelessWidget {
-  final Question question;
-
-  QuestionCard({super.key, required this.question});
-
-  int? selectedAnswer;
+  const QuestionCard({
+    super.key,
+    required this.question,
+    required this.groupValue,
+    required this.onChanged,
+  });
+  final String question;
+  final int groupValue;
+  final void Function(int?) onChanged;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 16),
-      padding: const EdgeInsets.all(12),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: darkBlue,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            question.questionText,
+            question,
             style: const TextStyle(
-              color: Colors.white,
-              fontSize: 18,
               fontWeight: FontWeight.bold,
+              fontSize: 20,
+              color: Colors.white,
             ),
           ),
+          const SizedBox(height: 8),
           ...List.generate(3, (index) {
             return RadioListTile<int>(
-              contentPadding: EdgeInsets.zero,
               value: index,
-              groupValue: selectedAnswer,
-              onChanged: (value) {
-                // setState(() {
-                //   selectedAnswer = value;
-                // });
-              },
+              groupValue: groupValue,
+              onChanged: onChanged,
               title: Text(
                 'Answer ${index + 1}',
-                style: const TextStyle(color: Colors.white),
+                style: const TextStyle(color: Colors.white, fontSize: 20),
               ),
               activeColor: Colors.white,
+              contentPadding: EdgeInsets.zero,
             );
           }),
         ],
