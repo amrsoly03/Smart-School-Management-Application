@@ -6,7 +6,11 @@ import 'package:nexura/Features/Admin/presentation/views/admin_home_view.dart';
 import 'package:nexura/Features/Admin/presentation/views/approve_subject_view.dart';
 import 'package:nexura/Features/Admin/presentation/views/send_report_view.dart';
 import 'package:nexura/Features/Admin/presentation/views/sent_reports_view.dart';
+import 'package:nexura/Features/Parent/presentation/views/notifications_and_reports_view.dart';
 import 'package:nexura/Features/Parent/presentation/views/parent_home_view.dart';
+import 'package:nexura/Features/Parent/presentation/views/parent_send_report_view.dart';
+import 'package:nexura/Features/Parent/presentation/views/parent_sent_reports_view.dart';
+import 'package:nexura/Features/Parent/presentation/views/wallet_details_view.dart';
 import 'package:nexura/Features/Student/presentation/views/activities_view.dart';
 import 'package:nexura/Features/Student/presentation/views/activity_details_view.dart';
 import 'package:nexura/Features/Student/presentation/views/categories_view.dart';
@@ -44,6 +48,10 @@ abstract class AppRouter {
   static const kScheduleView = '/ScheduleView';
   static const kQuizView = '/QuizView';
   static const kActivityDetailsView = '/ActivityDetailsView';
+  static const kWalletDetailsView = '/WalletDetailsView';
+  static const kNotificationsAndReportsView = '/NotificationsAndReportsView';
+  static const kParentSendReportView = '/ParentSendReportView';
+  static const kParentSentReportsView = '/ParentSentReportsView';
 
   static final router = GoRouter(
     routes: [
@@ -132,6 +140,22 @@ abstract class AppRouter {
       GoRoute(
         path: kActivityDetailsView,
         builder: (context, state) => const ActivityDetailsView(),
+      ),
+      GoRoute(
+        path: kWalletDetailsView,
+        builder: (context, state) => const WalletDetailsView(),
+      ),
+      GoRoute(
+        path: kNotificationsAndReportsView,
+        builder: (context, state) => const NotificationsAndReportsView(),
+      ),
+      GoRoute(
+        path: kParentSendReportView,
+        builder: (context, state) => const ParentSendReportView(),
+      ),
+      GoRoute(
+        path: kParentSentReportsView,
+        builder: (context, state) => const ParentSentReportsView(),
       ),
     ],
   );

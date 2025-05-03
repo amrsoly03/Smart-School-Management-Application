@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:nexura/Core/widgets/custom_appBar.dart';
-import 'package:nexura/Features/Student/presentation/views/widgets/school_activities_view_body.dart';
 
 import '../../../../../Core/utils/theme.dart';
 import '../../../../../Core/widgets/category_button.dart';
