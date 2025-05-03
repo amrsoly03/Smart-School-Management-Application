@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nexura/Features/Student/presentation/views/widgets/student_page.dart';
+import 'package:nexura/Features/Student/presentation/views/widgets/quizzes_and_degrees_view_body.dart';
 
 import '../../../../../Core/utils/theme.dart';
 import '../../../../../Core/widgets/category_button.dart';

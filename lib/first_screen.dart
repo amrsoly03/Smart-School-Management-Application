@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:nexura/Core/utils/app_router.dart';
 import 'package:nexura/Core/widgets/custom_appBar.dart';
 
-
 import 'Core/widgets/custom_button.dart';
+
+enum Users {
+    admin,
+    student,
+    parent,
+  }
 
 class FirstScreen extends StatelessWidget {
   const FirstScreen({
@@ -25,21 +32,27 @@ class FirstScreen extends StatelessWidget {
             children: [
               CustomButton(
                 title: 'Admin',
-                function: () {},
+                function: () {
+                  GoRouter.of(context).push(AppRouter.kLoginView, extra: Users.admin);
+                },
               ),
               const SizedBox(
                 height: 20,
               ),
               CustomButton(
                 title: 'Student',
-                function: () {},
+                function: () {
+                  GoRouter.of(context).push(AppRouter.kLoginView, extra: Users.student);
+                },
               ),
               const SizedBox(
                 height: 20,
               ),
               CustomButton(
                 title: 'Parent',
-                function: () {},
+                function: () {
+                  GoRouter.of(context).push(AppRouter.kLoginView, extra: Users.parent);
+                },
               )
             ],
           ),

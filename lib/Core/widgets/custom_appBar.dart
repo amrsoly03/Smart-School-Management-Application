@@ -35,7 +35,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: canPop
           ? IconButton(
               onPressed: GoRouter.of(context).pop,
-              icon: Icon(Icons.arrow_back_ios_new),
+              icon: const Icon(Icons.arrow_back_ios_new),
             )
           : null,
     );

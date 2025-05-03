@@ -4,7 +4,7 @@ import 'package:nexura/Core/widgets/custom_appBar.dart';
 
 import '../../../../../Core/utils/styles.dart';
 import '../../../../../Core/utils/theme.dart';
-import 'parent_login_card.dart';
+import '../../../../Auth/presentation/views/widgets/parent_login_card.dart';
 
 class ParentLoginViewBody extends StatelessWidget {
   const ParentLoginViewBody({

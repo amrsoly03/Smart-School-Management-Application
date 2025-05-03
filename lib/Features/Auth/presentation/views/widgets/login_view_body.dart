@@ -1,23 +1,29 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:nexura/Core/functions/capitalize.dart';
 import 'package:nexura/Core/utils/theme.dart';
+import 'package:nexura/first_screen.dart';
 
 import '../../../../../Core/utils/styles.dart';
 import '../../../../../Core/widgets/custom_appBar.dart';
-import 'admin_login_card.dart';
 
 class LoginViewBody extends StatelessWidget {
   const LoginViewBody({
     super.key,
     required this.user,
+    required this.title,
+    required this.card,
   });
 
-  final String user;
+  final Users user;
+  final String title;
+  final Widget card;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(title: 'admin login'),
+      appBar: CustomAppBar(title: title),
       body: Center(
         child: SingleChildScrollView(
             child: Column(
@@ -41,7 +47,7 @@ class LoginViewBody extends StatelessWidget {
                 ),
               ),
             ),
-            AdminLoginCard(),
+            card,
           ],
         )),
       ),
