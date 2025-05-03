@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../../Core/utils/app_router.dart';
 import '../../../../../Core/widgets/custom_elevated_buttom.dart';
 import '../../../../../Core/widgets/custom_form_field.dart';
 
@@ -59,7 +61,9 @@ class StudentLoginCard extends StatelessWidget {
               if (!_isUploading)
                 CustomElevatedButton(
                   label: 'Login',
-                  onPressed: () {},
+                  onPressed: () {
+                    GoRouter.of(context).push(AppRouter.kStudentHomeView);
+                  },
                 ),
               if (!_isUploading)
                 if (_isUploading) const CircularProgressIndicator(),
