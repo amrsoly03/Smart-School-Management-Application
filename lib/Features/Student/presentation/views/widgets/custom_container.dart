@@ -8,14 +8,17 @@ class CustomContainer extends StatelessWidget {
     super.key,
     required this.title,
     required this.image,
+    this.onTap,
   });
 
   final String title;
   final String image;
+  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: onTap,
       child: Container(
         width: SizeConfig.screenWidth * 0.9,
         height: SizeConfig.screenHeight * 0.17,

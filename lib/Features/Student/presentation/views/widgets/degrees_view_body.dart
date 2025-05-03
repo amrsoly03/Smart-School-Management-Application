@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nexura/Features/Student/presentation/views/widgets/quizzes_and_degrees_view_body.dart';
+import 'package:nexura/Core/widgets/custom_appBar.dart';
 
-import '../../../../../Core/utils/theme.dart';
 import 'degree_card.dart';
 
 class DegreesViewBody extends StatelessWidget {
@@ -43,29 +42,9 @@ class DegreesViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: darkBlue,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back_ios_new,
-            color: Colors.white,
-          ),
-          onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (BuildContext context) {
-              return const QuizzesAndDegreesViewBody();
-            }));
-          },
-        ),
-        title: const Text(
-          "Degrees",
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-        ),
-        centerTitle: true,
-      ),
-      backgroundColor: Colors.blueGrey[100], // Light background
+      appBar: const CustomAppBar(title: 'Degrees'),
       body: Padding(
-        padding: const EdgeInsets.all(5),
+        padding: const EdgeInsets.all(15),
         child: ListView.builder(
           itemCount: subjects.length,
           itemBuilder: (context, index) {
@@ -76,4 +55,3 @@ class DegreesViewBody extends StatelessWidget {
     );
   }
 }
-

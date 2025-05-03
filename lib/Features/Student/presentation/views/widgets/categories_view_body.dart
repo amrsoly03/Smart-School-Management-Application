@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nexura/Features/Student/presentation/views/widgets/quizzes_and_degrees_view_body.dart';
+import 'package:nexura/Core/widgets/custom_appBar.dart';
+import 'package:nexura/Features/Student/presentation/views/widgets/school_activities_view_body.dart';
 
 import '../../../../../Core/utils/theme.dart';
 import '../../../../../Core/widgets/category_button.dart';
@@ -10,24 +11,7 @@ class CategoriesViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: darkBlue,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new, color: Colors.white),
-          onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (BuildContext context) {
-              return const QuizzesAndDegreesViewBody();
-            }));
-          },
-        ),
-        title: const Text(
-          'categories',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-        ),
-        centerTitle: true,
-        elevation: 0,
-      ),
+      appBar: const CustomAppBar(title: 'categories'),
       body: Container(
         color: Colors.blueGrey[100],
         child: Center(

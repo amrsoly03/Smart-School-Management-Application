@@ -7,6 +7,14 @@ import 'package:nexura/Features/Admin/presentation/views/approve_subject_view.da
 import 'package:nexura/Features/Admin/presentation/views/send_report_view.dart';
 import 'package:nexura/Features/Admin/presentation/views/sent_reports_view.dart';
 import 'package:nexura/Features/Parent/presentation/views/parent_home_view.dart';
+import 'package:nexura/Features/Student/presentation/views/activities_view.dart';
+import 'package:nexura/Features/Student/presentation/views/activity_details_view.dart';
+import 'package:nexura/Features/Student/presentation/views/categories_view.dart';
+import 'package:nexura/Features/Student/presentation/views/degrees_view.dart';
+import 'package:nexura/Features/Student/presentation/views/quiz_view.dart';
+import 'package:nexura/Features/Student/presentation/views/quizzes_view.dart';
+import 'package:nexura/Features/Student/presentation/views/schedule_view.dart';
+import 'package:nexura/Features/Student/presentation/views/school_activities_view.dart';
 import 'package:nexura/Features/Student/presentation/views/student_home_view.dart';
 
 import '../../Features/Admin/presentation/views/create_account_view.dart';
@@ -28,6 +36,14 @@ abstract class AppRouter {
   static const kSendReportView = '/SendReportView';
   static const kSentReportsView = '/SentReportsView';
   static const kActivitiesNotificationView = '/ActivitiesNotificationView';
+  static const kSchoolActivitiesView = '/SchoolActivitiesView';
+  static const kActivitiesView = '/ActivitiesView';
+  static const kCategoriesView = '/CategoriesView';
+  static const kQuizzesView = '/QuizzesView';
+  static const kDegreesView = '/DegreesView';
+  static const kScheduleView = '/ScheduleView';
+  static const kQuizView = '/QuizView';
+  static const kActivityDetailsView = '/ActivityDetailsView';
 
   static final router = GoRouter(
     routes: [
@@ -85,7 +101,38 @@ abstract class AppRouter {
         path: kActivitiesNotificationView,
         builder: (context, state) => const ActivitiesNotificationView(),
       ),
-      
+      GoRoute(
+        path: kSchoolActivitiesView,
+        builder: (context, state) => const SchoolActivitiesView(),
+      ),
+      GoRoute(
+        path: kActivitiesView,
+        builder: (context, state) => const ActivitiesView(),
+      ),
+      GoRoute(
+        path: kCategoriesView,
+        builder: (context, state) => const CategoriesView(),
+      ),
+      GoRoute(
+        path: kQuizzesView,
+        builder: (context, state) => const QuizzesView(),
+      ),
+      GoRoute(
+        path: kDegreesView,
+        builder: (context, state) => const DegreesView(),
+      ),
+      GoRoute(
+        path: kScheduleView,
+        builder: (context, state) => const ScheduleView(),
+      ),
+      GoRoute(
+        path: kQuizView,
+        builder: (context, state) => const QuizView(),
+      ),
+      GoRoute(
+        path: kActivityDetailsView,
+        builder: (context, state) => const ActivityDetailsView(),
+      ),
     ],
   );
 }

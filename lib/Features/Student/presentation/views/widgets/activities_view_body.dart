@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:nexura/Core/utils/app_router.dart';
 
 import '../../../../../Core/widgets/custom_appBar.dart';
 import 'custom_container.dart';
@@ -8,8 +10,8 @@ class ActivitiesViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: CustomAppBar(title: 'activities'),
+    return  Scaffold(
+      appBar: const CustomAppBar(title: 'activities'),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -17,14 +19,23 @@ class ActivitiesViewBody extends StatelessWidget {
             CustomContainer(
               title: 'football',
               image: 'assets/football.jpg',
+              onTap: () {
+                GoRouter.of(context).push(AppRouter.kActivityDetailsView);
+              },
             ),
             CustomContainer(
               title: 'padel',
               image: 'assets/padel.jpg',
+              onTap: () {
+                GoRouter.of(context).push(AppRouter.kActivityDetailsView);
+              },
             ),
             CustomContainer(
               title: 'basketball',
               image: 'assets/basketball.jpg',
+              onTap: () {
+                GoRouter.of(context).push(AppRouter.kActivityDetailsView);
+              },
             ),
           ],
         ),
