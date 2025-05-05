@@ -3,7 +3,8 @@ import 'package:nexura/Core/utils/styles.dart';
 import 'package:nexura/Core/utils/theme.dart';
 import 'package:nexura/Core/widgets/custom_button.dart';
 
-import '../../../../../Core/widgets/custom_appbar_two.dart';
+import '../../../../../Core/widgets/custom_appBar.dart';
+import 'custom_drawer.dart';
 import 'process_button.dart';
 
 class PaymentViewBody extends StatelessWidget {
@@ -12,9 +13,20 @@ class PaymentViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppbarTwo(
+      appBar: CustomAppBar(
         title: 'Payment',
+        actions: [
+          Builder(builder: (context) {
+            return IconButton(
+              icon: const Icon(Icons.menu),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+            );
+          }),
+        ],
       ),
+      drawer: const CustomDrawer(),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
         child: Column(

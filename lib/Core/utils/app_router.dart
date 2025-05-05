@@ -10,6 +10,8 @@ import 'package:nexura/Features/Parent/presentation/views/notifications_and_repo
 import 'package:nexura/Features/Parent/presentation/views/parent_home_view.dart';
 import 'package:nexura/Features/Parent/presentation/views/parent_send_report_view.dart';
 import 'package:nexura/Features/Parent/presentation/views/parent_sent_reports_view.dart';
+import 'package:nexura/Features/Parent/presentation/views/payment_view.dart';
+import 'package:nexura/Features/Parent/presentation/views/previous_transaction_view.dart';
 import 'package:nexura/Features/Parent/presentation/views/wallet_details_view.dart';
 import 'package:nexura/Features/Student/presentation/views/activities_view.dart';
 import 'package:nexura/Features/Student/presentation/views/activity_details_view.dart';
@@ -49,6 +51,8 @@ abstract class AppRouter {
   static const kQuizView = '/QuizView';
   static const kActivityDetailsView = '/ActivityDetailsView';
   static const kWalletDetailsView = '/WalletDetailsView';
+  static const kPaymentView = '/PaymentView';
+  static const kPreviousTransactionView = '/PreviousTransactionView';
   static const kNotificationsAndReportsView = '/NotificationsAndReportsView';
   static const kParentSendReportView = '/ParentSendReportView';
   static const kParentSentReportsView = '/ParentSentReportsView';
@@ -144,6 +148,14 @@ abstract class AppRouter {
       GoRoute(
         path: kWalletDetailsView,
         builder: (context, state) => const WalletDetailsView(),
+      ),
+      GoRoute(
+        path: kPaymentView,
+        builder: (context, state) => const PaymentView(),
+      ),
+      GoRoute(
+        path: kPreviousTransactionView,
+        builder: (context, state) => const PreviousTransactionView(),
       ),
       GoRoute(
         path: kNotificationsAndReportsView,

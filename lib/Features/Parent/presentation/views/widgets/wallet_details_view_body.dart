@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:nexura/Core/utils/styles.dart';
 import 'package:nexura/Core/utils/theme.dart';
-import 'package:nexura/Core/widgets/custom_appbar_two.dart';
+
+import '../../../../../Core/widgets/custom_appBar.dart';
+import 'custom_drawer.dart';
 
 class WalletDetailsViewBody extends StatelessWidget {
   const WalletDetailsViewBody({super.key});
@@ -9,10 +11,20 @@ class WalletDetailsViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffD6E7EE),
-      appBar: const CustomAppbarTwo(
+      appBar: CustomAppBar(
         title: 'Your Wallet',
+        actions: [
+          Builder(builder: (context) {
+            return IconButton(
+              icon: const Icon(Icons.menu),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+            );
+          }),
+        ],
       ),
+      drawer: const CustomDrawer(),
       body: Center(
         child: Container(
           margin: const EdgeInsets.all(20),
