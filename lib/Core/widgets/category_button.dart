@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:nexura/Core/utils/app_router.dart';
 
 import '../utils/theme.dart';
 
@@ -13,7 +15,9 @@ class CategoryButton extends StatelessWidget {
         backgroundColor: darkBlue,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       ),
-      onPressed: () {},
+      onPressed: () {
+        GoRouter.of(context).push(AppRouter.kProductsView);
+      },
       child: Text(title,
           style: const TextStyle(color: Colors.white, fontSize: 18)),
     );

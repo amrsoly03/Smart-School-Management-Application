@@ -15,8 +15,10 @@ import 'package:nexura/Features/Parent/presentation/views/previous_transaction_v
 import 'package:nexura/Features/Parent/presentation/views/wallet_details_view.dart';
 import 'package:nexura/Features/Student/presentation/views/activities_view.dart';
 import 'package:nexura/Features/Student/presentation/views/activity_details_view.dart';
+import 'package:nexura/Features/Student/presentation/views/cafeteria_view.dart';
 import 'package:nexura/Features/Student/presentation/views/categories_view.dart';
 import 'package:nexura/Features/Student/presentation/views/degrees_view.dart';
+import 'package:nexura/Features/Student/presentation/views/products_view.dart';
 import 'package:nexura/Features/Student/presentation/views/quiz_view.dart';
 import 'package:nexura/Features/Student/presentation/views/quizzes_view.dart';
 import 'package:nexura/Features/Student/presentation/views/schedule_view.dart';
@@ -44,7 +46,9 @@ abstract class AppRouter {
   static const kActivitiesNotificationView = '/ActivitiesNotificationView';
   static const kSchoolActivitiesView = '/SchoolActivitiesView';
   static const kActivitiesView = '/ActivitiesView';
+  static const kCafeteriaView = '/CafeteriaView';
   static const kCategoriesView = '/CategoriesView';
+  static const kProductsView = '/ProductsView';
   static const kQuizzesView = '/QuizzesView';
   static const kDegreesView = '/DegreesView';
   static const kScheduleView = '/ScheduleView';
@@ -122,8 +126,16 @@ abstract class AppRouter {
         builder: (context, state) => const ActivitiesView(),
       ),
       GoRoute(
+        path: kCafeteriaView,
+        builder: (context, state) => const CafeteriaView(),
+      ),
+      GoRoute(
         path: kCategoriesView,
         builder: (context, state) => const CategoriesView(),
+      ),
+      GoRoute(
+        path: kProductsView,
+        builder: (context, state) => const ProductsView(),
       ),
       GoRoute(
         path: kQuizzesView,

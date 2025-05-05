@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nexura/Core/widgets/custom_appbar_two.dart';
-
 import '../../../../../Core/widgets/custom_appBar.dart';
 import 'custom_drawer.dart';
 import 'previous_transaction_card.dart';
