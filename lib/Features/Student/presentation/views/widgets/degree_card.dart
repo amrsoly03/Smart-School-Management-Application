@@ -18,16 +18,17 @@ class DegreeCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(15),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
               subject["name"],
+              textAlign: TextAlign.center,
               style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Colors.white),
             ),
-            const SizedBox(height: 5),
+            const SizedBox(height: 10),
             Text(
               "Practical: ${subject["practical"]}",
               style: const TextStyle(fontSize: 20, color: Colors.white),

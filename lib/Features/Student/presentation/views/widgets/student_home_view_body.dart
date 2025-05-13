@@ -9,7 +9,7 @@ class StudentHomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: const CustomAppBar(title: 'home'),
       body: Center(
         child: Column(
@@ -18,22 +18,22 @@ class StudentHomeViewBody extends StatelessWidget {
             CustomContainer(
               title: 'school activities',
               image: 'assets/school activities.jpg',
-              onTap: (){
+              onTap: () {
                 GoRouter.of(context).push(AppRouter.kSchoolActivitiesView);
               },
             ),
             CustomContainer(
               title: 'sport activities',
               image: 'assets/sport activities.jpg',
-              onTap: (){
+              onTap: () {
                 GoRouter.of(context).push(AppRouter.kActivitiesView);
               },
             ),
             CustomContainer(
               title: 'school cafeteria',
               image: 'assets/school cafeteria.jpg',
-              onTap: (){
-                GoRouter.of(context).push(AppRouter.kCategoriesView);
+              onTap: () {
+                GoRouter.of(context).push(AppRouter.kCafeteriaView);
               },
             ),
           ],

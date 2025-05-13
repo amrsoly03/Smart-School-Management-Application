@@ -22,7 +22,6 @@ class _QuizScreenState extends State<QuizViewBody> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       
       appBar: const CustomAppBar(title: 'Quiz Name'),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -34,7 +33,7 @@ class _QuizScreenState extends State<QuizViewBody> {
               onChanged: (value) => setState(() => _question1Answer = value),
             ),
             const SizedBox(height: 16),
-           QuestionCard(
+            QuestionCard(
               question: 'Question 2',
               groupValue: 1,
               onChanged: (value) => setState(() => _question2Answer = value),

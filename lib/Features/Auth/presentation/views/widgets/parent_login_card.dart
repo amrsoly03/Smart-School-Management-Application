@@ -5,8 +5,6 @@ import '../../../../../Core/utils/app_router.dart';
 import '../../../../../Core/widgets/custom_elevated_buttom.dart';
 import '../../../../../Core/widgets/custom_form_field.dart';
 
-
-
 // ignore: must_be_immutable
 class ParentLoginCard extends StatelessWidget {
   ParentLoginCard({super.key});
@@ -36,8 +34,7 @@ class ParentLoginCard extends StatelessWidget {
                 keyboardType: TextInputType.number,
                 //onSaved: (value) => _enteredEmail = value!,
                 validator: (value) {
-                  if (value == null ||
-                      value.trim().isEmpty ) {
+                  if (value == null || value.trim().isEmpty) {
                     return 'enter valid ID';
                   }
                   return null;

@@ -6,10 +6,10 @@ import 'package:nexura/Core/widgets/custom_appBar.dart';
 import 'Core/widgets/custom_button.dart';
 
 enum Users {
-    admin,
-    student,
-    parent,
-  }
+  admin,
+  student,
+  parent,
+}
 
 class FirstScreen extends StatelessWidget {
   const FirstScreen({
@@ -33,7 +33,8 @@ class FirstScreen extends StatelessWidget {
               CustomButton(
                 title: 'Admin',
                 function: () {
-                  GoRouter.of(context).push(AppRouter.kLoginView, extra: Users.admin);
+                  GoRouter.of(context)
+                      .push(AppRouter.kLoginView, extra: Users.admin);
                 },
               ),
               const SizedBox(
@@ -42,7 +43,8 @@ class FirstScreen extends StatelessWidget {
               CustomButton(
                 title: 'Student',
                 function: () {
-                  GoRouter.of(context).push(AppRouter.kLoginView, extra: Users.student);
+                  GoRouter.of(context)
+                      .push(AppRouter.kLoginView, extra: Users.student);
                 },
               ),
               const SizedBox(
@@ -51,7 +53,8 @@ class FirstScreen extends StatelessWidget {
               CustomButton(
                 title: 'Parent',
                 function: () {
-                  GoRouter.of(context).push(AppRouter.kLoginView, extra: Users.parent);
+                  GoRouter.of(context)
+                      .push(AppRouter.kLoginView, extra: Users.parent);
                 },
               )
             ],

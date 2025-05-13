@@ -27,7 +27,6 @@ class EditUserViewBody extends StatelessWidget {
             ),
             Align(
               alignment: Alignment.centerLeft,
-              
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Text(

@@ -10,7 +10,7 @@
 //   Widget build(BuildContext context) {
 //     return Scaffold(
 //       appBar: const CustomAppBar(title: 'Parent'),
-//        
+//
 //       body: Center(
 //         child: SingleChildScrollView(
 //           padding: const EdgeInsets.symmetric(horizontal: 30),

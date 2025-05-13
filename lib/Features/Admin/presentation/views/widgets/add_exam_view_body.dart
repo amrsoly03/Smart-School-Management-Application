@@ -33,7 +33,6 @@ class AddExamViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       
       appBar: const CustomAppBar(title: 'Add Exam'),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),

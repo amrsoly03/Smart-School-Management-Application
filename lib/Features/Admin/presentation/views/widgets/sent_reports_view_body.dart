@@ -9,7 +9,6 @@ class SentReportsViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       
       appBar: const CustomAppBar(title: 'Sent Report'),
       body: Center(
         child: Column(

@@ -74,7 +74,6 @@ class ActivityDetailsViewBody extends StatelessWidget {
               style: Styles.textStyle18,
             ),
           ),
-          
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       ),

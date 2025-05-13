@@ -5,7 +5,11 @@ import 'package:nexura/Core/utils/theme.dart';
 import '../../../../../Core/utils/styles.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({super.key, required this.name, required this.price, required this.image});
+  const ProductCard(
+      {super.key,
+      required this.name,
+      required this.price,
+      required this.image});
 
   final String name;
   final int price;

@@ -14,7 +14,6 @@ class ActivitiesNotificationViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       
       appBar: const CustomAppBar(title: 'Activties Notification'),
       body: Container(
         color: Colors.lightBlue[50],

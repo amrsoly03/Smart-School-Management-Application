@@ -1,4 +1,12 @@
+import 'package:dartz/dartz.dart';
+
+import '../../../../Core/errors/failures.dart';
+import '../models/admin_model.dart';
+
 abstract class AdminRepo {
-  // Future<Either<Failures, UserModel>> login(
-  //     {required String email, required String password});
+  Future<Either<Failures, AdminModel>> adminLogin(
+      {
+    required String email,
+    required String admin_password,
+  });
 }

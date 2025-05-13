@@ -24,7 +24,6 @@ class AddDegreeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       
       appBar: const CustomAppBar(title: 'Add Degree'),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

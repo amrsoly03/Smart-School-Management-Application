@@ -36,7 +36,6 @@ class NotificationsAndReportsViewBody extends StatelessWidget {
                   GoRouter.of(context).push(AppRouter.kParentSentReportsView);
                 },
               ),
-              
             ],
           ),
         ),

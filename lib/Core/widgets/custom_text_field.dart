@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:nexura/Core/utils/styles.dart';
 import 'package:nexura/Core/utils/theme.dart';
 
-
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
     super.key,

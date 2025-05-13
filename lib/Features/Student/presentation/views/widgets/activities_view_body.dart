@@ -10,7 +10,7 @@ class ActivitiesViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: const CustomAppBar(title: 'activities'),
       body: Center(
         child: Column(

@@ -27,7 +27,6 @@ class ApproveSubjectViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       
       appBar: const CustomAppBar(title: 'Approve Subject'),
       body: Padding(
         padding: const EdgeInsets.all(12.0),
@@ -73,7 +72,6 @@ class ApproveSubjectViewBody extends StatelessWidget {
                         // Add logic to approve subject here
                       },
                       style: ElevatedButton.styleFrom(
-                         
                         foregroundColor: Colors.black,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),

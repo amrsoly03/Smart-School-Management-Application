@@ -10,7 +10,7 @@ class ParentHomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: const CustomAppBar(title: 'Parent Home'),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -20,7 +20,7 @@ class ParentHomeViewBody extends StatelessWidget {
             CustomRoundedButton(
               text: "Student Follow up",
               icon: Icons.person,
-              onTap: (){
+              onTap: () {
                 GoRouter.of(context).push(AppRouter.kStudentHomeView);
               },
             ),
@@ -28,7 +28,7 @@ class ParentHomeViewBody extends StatelessWidget {
             CustomRoundedButton(
               text: "Wallet Management",
               icon: Icons.wallet_sharp,
-              onTap: (){
+              onTap: () {
                 GoRouter.of(context).push(AppRouter.kWalletDetailsView);
               },
             ),
@@ -36,8 +36,9 @@ class ParentHomeViewBody extends StatelessWidget {
             CustomRoundedButton(
               text: "Report & Notification",
               icon: Icons.notifications_outlined,
-              onTap: (){
-                GoRouter.of(context).push(AppRouter.kNotificationsAndReportsView);
+              onTap: () {
+                GoRouter.of(context)
+                    .push(AppRouter.kNotificationsAndReportsView);
               },
             ),
           ],

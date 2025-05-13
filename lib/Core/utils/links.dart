@@ -1,0 +1,9 @@
+class Links {
+  //static const linkServerName = 'http://10.0.2.2/gym_app';
+  static const linkServerName = 'http://192.168.1.8/ssma';
+
+  // static const linkUploadExerciseImage =
+  //     '$linkServerName/upload/exercises_image';
+
+  static const linkLogin = '$linkServerName/Admin/admin_login.php';
+}

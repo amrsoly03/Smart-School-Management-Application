@@ -5,7 +5,8 @@ class CustomRoundedButton extends StatelessWidget {
   const CustomRoundedButton({
     super.key,
     required this.text,
-    required this.icon, this.onTap,
+    required this.icon,
+    this.onTap,
   });
 
   final String text;

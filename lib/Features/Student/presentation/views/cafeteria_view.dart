@@ -4,7 +4,6 @@ import 'package:nexura/Core/utils/theme.dart';
 import 'package:nexura/Features/Student/presentation/views/categories_view.dart';
 import 'package:nexura/Features/Student/presentation/views/shopping_cart_view.dart';
 
-
 class CafeteriaView extends StatefulWidget {
   const CafeteriaView({super.key});
 
@@ -46,7 +45,6 @@ class _CafeteriaViewState extends State<CafeteriaView> {
               icon: const Icon(Icons.shopping_cart_outlined),
               title: const Text('shopping cart'),
             ),
-            
           ],
         ),
       ),

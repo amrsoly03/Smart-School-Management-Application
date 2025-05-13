@@ -7,32 +7,32 @@ import 'package:http/http.dart' as http;
 
 class ApiService {
   void handleError(int statusCode) {
-  switch (statusCode) {
-    case 400:
-      // Bad request
-      log('Bad request: Invalid data or parameters');
-      break;
-    case 401:
-      // Unauthorized
-      log('Unauthorized: Authentication required');
-      break;
-    case 403:
-      // Forbidden
-      log('Forbidden: Access denied');
-      break;
-    case 404:
-      // Not found
-      log('Not found: Resource not found');
-      break;
-    case 500:
-      // Internal server error
-      log('Internal server error: Server-side issue');
-      break;
-    default:
-      // Other errors
-      log('Error: Unknown error occurred');
+    switch (statusCode) {
+      case 400:
+        // Bad request
+        log('Bad request: Invalid data or parameters');
+        break;
+      case 401:
+        // Unauthorized
+        log('Unauthorized: Authentication required');
+        break;
+      case 403:
+        // Forbidden
+        log('Forbidden: Access denied');
+        break;
+      case 404:
+        // Not found
+        log('Not found: Resource not found');
+        break;
+      case 500:
+        // Internal server error
+        log('Internal server error: Server-side issue');
+        break;
+      default:
+        // Other errors
+        log('Error: Unknown error occurred');
+    }
   }
-}
 
   //add headers
   httpPost({required String link, required Map data}) async {

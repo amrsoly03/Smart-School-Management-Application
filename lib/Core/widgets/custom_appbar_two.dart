@@ -38,17 +38,18 @@ class CustomAppbarTwo extends StatelessWidget implements PreferredSizeWidget {
           icon: const Icon(Icons.menu),
           onPressed: () {
             // هنا يمكنك فتح صفحة القائمة مثلاً
-           // GoRouter.of(context).push('/menu');
-             Navigator.push(context, MaterialPageRoute(builder: (_) => const MenuPage()));
+            // GoRouter.of(context).push('/menu');
+            Navigator.push(
+                context, MaterialPageRoute(builder: (_) => const MenuPage()));
           },
         ),
       ],
       leading: canPop
           ? IconButton(
-        onPressed: () => GoRouter.of(context).pop(),
-        icon: const Icon(Icons.arrow_back_ios_new),
-      )
+              onPressed: () => GoRouter.of(context).pop(),
+              icon: const Icon(Icons.arrow_back_ios_new),
+            )
           : null,
     );
   }
-  }
+}

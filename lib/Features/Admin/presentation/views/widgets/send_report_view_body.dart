@@ -6,7 +6,7 @@ import '../../../../../Core/utils/theme.dart';
 
 // ignore: must_be_immutable
 class SendReportViewBody extends StatelessWidget {
-   SendReportViewBody({super.key});
+  SendReportViewBody({super.key});
 
   final TextEditingController studentIdController = TextEditingController();
 
