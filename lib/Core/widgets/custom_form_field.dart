@@ -31,6 +31,9 @@ class CustomFormField extends StatelessWidget {
         fillColor: white,
         filled: true,
         labelStyle: Styles.textStyle18.copyWith(color: grey),
+        errorStyle: Styles.textStyle16.copyWith(
+          color: const Color.fromARGB(255, 110, 7, 0),
+        ),
         suffixIcon: Icon(
           icon,
           size: 30,

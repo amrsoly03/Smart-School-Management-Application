@@ -19,7 +19,7 @@ class AdminRepoImpl implements AdminRepo {
       {required String email, required String admin_password}) async {
     try {
       Map<String, dynamic> response = await apiService.httpPost(
-        link: Links.linkLogin,
+        link: Links.linkAdminLogin,
         data: {
           'email': email,
           'admin_password': admin_password,

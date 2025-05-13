@@ -5,5 +5,5 @@ class Links {
   // static const linkUploadExerciseImage =
   //     '$linkServerName/upload/exercises_image';
 
-  static const linkLogin = '$linkServerName/Admin/admin_login.php';
+  static const linkAdminLogin = '$linkServerName/Admin/admin_login.php';
 }
