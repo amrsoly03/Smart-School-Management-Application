@@ -17,6 +17,7 @@ class AdminCubit extends Cubit<AdminState> {
   late Either<Failures, String> createUserResult;
   late Either<Failures, String> editUserResult;
   late Either<Failures, String> sendReportResult;
+  late Either<Failures, String> sendActivityNotificationResult;
 
   Future<void> adminLogin({
     required String email,
@@ -105,6 +106,29 @@ class AdminCubit extends Cubit<AdminState> {
 
     sendReportResult = await adminRepo.sendReport(
       std_report: std_report,
+      content: content,
+    );
+
+    sendReportResult.fold(
+      (failures) {
+        emit(AdminFailure(failures.errMessage));
+      },
+      (message) {
+        emit(
+          SendReportSuccess(message),
+        );
+      },
+    );
+  }
+
+    Future<void> sendActivityNotification({
+    required String activity_an,
+    required String content,
+  }) async {
+    emit(AdminLoading());
+
+    sendReportResult = await adminRepo.sendActivityNotification(
+      activity_an: activity_an,
       content: content,
     );
 

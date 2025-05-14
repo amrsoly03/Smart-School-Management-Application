@@ -9,4 +9,7 @@ class Links {
   static const linkCreateUser = '$linkServerName/Admin/create_user.php';
   static const linkEditUser = '$linkServerName/Admin/edit_user.php';
   static const linkAdminSendReport = '$linkServerName/Admin/send_report.php';
+  static const linkSendActivityNotification = '$linkServerName/Admin/send_activity_notification.php';
+
+  static const linkViewActivities = '$linkServerName/Models/view_activities.php';
 }

@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
+import 'package:nexura/Core/models/activity_model.dart';
 import 'package:nexura/Features/Admin/data/repo/admin_repo.dart';
 
 import '../../../../Core/errors/failures.dart';
@@ -135,6 +136,65 @@ class AdminRepoImpl implements AdminRepo {
         return left(ServerFailures('something went wrong, try again'));
       } else {
         return right(response['message']);
+      }
+    } catch (e) {
+      if (e is SocketException) {
+        return left(ServerFailures('No internet connection'));
+      }
+      log('e: $e');
+      return left(ServerFailures('something went wrong'));
+    }
+  }
+
+  Future<Either<Failures, String>> sendActivityNotification({
+    required String activity_an,
+    required String content,
+  }) async {
+    try {
+      Map<String, dynamic> response = await apiService.httpPost(
+        link: Links.linkSendActivityNotification,
+        data: {
+          'activity_an': activity_an,
+          'content': content,
+        },
+      );
+
+      log('response: $response');
+
+      if (response['status'] == 'failed') {
+        return left(ServerFailures('something went wrong, try again'));
+      } else {
+        return right(response['message']);
+      }
+    } catch (e) {
+      if (e is SocketException) {
+        return left(ServerFailures('No internet connection'));
+      }
+      log('e: $e');
+      return left(ServerFailures('something went wrong'));
+    }
+  }
+
+  @override
+  Future<Either<Failures, List<ActivityModel>>> viewActivities() async {
+    try {
+      Map<String, dynamic> response = await apiService.httpPost(
+        link: Links.linkViewActivities,
+        data: {},
+      );
+
+      log('response: $response');
+
+      if (response['status'] == 'failed') {
+        return left(ServerFailures('something went wrong, try again'));
+      } else {
+        List<ActivityModel> activities = [];
+
+        for (var item in response['data']) {
+          activities.add(ActivityModel.fromJson(item));
+        }
+
+        return right(activities);
       }
     } catch (e) {
       if (e is SocketException) {

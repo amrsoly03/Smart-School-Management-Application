@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nexura/Features/Admin/presentation/manager/models_cubit/models_cubit.dart';
+import 'package:nexura/Features/Admin/presentation/manager/select_models_cubit/select_models_cubit.dart';
 
 import 'Core/utils/app_router.dart';
 import 'Core/utils/bloc_observer.dart';
@@ -27,6 +29,12 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider<AdminCubit>(
           create: (context) => AdminCubit(getIt.get<AdminRepoImpl>()),
+        ),
+        BlocProvider<ModelsCubit>(
+          create: (context) => ModelsCubit(getIt.get<AdminRepoImpl>()),
+        ),
+        BlocProvider<SelectModelsCubit>(
+          create: (context) => SelectModelsCubit(),
         ),
       ],
       child: MaterialApp.router(
