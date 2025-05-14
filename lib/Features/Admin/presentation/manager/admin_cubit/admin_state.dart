@@ -23,6 +23,12 @@ final class AdminLoginSuccess extends AdminState {
   const AdminLoginSuccess(this.adminModel);
 }
 
+final class CreateUserSuccess extends AdminState {
+  final String message;
+
+  const CreateUserSuccess(this.message);
+}
+
 final class SendReportSuccess extends AdminState {
   final String message;
 

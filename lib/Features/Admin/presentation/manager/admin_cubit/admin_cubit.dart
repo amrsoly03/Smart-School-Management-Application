@@ -14,6 +14,7 @@ class AdminCubit extends Cubit<AdminState> {
   final AdminRepo adminRepo;
 
   late Either<Failures, AdminModel> loginResult;
+  late Either<Failures, String> createUserResult;
   late Either<Failures, String> sendReportResult;
 
   Future<void> adminLogin({
@@ -32,6 +33,35 @@ class AdminCubit extends Cubit<AdminState> {
       (adminModel) {
         emit(
           AdminLoginSuccess(adminModel),
+        );
+      },
+    );
+  }
+
+  Future<void> createUser({
+    required String s_name,
+    required String email,
+    required String student_password,
+    required String parent_password,
+    required String grade,
+  }) async {
+    emit(AdminLoading());
+
+    createUserResult = await adminRepo.createUser(
+      s_name: s_name,
+      email: email,
+      student_password: student_password,
+      parent_password: parent_password,
+      grade: grade,
+    );
+
+    createUserResult.fold(
+      (failures) {
+        emit(AdminFailure(failures.errMessage));
+      },
+      (message) {
+        emit(
+          CreateUserSuccess(message),
         );
       },
     );

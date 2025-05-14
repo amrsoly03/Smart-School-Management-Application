@@ -44,6 +44,42 @@ class AdminRepoImpl implements AdminRepo {
   }
 
   @override
+  Future<Either<Failures, String>> createUser({
+    required String s_name,
+    required String email,
+    required String student_password,
+    required String parent_password,
+    required String grade,
+  }) async {
+    try {
+      Map<String, dynamic> response = await apiService.httpPost(
+        link: Links.linkCreateUser,
+        data: {
+          's_name': s_name,
+          'email': email,
+          'student_password': student_password,
+          'parent_password': parent_password,
+          'grade': grade,
+        },
+      );
+
+      log('response: $response');
+
+      if (response['status'] == 'failed') {
+        return left(ServerFailures('something went wrong, try again'));
+      } else {
+        return right(response['message']);
+      }
+    } catch (e) {
+      if (e is SocketException) {
+        return left(ServerFailures('No internet connection'));
+      }
+      log('e: $e');
+      return left(ServerFailures('something went wrong'));
+    }
+  }
+
+  @override
   Future<Either<Failures, String>> sendReport({
     required String std_report,
     required String content,

@@ -9,6 +9,14 @@ abstract class AdminRepo {
     required String admin_password,
   });
 
+  Future<Either<Failures, String>> createUser({
+    required String s_name,
+    required String email,
+    required String student_password,
+    required String parent_password,
+    required String grade,
+  });
+
   Future<Either<Failures, String>> sendReport({
     required String std_report,
     required String content,

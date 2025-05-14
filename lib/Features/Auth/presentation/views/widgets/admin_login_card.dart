@@ -23,7 +23,6 @@ class AdminLoginCard extends StatelessWidget {
   var _isUploading = false;
 
   @override
-
   Widget build(BuildContext context) {
     AdminCubit adminCubit = BlocProvider.of<AdminCubit>(context);
 
@@ -94,8 +93,7 @@ class AdminLoginCard extends StatelessWidget {
                         }
                       },
                     ),
-                  if (!_isUploading)
-                    if (_isUploading) const CircularProgressIndicator(),
+                  if (_isUploading) const CircularProgressIndicator(),
                 ],
               ),
             ),
