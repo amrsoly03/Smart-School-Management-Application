@@ -22,3 +22,9 @@ final class ActivitiesSuccess extends ModelsState {
 
   const ActivitiesSuccess(this.activities);
 }
+
+final class SubjectsSuccess extends ModelsState {
+  final List<SubjectModel> subjects;
+
+  const SubjectsSuccess(this.subjects);
+}

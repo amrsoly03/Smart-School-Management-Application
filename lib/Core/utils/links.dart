@@ -10,6 +10,8 @@ class Links {
   static const linkEditUser = '$linkServerName/Admin/edit_user.php';
   static const linkAdminSendReport = '$linkServerName/Admin/send_report.php';
   static const linkSendActivityNotification = '$linkServerName/Admin/send_activity_notification.php';
+  static const linkApproveSubject = '$linkServerName/Admin/approve_subject.php';
 
   static const linkViewActivities = '$linkServerName/Models/view_activities.php';
+  static const linkViewApprovmentSubjects = '$linkServerName/Models/view_approvment_subjects.php';
 }

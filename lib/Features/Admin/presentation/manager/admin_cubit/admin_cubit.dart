@@ -121,7 +121,7 @@ class AdminCubit extends Cubit<AdminState> {
     );
   }
 
-    Future<void> sendActivityNotification({
+  Future<void> sendActivityNotification({
     required String activity_an,
     required String content,
   }) async {
@@ -139,6 +139,27 @@ class AdminCubit extends Cubit<AdminState> {
       (message) {
         emit(
           SendReportSuccess(message),
+        );
+      },
+    );
+  }
+
+  Future<void> approveSubject({
+    required String as_id,
+  }) async {
+    emit(AdminLoading());
+
+    sendReportResult = await adminRepo.approveSubject(
+      as_id: as_id,
+    );
+
+    sendReportResult.fold(
+      (failures) {
+        emit(AdminFailure(failures.errMessage));
+      },
+      (message) {
+        emit(
+          ApproveSubjectSuccess(message),
         );
       },
     );

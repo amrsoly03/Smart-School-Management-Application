@@ -7,7 +7,9 @@ class SubjectModel extends Equatable {
   final int? needApprove;
   final int? asId;
   final int? isApproved;
-  final int? asSubject;
+  final String? asSubject;
+  final String? asStudent;
+  final int? asStudentId;
 
   const SubjectModel({
     this.subjectId,
@@ -17,6 +19,8 @@ class SubjectModel extends Equatable {
     this.asId,
     this.isApproved,
     this.asSubject,
+    this.asStudent,
+    this.asStudentId,
   });
 
   factory SubjectModel.fromJson(Map<String, dynamic> json) => SubjectModel(
@@ -26,7 +30,9 @@ class SubjectModel extends Equatable {
         needApprove: json['need_approve'] as int?,
         asId: json['as_id'] as int?,
         isApproved: json['is_approved'] as int?,
-        asSubject: json['as_subject'] as int?,
+        asSubject: json['as_subject'] as String?,
+        asStudent: json['as_student'] as String?,
+        asStudentId: json['as_student_id'] as int?,
       );
 
   Map<String, dynamic> toJson() => {
@@ -37,6 +43,8 @@ class SubjectModel extends Equatable {
         'as_id': asId,
         'is_approved': isApproved,
         'as_subject': asSubject,
+        'as_student': asStudent,
+        'as_student_id': asStudentId,
       };
 
   @override
@@ -49,6 +57,8 @@ class SubjectModel extends Equatable {
       asId,
       isApproved,
       asSubject,
+      asStudent,
+      asStudentId,
     ];
   }
 }

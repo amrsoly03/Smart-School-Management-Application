@@ -40,3 +40,9 @@ final class SendReportSuccess extends AdminState {
 
   const SendReportSuccess(this.message);
 }
+
+final class ApproveSubjectSuccess extends AdminState {
+  final String message;
+
+  const ApproveSubjectSuccess(this.message);
+}

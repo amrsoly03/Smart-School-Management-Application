@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nexura/Core/models/activity_model.dart';
 
 import '../../../../../Core/errors/failures.dart';
+import '../../../../../Core/models/subject_model.dart';
 import '../../../data/repo/admin_repo.dart';
 
 part 'models_state.dart';
@@ -14,6 +15,8 @@ class ModelsCubit extends Cubit<ModelsState> {
   final AdminRepo adminRepo;
 
   late Either<Failures, List<ActivityModel>> activitiesResult;
+
+  late Either<Failures, List<SubjectModel>> subjectsResult;
 
     Future<void> viewActivities() async {
     emit(ModelsLoading());
@@ -26,6 +29,21 @@ class ModelsCubit extends Cubit<ModelsState> {
       },
       (activities) {
         emit(ActivitiesSuccess(activities));
+      },
+    );
+  }
+
+  Future<void> viewSubjects() async {
+    emit(ModelsLoading());
+
+    subjectsResult = await adminRepo.viewApprovmentSubject();
+
+    subjectsResult.fold(
+      (failure) {
+        emit(ModelsFailure(failure.errMessage));
+      },
+      (subjects) {
+        emit(SubjectsSuccess(subjects));
       },
     );
   }

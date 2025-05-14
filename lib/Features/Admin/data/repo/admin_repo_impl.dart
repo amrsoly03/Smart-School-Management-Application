@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:nexura/Core/models/activity_model.dart';
+import 'package:nexura/Core/models/subject_model.dart';
 import 'package:nexura/Features/Admin/data/repo/admin_repo.dart';
 
 import '../../../../Core/errors/failures.dart';
@@ -146,6 +147,7 @@ class AdminRepoImpl implements AdminRepo {
     }
   }
 
+  @override
   Future<Either<Failures, String>> sendActivityNotification({
     required String activity_an,
     required String content,
@@ -195,6 +197,64 @@ class AdminRepoImpl implements AdminRepo {
         }
 
         return right(activities);
+      }
+    } catch (e) {
+      if (e is SocketException) {
+        return left(ServerFailures('No internet connection'));
+      }
+      log('e: $e');
+      return left(ServerFailures('something went wrong'));
+    }
+  }
+
+  @override
+  Future<Either<Failures, List<SubjectModel>>> viewApprovmentSubject() async {
+    try {
+      Map<String, dynamic> response = await apiService.httpPost(
+        link: Links.linkViewApprovmentSubjects,
+        data: {},
+      );
+
+      log('response: $response');
+
+      if (response['status'] == 'failed') {
+        return left(ServerFailures(response['message']));
+      } else {
+        List<SubjectModel> subjects = [];
+
+        for (var item in response['data']) {
+          subjects.add(SubjectModel.fromJson(item));
+        }
+
+        return right(subjects);
+      }
+    } catch (e) {
+      if (e is SocketException) {
+        return left(ServerFailures('No internet connection'));
+      }
+      log('e: $e');
+      return left(ServerFailures('something went wrong'));
+    }
+  }
+
+  @override
+  Future<Either<Failures, String>> approveSubject({
+    required String as_id,
+  }) async {
+    try {
+      Map<String, dynamic> response = await apiService.httpPost(
+        link: Links.linkApproveSubject,
+        data: {
+          'as_id': as_id,
+        },
+      );
+
+      log('response: $response');
+
+      if (response['status'] == 'failed') {
+        return left(ServerFailures(response['message']));
+      } else {
+        return right(response['message']);
       }
     } catch (e) {
       if (e is SocketException) {

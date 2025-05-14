@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:focused_menu/modals.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nexura/Core/widgets/custom_appBar.dart';
+import 'package:nexura/Features/Admin/presentation/manager/models_cubit/models_cubit.dart';
 
 import '../../../../../Core/functions/capitalize.dart';
 import '../../../../../Core/utils/app_router.dart';
@@ -15,6 +17,9 @@ class AdminHomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    ModelsCubit modelsCubit = BlocProvider.of<ModelsCubit>(context);
+
     return Scaffold(
       appBar: const CustomAppBar(title: 'Home'),
       body: Padding(
@@ -62,6 +67,7 @@ class AdminHomeViewBody extends StatelessWidget {
                     trailingIcon: const Icon(Icons.check),
                     backgroundColor: darkBlue,
                     onPressed: () {
+                      modelsCubit.viewSubjects();
                       GoRouter.of(context).push(AppRouter.kApproveSubjectView);
                     },
                   ),
