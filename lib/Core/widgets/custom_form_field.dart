@@ -24,13 +24,13 @@ class CustomFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      style: Styles.textStyle18.copyWith(color: darkBlue),
+      style: Styles.textStyle18.copyWith(color: black),
       controller: controller,
       decoration: InputDecoration(
         labelText: labelText,
         fillColor: white,
         filled: true,
-        labelStyle: Styles.textStyle18.copyWith(color: grey),
+        labelStyle: Styles.textStyle18.copyWith(color: grey.withOpacity(0.5)),
         errorStyle: Styles.textStyle16.copyWith(
           color: const Color.fromARGB(255, 110, 7, 0),
         ),

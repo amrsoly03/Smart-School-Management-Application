@@ -42,4 +42,34 @@ class AdminRepoImpl implements AdminRepo {
       return left(ServerFailures('something went wrong'));
     }
   }
+
+  @override
+  Future<Either<Failures, String>> sendReport({
+    required String std_report,
+    required String content,
+  }) async {
+    try {
+      Map<String, dynamic> response = await apiService.httpPost(
+        link: Links.linkAdminSendReport,
+        data: {
+          'std_report': std_report,
+          'content': content,
+        },
+      );
+
+      log('response: $response');
+
+      if (response['status'] == 'failed') {
+        return left(ServerFailures('something went wrong, try again'));
+      } else {
+        return right(response['message']);
+      }
+    } catch (e) {
+      if (e is SocketException) {
+        return left(ServerFailures('No internet connection'));
+      }
+      log('e: $e');
+      return left(ServerFailures('something went wrong'));
+    }
+  }
 }

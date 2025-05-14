@@ -16,13 +16,14 @@ class AdminLoginCard extends StatelessWidget {
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  TextEditingController _enteredEmail = TextEditingController();
+  final TextEditingController _enteredEmail = TextEditingController();
 
-  TextEditingController _enteredPassword = TextEditingController();
+  final TextEditingController _enteredPassword = TextEditingController();
 
   var _isUploading = false;
 
   @override
+
   Widget build(BuildContext context) {
     AdminCubit adminCubit = BlocProvider.of<AdminCubit>(context);
 

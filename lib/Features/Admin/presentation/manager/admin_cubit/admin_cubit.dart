@@ -13,7 +13,8 @@ class AdminCubit extends Cubit<AdminState> {
 
   final AdminRepo adminRepo;
 
-  late Either<Failures, AdminModel> result;
+  late Either<Failures, AdminModel> loginResult;
+  late Either<Failures, String> sendReportResult;
 
   Future<void> adminLogin({
     required String email,
@@ -21,16 +22,39 @@ class AdminCubit extends Cubit<AdminState> {
   }) async {
     emit(AdminLoading());
 
-    result = await adminRepo.adminLogin(
+    loginResult = await adminRepo.adminLogin(
         email: email, admin_password: admin_password);
 
-    result.fold(
+    loginResult.fold(
       (failures) {
         emit(AdminFailure(failures.errMessage));
       },
       (adminModel) {
         emit(
           AdminLoginSuccess(adminModel),
+        );
+      },
+    );
+  }
+
+  Future<void> sendReport({
+    required String std_report,
+    required String content,
+  }) async {
+    emit(AdminLoading());
+
+    sendReportResult = await adminRepo.sendReport(
+      std_report: std_report,
+      content: content,
+    );
+
+    sendReportResult.fold(
+      (failures) {
+        emit(AdminFailure(failures.errMessage));
+      },
+      (message) {
+        emit(
+          SendReportSuccess(message),
         );
       },
     );

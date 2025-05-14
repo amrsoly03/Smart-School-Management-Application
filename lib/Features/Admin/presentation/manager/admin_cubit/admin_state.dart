@@ -9,7 +9,6 @@ sealed class AdminState extends Equatable {
 
 final class AdminInitial extends AdminState {}
 
-
 final class AdminLoading extends AdminState {}
 
 final class AdminFailure extends AdminState {
@@ -22,4 +21,10 @@ final class AdminLoginSuccess extends AdminState {
   final AdminModel adminModel;
 
   const AdminLoginSuccess(this.adminModel);
+}
+
+final class SendReportSuccess extends AdminState {
+  final String message;
+
+  const SendReportSuccess(this.message);
 }

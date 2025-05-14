@@ -4,9 +4,13 @@ import '../../../../Core/errors/failures.dart';
 import '../models/admin_model.dart';
 
 abstract class AdminRepo {
-  Future<Either<Failures, AdminModel>> adminLogin(
-      {
+  Future<Either<Failures, AdminModel>> adminLogin({
     required String email,
     required String admin_password,
+  });
+
+  Future<Either<Failures, String>> sendReport({
+    required String std_report,
+    required String content,
   });
 }
