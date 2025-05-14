@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nexura/Core/utils/theme.dart';
 
 import '../../../../../Core/utils/app_router.dart';
 import '../../../../../Core/widgets/custom_elevated_buttom.dart';
@@ -63,7 +64,9 @@ class StudentLoginCard extends StatelessWidget {
                   },
                 ),
               if (!_isUploading)
-                if (_isUploading) const CircularProgressIndicator(),
+                if (_isUploading) const CircularProgressIndicator(
+                  color: darkBlue,
+                ),
             ],
           ),
         ),

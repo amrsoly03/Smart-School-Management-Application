@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nexura/Core/utils/theme.dart';
 import 'package:nexura/Features/Admin/presentation/manager/admin_cubit/admin_cubit.dart';
 
 import '../../../../../Core/utils/app_router.dart';
@@ -93,7 +94,9 @@ class AdminLoginCard extends StatelessWidget {
                         }
                       },
                     ),
-                  if (_isUploading) const CircularProgressIndicator(),
+                  if (_isUploading) const CircularProgressIndicator(
+                    color: darkBlue,
+                  ),
                 ],
               ),
             ),

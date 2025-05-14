@@ -29,6 +29,12 @@ final class CreateUserSuccess extends AdminState {
   const CreateUserSuccess(this.message);
 }
 
+final class EditUserSuccess extends AdminState {
+  final String message;
+
+  const EditUserSuccess(this.message);
+}
+
 final class SendReportSuccess extends AdminState {
   final String message;
 

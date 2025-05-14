@@ -17,6 +17,14 @@ abstract class AdminRepo {
     required String grade,
   });
 
+  Future<Either<Failures, String>> editUser({
+    required String student_id,
+    required String s_name,
+    required String email,
+    required String student_password,
+    required String parent_password,
+  });
+
   Future<Either<Failures, String>> sendReport({
     required String std_report,
     required String content,
