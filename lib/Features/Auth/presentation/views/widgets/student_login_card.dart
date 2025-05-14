@@ -64,9 +64,10 @@ class StudentLoginCard extends StatelessWidget {
                   },
                 ),
               if (!_isUploading)
-                if (_isUploading) const CircularProgressIndicator(
-                  color: darkBlue,
-                ),
+                if (_isUploading)
+                  const CircularProgressIndicator(
+                    color: darkBlue,
+                  ),
             ],
           ),
         ),

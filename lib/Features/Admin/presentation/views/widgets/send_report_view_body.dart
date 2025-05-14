@@ -95,7 +95,6 @@ class SendReportViewBody extends StatelessWidget {
                               ),
                               decoration: const InputDecoration(
                                 hintText: 'write the report here',
-                                
                               ),
                               maxLines: 25,
                               minLines: 1,

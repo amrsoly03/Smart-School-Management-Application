@@ -110,9 +110,10 @@ class EditUserForm extends StatelessWidget {
                         }
                       },
                     ),
-                  if (_isUploading) const CircularProgressIndicator(
-                    color: darkBlue,
-                  ),
+                  if (_isUploading)
+                    const CircularProgressIndicator(
+                      color: darkBlue,
+                    ),
                 ],
               ),
             ),
