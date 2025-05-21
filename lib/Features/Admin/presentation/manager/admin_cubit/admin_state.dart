@@ -52,3 +52,9 @@ final class ApproveSubjectSuccess extends AdminState {
 
   const ApproveSubjectSuccess(this.message);
 }
+
+final class UpdateDegreesSuccess extends AdminState {
+  final String message;
+
+  const UpdateDegreesSuccess(this.message);
+}

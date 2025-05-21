@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 
 import '../../../../Core/errors/failures.dart';
 import '../../../../Core/models/activity_model.dart';
+import '../../../../Core/models/grade_model.dart';
 import '../../../../Core/models/report_model.dart';
 import '../../../../Core/models/subject_model.dart';
 import '../models/admin_model.dart';
@@ -47,4 +48,18 @@ abstract class AdminRepo {
   Future<Either<Failures, List<ActivityModel>>> viewActivities();
 
   Future<Either<Failures, List<SubjectModel>>> viewApprovmentSubject();
+
+  Future<Either<Failures, List<GradeModel>>> viewGrades();
+
+  Future<Either<Failures, List<SubjectModel>>> viewSubjects({
+    required String sub_grade,
+  });
+
+  Future<Either<Failures, String>> updateDegrees({
+    required String subject_degree,
+    required String std_degree,
+    required String final_degree,
+    required String mid,
+    required String practical,
+  });
 }

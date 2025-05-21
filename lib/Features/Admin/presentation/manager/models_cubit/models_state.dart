@@ -28,3 +28,9 @@ final class SubjectsSuccess extends ModelsState {
 
   const SubjectsSuccess(this.subjects);
 }
+
+final class GradesSuccess extends ModelsState {
+  final List<GradeModel> grades;
+
+  const GradesSuccess(this.grades);
+}

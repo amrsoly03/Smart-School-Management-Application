@@ -32,7 +32,7 @@ class CustomApproveButton extends StatelessWidget {
         } else if (state is ApproveSubjectSuccess) {
           kShowSnackBar(context, state.message);
           _isUploading = false;
-          modelsCubit.viewSubjects();
+          modelsCubit.viewApprovmentSubjects();
         } else if (state is AdminFailure) {
           kShowSnackBar(context, state.errMessage);
           log(state.errMessage);

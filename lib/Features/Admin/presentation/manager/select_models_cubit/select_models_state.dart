@@ -16,3 +16,15 @@ final class ActivitySelected extends SelectModelsState {
 
   const ActivitySelected(this.selectedActivity);
 }
+
+final class GradeSelected extends SelectModelsState {
+  final GradeModel selectedGrade;
+
+  const GradeSelected(this.selectedGrade);
+}
+
+final class SubjectSelected extends SelectModelsState {
+  final SubjectModel selectedSubject;
+
+  const SubjectSelected(this.selectedSubject);
+}

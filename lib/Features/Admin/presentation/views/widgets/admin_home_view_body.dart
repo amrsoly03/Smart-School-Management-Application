@@ -69,16 +69,16 @@ class AdminHomeViewBody extends StatelessWidget {
                     trailingIcon: const Icon(Icons.check),
                     backgroundColor: darkBlue,
                     onPressed: () {
-                      modelsCubit.viewSubjects();
+                      modelsCubit.viewApprovmentSubjects();
                       GoRouter.of(context).push(AppRouter.kApproveSubjectView);
                     },
                   ),
                   FocusedMenuItem(
                     title: Text(
-                      capitalize('add degrees'),
+                      capitalize('set degrees'),
                       style: Styles.textStyle18,
                     ),
-                    trailingIcon: const Icon(Icons.add),
+                    trailingIcon: const Icon(Icons.edit_document),
                     backgroundColor: darkBlue,
                     onPressed: () {
                       GoRouter.of(context).push(AppRouter.kAddDegreeView);
@@ -113,7 +113,7 @@ class AdminHomeViewBody extends StatelessWidget {
                   ),
                   FocusedMenuItem(
                     title: Text(
-                      capitalize('view sent report'),
+                      capitalize('view sent reports'),
                       style: Styles.textStyle18,
                     ),
                     trailingIcon: const Icon(Icons.mail_outline),

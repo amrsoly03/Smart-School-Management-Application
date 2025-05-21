@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:nexura/Core/models/activity_model.dart';
+import 'package:nexura/Core/models/grade_model.dart';
 import 'package:nexura/Core/models/report_model.dart';
 import 'package:nexura/Core/models/subject_model.dart';
 import 'package:nexura/Features/Admin/data/repo/admin_repo.dart';
@@ -208,7 +209,8 @@ class AdminRepoImpl implements AdminRepo {
     }
   }
 
-   Future<Either<Failures, List<ReportModel>>> viewAdminSentReports() async {
+  @override
+  Future<Either<Failures, List<ReportModel>>> viewAdminSentReports() async {
     try {
       Map<String, dynamic> response = await apiService.httpPost(
         link: Links.linkViewAdminSentReports,
@@ -276,6 +278,106 @@ class AdminRepoImpl implements AdminRepo {
         link: Links.linkApproveSubject,
         data: {
           'as_id': as_id,
+        },
+      );
+
+      log('response: $response');
+
+      if (response['status'] == 'failed') {
+        return left(ServerFailures(response['message']));
+      } else {
+        return right(response['message']);
+      }
+    } catch (e) {
+      if (e is SocketException) {
+        return left(ServerFailures('No internet connection'));
+      }
+      log('e: $e');
+      return left(ServerFailures('something went wrong'));
+    }
+  }
+
+  @override
+  Future<Either<Failures, List<GradeModel>>> viewGrades() async {
+    try {
+      Map<String, dynamic> response = await apiService.httpPost(
+        link: Links.linkViewGrades,
+        data: {},
+      );
+
+      log('response: $response');
+
+      if (response['status'] == 'failed') {
+        return left(ServerFailures(response['message']));
+      } else {
+        List<GradeModel> grades = [];
+
+        for (var item in response['data']) {
+          grades.add(GradeModel.fromJson(item));
+        }
+
+        return right(grades);
+      }
+    } catch (e) {
+      if (e is SocketException) {
+        return left(ServerFailures('No internet connection'));
+      }
+      log('e: $e');
+      return left(ServerFailures('something went wrong'));
+    }
+  }
+
+  @override
+  Future<Either<Failures, List<SubjectModel>>> viewSubjects({
+    required String sub_grade,
+  }) async {
+    try {
+      Map<String, dynamic> response = await apiService.httpPost(
+        link: Links.linkViewSubjects,
+        data: {
+          'sub_grade': sub_grade,
+        },
+      );
+
+      log('response: $response');
+
+      if (response['status'] == 'failed') {
+        return left(ServerFailures(response['message']));
+      } else {
+        List<SubjectModel> subjects = [];
+
+        for (var item in response['data']) {
+          subjects.add(SubjectModel.fromJson(item));
+        }
+
+        return right(subjects);
+      }
+    } catch (e) {
+      if (e is SocketException) {
+        return left(ServerFailures('No internet connection'));
+      }
+      log('e: $e');
+      return left(ServerFailures('something went wrong'));
+    }
+  }
+
+  @override
+  Future<Either<Failures, String>> updateDegrees({
+    required String subject_degree,
+    required String std_degree,
+    required String final_degree,
+    required String mid,
+    required String practical,
+  }) async {
+    try {
+      Map<String, dynamic> response = await apiService.httpPost(
+        link: Links.linkUpdateDegrees,
+        data: {
+          'subject_degree': subject_degree,
+          'std_degree': std_degree,
+          'final': final_degree,
+          'mid': mid,
+          'practical': practical,
         },
       );
 

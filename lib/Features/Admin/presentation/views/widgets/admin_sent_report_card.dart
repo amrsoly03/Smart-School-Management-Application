@@ -17,10 +17,14 @@ class AdminSentReportCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 150,
       width: 350,
       margin: const EdgeInsets.only(bottom: 15),
-      padding: const EdgeInsets.all(15),
+      padding: const EdgeInsets.only(
+        left: 15,
+        right: 15,
+        top: 15,
+        bottom: 30,
+      ),
       decoration: BoxDecoration(
         color: darkBlue,
         borderRadius: BorderRadius.circular(30),
