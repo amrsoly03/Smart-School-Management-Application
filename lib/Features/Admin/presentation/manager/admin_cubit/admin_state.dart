@@ -41,6 +41,12 @@ final class SendReportSuccess extends AdminState {
   const SendReportSuccess(this.message);
 }
 
+final class ViewSentReportsSuccess extends AdminState {
+  final List<ReportModel> reports;
+
+  const ViewSentReportsSuccess(this.reports);
+}
+
 final class ApproveSubjectSuccess extends AdminState {
   final String message;
 

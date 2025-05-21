@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 
 import '../../../../Core/errors/failures.dart';
 import '../../../../Core/models/activity_model.dart';
+import '../../../../Core/models/report_model.dart';
 import '../../../../Core/models/subject_model.dart';
 import '../models/admin_model.dart';
 
@@ -36,6 +37,8 @@ abstract class AdminRepo {
     required String activity_an,
     required String content,
   });
+
+   Future<Either<Failures, List<ReportModel>>> viewAdminSentReports();
 
   Future<Either<Failures, String>> approveSubject({
     required String as_id,

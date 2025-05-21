@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nexura/Features/Admin/data/models/admin_model.dart';
 
 import '../../../../../Core/errors/failures.dart';
+import '../../../../../Core/models/report_model.dart';
 import '../../../data/repo/admin_repo.dart';
 
 part 'admin_state.dart';
@@ -17,6 +18,7 @@ class AdminCubit extends Cubit<AdminState> {
   late Either<Failures, String> createUserResult;
   late Either<Failures, String> editUserResult;
   late Either<Failures, String> sendReportResult;
+  late Either<Failures, List<ReportModel>> viewSentReportsResult;
   late Either<Failures, String> sendActivityNotificationResult;
 
   Future<void> adminLogin({
@@ -117,6 +119,21 @@ class AdminCubit extends Cubit<AdminState> {
         emit(
           SendReportSuccess(message),
         );
+      },
+    );
+  }
+
+  Future<void> viewAdminSentReports() async {
+    emit(AdminLoading());
+
+    viewSentReportsResult = await adminRepo.viewAdminSentReports();
+
+    viewSentReportsResult.fold(
+      (failure) {
+        emit(AdminFailure(failure.errMessage));
+      },
+      (reports) {
+        emit(ViewSentReportsSuccess(reports));
       },
     );
   }

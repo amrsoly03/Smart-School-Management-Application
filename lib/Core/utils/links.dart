@@ -11,6 +11,7 @@ class Links {
   static const linkAdminSendReport = '$linkServerName/Admin/send_report.php';
   static const linkSendActivityNotification = '$linkServerName/Admin/send_activity_notification.php';
   static const linkApproveSubject = '$linkServerName/Admin/approve_subject.php';
+  static const linkViewAdminSentReports = '$linkServerName/Admin/view_sent_reports.php';
 
   static const linkViewActivities = '$linkServerName/Models/view_activities.php';
   static const linkViewApprovmentSubjects = '$linkServerName/Models/view_approvment_subjects.php';
