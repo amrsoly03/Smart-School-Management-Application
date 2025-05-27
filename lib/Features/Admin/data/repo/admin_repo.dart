@@ -13,6 +13,7 @@ abstract class AdminRepo {
   Future<Either<Failures, AdminModel>> adminLogin({
     required String email,
     required String admin_password,
+    required String type,
   });
 
   Future<Either<Failures, String>> createUser({

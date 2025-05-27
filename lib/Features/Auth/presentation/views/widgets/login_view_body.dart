@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:nexura/Core/functions/capitalize.dart';
+import 'package:nexura/Core/utils/size_config.dart';
 import 'package:nexura/Core/utils/theme.dart';
 import 'package:nexura/first_screen.dart';
 
@@ -24,33 +25,32 @@ class LoginViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(title: title),
-      body: Center(
-        child: SingleChildScrollView(
-            child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              margin: const EdgeInsets.symmetric(
-                vertical: 20,
-              ),
-              width: double.infinity,
-              //child: Image.asset('assets/images/gym _logo.png', color: white),
+      body: SingleChildScrollView(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            margin: const EdgeInsets.only(
+              bottom: 30,
+              top: 50,
             ),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Text(
-                  capitalize('login to your account'),
-                  style: Styles.textStyle18.copyWith(color: darkBlue),
-                  textAlign: TextAlign.start,
-                ),
+            width: SizeConfig.screenWidth * 0.5,
+            child: Image.asset('assets/logo.png', color: darkBlue,),
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Text(
+                capitalize('login to your account'),
+                style: Styles.textStyle18.copyWith(color: darkBlue),
+                textAlign: TextAlign.start,
               ),
             ),
-            card,
-          ],
-        )),
-      ),
+          ),
+          card,
+        ],
+      )),
     );
   }
 }

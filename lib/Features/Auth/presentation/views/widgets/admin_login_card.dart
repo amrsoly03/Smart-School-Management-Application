@@ -10,10 +10,11 @@ import '../../../../../Core/utils/app_router.dart';
 import '../../../../../Core/widgets/custom_elevated_buttom.dart';
 import '../../../../../Core/widgets/custom_form_field.dart';
 import '../../../../../Core/widgets/custom_snackbar.dart';
+import '../../../../../first_screen.dart';
 
 // ignore: must_be_immutable
 class AdminLoginCard extends StatelessWidget {
-  AdminLoginCard({super.key});
+  AdminLoginCard({super.key, required this.type});
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -22,6 +23,8 @@ class AdminLoginCard extends StatelessWidget {
   final TextEditingController _enteredPassword = TextEditingController();
 
   var _isUploading = false;
+
+  final String type;
 
   @override
   Widget build(BuildContext context) {
@@ -32,11 +35,17 @@ class AdminLoginCard extends StatelessWidget {
         if (state is AdminLoading) {
           _isUploading = true;
         } else if (state is AdminLoginSuccess) {
-          GoRouter.of(context).pushReplacement(AppRouter.kAdminHomeView).then(
-            (value) {
-              _isUploading = false;
-            },
-          );
+          if (type == Users.schoolAdmin.name) {
+            GoRouter.of(context)
+                .pushReplacement(AppRouter.kSchoolAdminHomeView)
+                .then(
+              (value) {
+                _isUploading = false;
+              },
+            );
+          } else if (type == Users.cafeteriaAdmin.name) {
+          } else if (type == Users.activitiesAdmin.name) {
+          } else if (type == Users.teacher.name) {}
         } else if (state is AdminFailure) {
           kShowSnackBar(context, state.errMessage);
           log(state.errMessage);
@@ -90,6 +99,7 @@ class AdminLoginCard extends StatelessWidget {
                           adminCubit.adminLogin(
                             email: _enteredEmail.text,
                             admin_password: _enteredPassword.text,
+                            type: type,
                           );
                         }
                       },

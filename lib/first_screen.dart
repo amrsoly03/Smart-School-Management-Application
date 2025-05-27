@@ -6,9 +6,12 @@ import 'package:nexura/Core/widgets/custom_appBar.dart';
 import 'Core/widgets/custom_button.dart';
 
 enum Users {
-  admin,
-  student,
+  schoolAdmin,
+  cafeteriaAdmin,
+  activitiesAdmin,
+  teacher,
   parent,
+  student,
 }
 
 class FirstScreen extends StatelessWidget {
@@ -34,7 +37,7 @@ class FirstScreen extends StatelessWidget {
                 title: 'Admin',
                 function: () {
                   GoRouter.of(context)
-                      .push(AppRouter.kLoginView, extra: Users.admin);
+                      .push(AppRouter.kAdminsHomeView);
                 },
               ),
               const SizedBox(

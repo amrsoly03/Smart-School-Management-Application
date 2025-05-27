@@ -21,14 +21,18 @@ class AdminRepoImpl implements AdminRepo {
   AdminRepoImpl(this.apiService);
 
   @override
-  Future<Either<Failures, AdminModel>> adminLogin(
-      {required String email, required String admin_password}) async {
+  Future<Either<Failures, AdminModel>> adminLogin({
+    required String email,
+    required String admin_password,
+    required String type,
+  }) async {
     try {
       Map<String, dynamic> response = await apiService.httpPost(
         link: Links.linkAdminLogin,
         data: {
           'email': email,
           'admin_password': admin_password,
+          'type': type,
         },
       );
 
@@ -437,32 +441,33 @@ class AdminRepoImpl implements AdminRepo {
   }) async {
     try {
       List<Future<void>> futures = [];
-      for (var item in questions) {futures.add(apiService.httpPost(
-        link: Links.linkAddQuestion,
-        data: {
-          'question_quiz': question_quiz,
-          'description': item.description,
-          'answer1': item.answer1,
-          'answer2': item.answer2,
-          'answer3': item.answer3,
-          'right_answer': item.rightAnswer,
-        },
-      ).then((response) {
-        log('response: $response');
-        if (response['status'] == 'failed') {
-          log((response['message']));
-        } else {
-          log(response['message']);
-        }
-      }));
+      for (var item in questions) {
+        futures.add(apiService.httpPost(
+          link: Links.linkAddQuestion,
+          data: {
+            'question_quiz': question_quiz,
+            'description': item.description,
+            'answer1': item.answer1,
+            'answer2': item.answer2,
+            'answer3': item.answer3,
+            'right_answer': item.rightAnswer,
+          },
+        ).then((response) {
+          log('response: $response');
+          if (response['status'] == 'failed') {
+            log((response['message']));
+          } else {
+            log(response['message']);
+          }
+        }));
+      }
+      await Future.wait(futures);
+    } catch (e) {
+      if (e is SocketException) {
+        return log(('No internet connection'));
+      }
+      log('e: $e');
+      return log(('something went wrong'));
     }
-    await Future.wait(futures);
-  } catch (e) {
-    if (e is SocketException) {
-      return log(('No internet connection'));
-    }
-    log('e: $e');
-    return log(('something went wrong'));
   }
-}
 }

@@ -2,7 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:nexura/Features/Admin/presentation/views/activities_notification_view.dart';
 import 'package:nexura/Features/Admin/presentation/views/add_degree_view.dart';
 import 'package:nexura/Features/Admin/presentation/views/add_exam_view.dart';
-import 'package:nexura/Features/Admin/presentation/views/admin_home_view.dart';
+import 'package:nexura/Features/Admin/presentation/views/school_admin_home_view.dart';
 import 'package:nexura/Features/Admin/presentation/views/approve_subject_view.dart';
 import 'package:nexura/Features/Admin/presentation/views/send_report_view.dart';
 import 'package:nexura/Features/Admin/presentation/views/sent_reports_view.dart';
@@ -25,6 +25,7 @@ import 'package:nexura/Features/Student/presentation/views/schedule_view.dart';
 import 'package:nexura/Features/Student/presentation/views/school_activities_view.dart';
 import 'package:nexura/Features/Student/presentation/views/student_home_view.dart';
 
+import '../../Features/Admin/presentation/views/admins_home_view.dart';
 import '../../Features/Admin/presentation/views/create_account_view.dart';
 import '../../Features/Admin/presentation/views/edit_user_view.dart';
 import '../../Features/Auth/presentation/views/login_view.dart';
@@ -33,7 +34,8 @@ import '../../first_screen.dart';
 abstract class AppRouter {
   //static const kSplashScreen = '/SplashScreen';
   static const kLoginView = '/LoginView';
-  static const kAdminHomeView = '/AdminHomeView';
+  static const kAdminsHomeView = '/AdminsHomeView';
+  static const kSchoolAdminHomeView = '/SchoolAdminHomeView';
   static const kStudentHomeView = '/StudentHomeView';
   static const kParentHomeView = '/ParentHomeView';
   static const kCreateAccountView = '/CreateAccountView';
@@ -65,7 +67,7 @@ abstract class AppRouter {
     routes: [
       GoRoute(
         path: '/',
-        builder: (context, state) => const AdminHomeView(),
+        builder: (context, state) => const FirstScreen(),
       ),
       GoRoute(
         path: kLoginView,
@@ -74,8 +76,12 @@ abstract class AppRouter {
         ),
       ),
       GoRoute(
-        path: kAdminHomeView,
-        builder: (context, state) => const AdminHomeView(),
+        path: kSchoolAdminHomeView,
+        builder: (context, state) => const SchoolAdminHomeView(),
+      ),
+      GoRoute(
+        path: kAdminsHomeView,
+        builder: (context, state) => const AdminsHomeView(),
       ),
       GoRoute(
         path: kStudentHomeView,

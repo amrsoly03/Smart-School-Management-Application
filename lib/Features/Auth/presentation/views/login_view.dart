@@ -33,9 +33,26 @@ class _LoginViewState extends State<LoginView> {
   }
 
   void getUser() {
-    if (widget.user == Users.admin) {
+    if (widget.user == Users.schoolAdmin) {
       title = 'admin login';
-      card = AdminLoginCard();
+      card = AdminLoginCard(
+        type: Users.schoolAdmin.name,
+      );
+    } else if (widget.user == Users.cafeteriaAdmin) {
+      title = 'cafeteria admin login';
+      card = AdminLoginCard(
+        type: Users.cafeteriaAdmin.name,
+      );
+    } else if (widget.user == Users.activitiesAdmin) {
+      title = 'activities admin login';
+      card = AdminLoginCard(
+        type: Users.activitiesAdmin.name,
+      );
+    } else if (widget.user == Users.teacher) {
+      title = 'teacher login';
+      card = AdminLoginCard(
+        type: Users.teacher.name,
+      );
     } else if (widget.user == Users.student) {
       title = 'student login';
       card = StudentLoginCard();

@@ -31,11 +31,15 @@ class AdminCubit extends Cubit<AdminState> {
   Future<void> adminLogin({
     required String email,
     required String admin_password,
+    required String type,
   }) async {
     emit(AdminLoading());
 
     loginResult = await adminRepo.adminLogin(
-        email: email, admin_password: admin_password);
+      email: email,
+      admin_password: admin_password,
+      type: type,
+    );
 
     loginResult.fold(
       (failures) {

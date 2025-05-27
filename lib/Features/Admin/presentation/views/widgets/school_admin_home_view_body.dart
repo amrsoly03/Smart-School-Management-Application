@@ -14,8 +14,8 @@ import '../../../../../Core/utils/styles.dart';
 import '../../../../../Core/utils/theme.dart';
 import 'admin_home_container.dart';
 
-class AdminHomeViewBody extends StatelessWidget {
-  const AdminHomeViewBody({super.key});
+class SchoolAdminHomeViewBody extends StatelessWidget {
+  const SchoolAdminHomeViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
