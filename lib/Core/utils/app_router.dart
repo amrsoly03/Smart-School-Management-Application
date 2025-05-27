@@ -25,9 +25,12 @@ import 'package:nexura/Features/Student/presentation/views/schedule_view.dart';
 import 'package:nexura/Features/Student/presentation/views/school_activities_view.dart';
 import 'package:nexura/Features/Student/presentation/views/student_home_view.dart';
 
+import '../../Features/Admin/presentation/views/activities_admin_home_view.dart';
 import '../../Features/Admin/presentation/views/admins_home_view.dart';
+import '../../Features/Admin/presentation/views/cafeteria_admin_home_view.dart';
 import '../../Features/Admin/presentation/views/create_account_view.dart';
 import '../../Features/Admin/presentation/views/edit_user_view.dart';
+import '../../Features/Admin/presentation/views/teacher_home_view.dart';
 import '../../Features/Auth/presentation/views/login_view.dart';
 import '../../first_screen.dart';
 
@@ -36,6 +39,9 @@ abstract class AppRouter {
   static const kLoginView = '/LoginView';
   static const kAdminsHomeView = '/AdminsHomeView';
   static const kSchoolAdminHomeView = '/SchoolAdminHomeView';
+  static const kCafeteriaAdminHomeView = '/CafeteriaAdminHomeView';
+  static const kActivitiesAdminHomeView = '/ActivitiesAdminHomeView';
+  static const kTeacherHomeView = '/TeacherHomeView';
   static const kStudentHomeView = '/StudentHomeView';
   static const kParentHomeView = '/ParentHomeView';
   static const kCreateAccountView = '/CreateAccountView';
@@ -67,7 +73,7 @@ abstract class AppRouter {
     routes: [
       GoRoute(
         path: '/',
-        builder: (context, state) => const FirstScreen(),
+        builder: (context, state) => const CafeteriaAdminHomeView(),
       ),
       GoRoute(
         path: kLoginView,
@@ -78,6 +84,18 @@ abstract class AppRouter {
       GoRoute(
         path: kSchoolAdminHomeView,
         builder: (context, state) => const SchoolAdminHomeView(),
+      ),
+      GoRoute(
+        path: kCafeteriaAdminHomeView,
+        builder: (context, state) => const CafeteriaAdminHomeView(),
+      ),
+      GoRoute(
+        path: kActivitiesAdminHomeView,
+        builder: (context, state) => const ActivitiesAdminHomeView(),
+      ),
+      GoRoute(
+        path: kTeacherHomeView,
+        builder: (context, state) => const TeacherHomeView(),
       ),
       GoRoute(
         path: kAdminsHomeView,

@@ -4,12 +4,14 @@ class ActivityModel extends Equatable {
   final int? activityId;
   final String? name;
   final String? description;
+  final int? price;
   final String? image;
 
   const ActivityModel({
     this.activityId,
     this.name,
     this.description,
+    this.price,
     this.image,
   });
 
@@ -17,6 +19,7 @@ class ActivityModel extends Equatable {
         activityId: json['activity_id'] as int?,
         name: json['name'] as String?,
         description: json['description'] as String?,
+        price: json['price'] as int?,
         image: json['image'] as String?,
       );
 
@@ -24,9 +27,10 @@ class ActivityModel extends Equatable {
         'activity_id': activityId,
         'name': name,
         'description': description,
+        'price': price,
         'image': image,
       };
 
   @override
-  List<Object?> get props => [activityId, name, description, image];
+  List<Object?> get props => [activityId, name, description, price, image];
 }

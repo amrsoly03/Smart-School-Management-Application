@@ -4,8 +4,6 @@ import 'package:focused_menu/modals.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nexura/Core/widgets/custom_appBar.dart';
 import 'package:nexura/Features/Admin/presentation/manager/admin_cubit/admin_cubit.dart';
-import 'package:nexura/Features/Admin/presentation/manager/models_cubit/models_cubit.dart';
-import 'package:nexura/Features/Admin/presentation/manager/questions_cubit/questions_cubit.dart';
 
 import '../../../../../Core/functions/capitalize.dart';
 import '../../../../../Core/utils/app_router.dart';
@@ -19,10 +17,7 @@ class SchoolAdminHomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    ModelsCubit modelsCubit = BlocProvider.of<ModelsCubit>(context);
     AdminCubit adminCubit = BlocProvider.of<AdminCubit>(context);
-    QuestionsCubit questionsCubit = BlocProvider.of<QuestionsCubit>(context);
 
     return Scaffold(
       appBar: const CustomAppBar(title: 'Home'),
@@ -60,46 +55,7 @@ class SchoolAdminHomeViewBody extends StatelessWidget {
                   ),
                 ],
               ),
-              AdminHomeContainer(
-                title: 'subject features',
-                menuItems: [
-                  FocusedMenuItem(
-                    title: Text(
-                      capitalize('approve subject'),
-                      style: Styles.textStyle18,
-                    ),
-                    trailingIcon: const Icon(Icons.check),
-                    backgroundColor: darkBlue,
-                    onPressed: () {
-                      modelsCubit.viewApprovmentSubjects();
-                      GoRouter.of(context).push(AppRouter.kApproveSubjectView);
-                    },
-                  ),
-                  FocusedMenuItem(
-                    title: Text(
-                      capitalize('set degrees'),
-                      style: Styles.textStyle18,
-                    ),
-                    trailingIcon: const Icon(Icons.edit_document),
-                    backgroundColor: darkBlue,
-                    onPressed: () {
-                      GoRouter.of(context).push(AppRouter.kAddDegreeView);
-                    },
-                  ),
-                  FocusedMenuItem(
-                    title: Text(
-                      capitalize('add exam'),
-                      style: Styles.textStyle18,
-                    ),
-                    trailingIcon: const Icon(Icons.add),
-                    backgroundColor: darkBlue,
-                    onPressed: () {
-                      questionsCubit.resetQuestions();
-                      GoRouter.of(context).push(AppRouter.kAddExamView);
-                    },
-                  ),
-                ],
-              ),
+              SizedBox(height: SizeConfig.screenHeight * 0.03),
               AdminHomeContainer(
                 title: 'reports',
                 menuItems: [
@@ -126,19 +82,19 @@ class SchoolAdminHomeViewBody extends StatelessWidget {
                       GoRouter.of(context).push(AppRouter.kSentReportsView);
                     },
                   ),
-                  FocusedMenuItem(
-                    title: Text(
-                      capitalize('activities notifications'),
-                      style: Styles.textStyle18,
-                    ),
-                    trailingIcon: const Icon(Icons.notifications_outlined),
-                    backgroundColor: darkBlue,
-                    onPressed: () {
-                      GoRouter.of(context).push(
-                        AppRouter.kActivitiesNotificationView,
-                      );
-                    },
-                  ),
+                  // FocusedMenuItem(
+                  //   title: Text(
+                  //     capitalize('activities notifications'),
+                  //     style: Styles.textStyle18,
+                  //   ),
+                  //   trailingIcon: const Icon(Icons.notifications_outlined),
+                  //   backgroundColor: darkBlue,
+                  //   onPressed: () {
+                  //     GoRouter.of(context).push(
+                  //       AppRouter.kActivitiesNotificationView,
+                  //     );
+                  //   },
+                  // ),
                 ],
               ),
             ],

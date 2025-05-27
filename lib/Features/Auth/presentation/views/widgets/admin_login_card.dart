@@ -44,8 +44,30 @@ class AdminLoginCard extends StatelessWidget {
               },
             );
           } else if (type == Users.cafeteriaAdmin.name) {
+            GoRouter.of(context)
+                .pushReplacement(AppRouter.kCafeteriaAdminHomeView)
+                .then(
+              (value) {
+                _isUploading = false;
+              },
+            );
           } else if (type == Users.activitiesAdmin.name) {
-          } else if (type == Users.teacher.name) {}
+            GoRouter.of(context)
+                .pushReplacement(AppRouter.kActivitiesAdminHomeView)
+                .then(
+              (value) {
+                _isUploading = false;
+              },
+            );
+          } else if (type == Users.teacher.name) {
+            GoRouter.of(context)
+                .pushReplacement(AppRouter.kTeacherHomeView)
+                .then(
+              (value) {
+                _isUploading = false;
+              },
+            );
+          }
         } else if (state is AdminFailure) {
           kShowSnackBar(context, state.errMessage);
           log(state.errMessage);

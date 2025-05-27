@@ -36,7 +36,7 @@ class AddExamViewBody extends StatelessWidget {
     SubjectModel subjectModel = const SubjectModel();
 
     return Scaffold(
-      appBar: const CustomAppBar(title: 'Add Exam'),
+      appBar: const CustomAppBar(title: 'Add Quiz'),
       body: BlocConsumer<SelectModelsCubit, SelectModelsState>(
         listener: (context, state) {
           if (state is SubjectSelected) {
@@ -49,9 +49,9 @@ class AddExamViewBody extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             child: Column(
               children: [
-                // Exam Name
+                // Quiz Name
                 CustomFormField(
-                  labelText: 'exam name',
+                  labelText: 'quiz name',
                   controller: examNameController,
                   keyboardType: TextInputType.name,
                 ),
@@ -113,7 +113,7 @@ class AddExamViewBody extends StatelessWidget {
                         title: 'submit',
                         function: () {
                           if (examNameController.text.isEmpty) {
-                            return kShowSnackBar(context, 'enter exam name');
+                            return kShowSnackBar(context, 'enter quiz name');
                           }
                           if (subjectModel.subjectId == null) {
                             return kShowSnackBar(
