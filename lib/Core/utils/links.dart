@@ -1,6 +1,6 @@
 class Links {
-  //static const linkServerName = 'http://10.0.2.2/gym_app';
-  static const linkServerName = 'http://192.168.1.8/ssma';
+  static const linkServerName = 'http://10.0.2.2/ssma';
+  //static const linkServerName = 'http://192.168.1.8/ssma';
 
   // static const linkUploadExerciseImage =
   //     '$linkServerName/upload/exercises_image';
@@ -13,6 +13,8 @@ class Links {
   static const linkApproveSubject = '$linkServerName/Admin/approve_subject.php';
   static const linkViewAdminSentReports = '$linkServerName/Admin/view_sent_reports.php';
   static const linkUpdateDegrees = '$linkServerName/Admin/update_degree.php';
+  static const linkAddQuiz = '$linkServerName/Admin/add_quiz.php';
+  static const linkAddQuestion = '$linkServerName/Admin/add_question.php';
 
   static const linkViewActivities = '$linkServerName/Models/view_activities.php';
   static const linkViewApprovmentSubjects = '$linkServerName/Models/view_approvment_subjects.php';

@@ -58,3 +58,15 @@ final class UpdateDegreesSuccess extends AdminState {
 
   const UpdateDegreesSuccess(this.message);
 }
+
+final class AddQuizSuccess extends AdminState {
+  final QuizModel quizModel;
+
+  const AddQuizSuccess(this.quizModel);
+}
+
+final class AddAllQuestionsSuccess extends AdminState {
+  final String message;
+
+  const AddAllQuestionsSuccess(this.message);
+}

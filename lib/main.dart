@@ -10,6 +10,7 @@ import 'Core/utils/size_config.dart';
 import 'Core/utils/theme.dart';
 import 'Features/Admin/data/repo/admin_repo_impl.dart';
 import 'Features/Admin/presentation/manager/admin_cubit/admin_cubit.dart';
+import 'Features/Admin/presentation/manager/questions_cubit/questions_cubit.dart';
 
 void main() {
   setupServiceLocator();
@@ -35,6 +36,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<SelectModelsCubit>(
           create: (context) => SelectModelsCubit(),
+        ),
+        BlocProvider<QuestionsCubit>(
+          create: (context) => QuestionsCubit(getIt.get<AdminRepoImpl>()),
         ),
       ],
       child: MaterialApp.router(

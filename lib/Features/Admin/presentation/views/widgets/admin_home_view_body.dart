@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:nexura/Core/widgets/custom_appBar.dart';
 import 'package:nexura/Features/Admin/presentation/manager/admin_cubit/admin_cubit.dart';
 import 'package:nexura/Features/Admin/presentation/manager/models_cubit/models_cubit.dart';
+import 'package:nexura/Features/Admin/presentation/manager/questions_cubit/questions_cubit.dart';
 
 import '../../../../../Core/functions/capitalize.dart';
 import '../../../../../Core/utils/app_router.dart';
@@ -21,6 +22,7 @@ class AdminHomeViewBody extends StatelessWidget {
 
     ModelsCubit modelsCubit = BlocProvider.of<ModelsCubit>(context);
     AdminCubit adminCubit = BlocProvider.of<AdminCubit>(context);
+    QuestionsCubit questionsCubit = BlocProvider.of<QuestionsCubit>(context);
 
     return Scaffold(
       appBar: const CustomAppBar(title: 'Home'),
@@ -92,6 +94,7 @@ class AdminHomeViewBody extends StatelessWidget {
                     trailingIcon: const Icon(Icons.add),
                     backgroundColor: darkBlue,
                     onPressed: () {
+                      questionsCubit.resetQuestions();
                       GoRouter.of(context).push(AppRouter.kAddExamView);
                     },
                   ),

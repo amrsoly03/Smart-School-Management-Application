@@ -1,9 +1,23 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:nexura/Core/utils/theme.dart';
 import 'package:nexura/Core/widgets/custom_appBar.dart';
 import 'package:nexura/Core/widgets/custom_form_field.dart';
+import 'package:nexura/Core/widgets/custom_snackbar.dart';
+import 'package:nexura/Features/Admin/presentation/manager/questions_cubit/questions_cubit.dart';
+import 'package:nexura/Features/Admin/presentation/views/widgets/confirm_button.dart';
 
-import '../../../../../Core/utils/theme.dart';
-import 'add_question_card.dart';
+import '../../../../../Core/models/subject_model.dart';
+import '../../../../../Core/widgets/custom_bottom_sheet.dart';
+import '../../../../../Core/widgets/custom_button.dart';
+import '../../manager/admin_cubit/admin_cubit.dart';
+import '../../manager/models_cubit/models_cubit.dart';
+import '../../manager/select_models_cubit/select_models_cubit.dart';
+import 'grades_sheet.dart';
+import 'questions_list_view.dart';
 
 // ignore: must_be_immutable
 class AddExamViewBody extends StatelessWidget {
@@ -11,134 +25,119 @@ class AddExamViewBody extends StatelessWidget {
 
   final TextEditingController examNameController = TextEditingController();
 
-  String? selectedLevel;
-
-  String? selectedSubject;
-
-  List<String> levels = ['Level 1', 'Level 2', 'Level 3'];
-
-  List<String> subjects = ['Math', 'Science', 'History'];
-
-  List<Question> questions = [
-    Question(questionText: 'Question 1'),
-    Question(questionText: 'Question 2'),
-  ];
-
-  void addQuestion() {
-    // setState(() {
-    //   questions.add(Question(questionText: 'Question ${questions.length + 1}'));
-    // });
-  }
-
   @override
   Widget build(BuildContext context) {
+    ModelsCubit modelsCubit = BlocProvider.of<ModelsCubit>(context);
+    SelectModelsCubit selectModelsCubit =
+        BlocProvider.of<SelectModelsCubit>(context);
+    AdminCubit adminCubit = BlocProvider.of<AdminCubit>(context);
+    QuestionsCubit questionsCubit = BlocProvider.of<QuestionsCubit>(context);
+    String selectedSubject = 'choose subject';
+    SubjectModel subjectModel = const SubjectModel();
+
     return Scaffold(
       appBar: const CustomAppBar(title: 'Add Exam'),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            // Exam Name
-            CustomFormField(
-              labelText: 'exam name',
-              controller: examNameController,
-              keyboardType: TextInputType.name,
-            ),
-            const SizedBox(height: 16),
-            // Dropdowns
-            Row(
+      body: BlocConsumer<SelectModelsCubit, SelectModelsState>(
+        listener: (context, state) {
+          if (state is SubjectSelected) {
+            selectedSubject = state.selectedSubject.name!;
+            subjectModel = state.selectedSubject;
+          }
+        },
+        builder: (context, state) {
+          return SingleChildScrollView(
+            padding: const EdgeInsets.all(16),
+            child: Column(
               children: [
-                Expanded(
-                  child: DropdownButtonFormField<String>(
-                    value: selectedLevel,
-                    onChanged: (val) {
-                      //setState(() => selectedLevel = val);
-                    },
-                    items: levels.map((level) {
-                      return DropdownMenuItem(
-                        value: level,
-                        child: Text(level,
-                            style: const TextStyle(color: Colors.white)),
-                      );
-                    }).toList(),
-                    dropdownColor: darkBlue,
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: darkBlue,
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      hintText: 'Select level',
-                      hintStyle: const TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
+                // Exam Name
+                CustomFormField(
+                  labelText: 'exam name',
+                  controller: examNameController,
+                  keyboardType: TextInputType.name,
+                ),
+                const SizedBox(height: 16),
+                Row(
+                  children: [
+                    CustomButton(
+                      title: selectedSubject,
+                      function: () {
+                        modelsCubit.viewGrades();
+                        CustomBottomSheet(
+                          context,
+                          const GradesSheet(),
+                        );
+                      },
                     ),
+                  ],
+                ),
+                const SizedBox(height: 16),
+                const QuestionsListView(),
+                const SizedBox(height: 10),
+                // Add Button
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: IconButton(
+                    icon: const Icon(
+                      Icons.add_circle,
+                      color: darkBlue,
+                      size: 40,
+                    ),
+                    onPressed: () {
+                      questionsCubit.addQuestion();
+                    },
                   ),
                 ),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: DropdownButtonFormField<String>(
-                    value: selectedSubject,
-                    onChanged: (val) {
-                      //setState(() => selectedSubject = val);
-                    },
-                    items: subjects.map((subject) {
-                      return DropdownMenuItem(
-                        value: subject,
-                        child: Text(subject,
-                            style: const TextStyle(color: Colors.white)),
-                      );
-                    }).toList(),
-                    dropdownColor: darkBlue,
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: darkBlue,
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      hintText: 'Select subject',
-                      hintStyle: const TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
-                    ),
-                  ),
+                const SizedBox(height: 10),
+                // Submit Button
+                Row(
+                  children: [
+                    BlocListener<AdminCubit, AdminState>(
+                      listener: (context, state) {
+                        if (state is AddQuizSuccess) {
+                          log('start add all questions');
+                          adminCubit
+                              .addAllQuestions(
+                            question_quiz: state.quizModel.quizId.toString(),
+                            questions: questionsCubit.questions,
+                          )
+                              .then(
+                            (val) {
+                              questionsCubit.resetQuestions();
+                              GoRouter.of(context).pop();
+                            },
+                            onError: (_) {},
+                          );
+                        }
+                      },
+                      child: ConfirmButton(
+                        title: 'submit',
+                        function: () {
+                          if (examNameController.text.isEmpty) {
+                            return kShowSnackBar(context, 'enter exam name');
+                          }
+                          if (subjectModel.subjectId == null) {
+                            return kShowSnackBar(
+                                context, 'select subject first');
+                          }
+                          if (questionsCubit.questions.isEmpty) {
+                            return kShowSnackBar(
+                                context, 'add questions first');
+                          }
+                          adminCubit.addQuiz(
+                            name: examNameController.text,
+                            sub_quiz: selectModelsCubit
+                                .selectedSubject.subjectId
+                                .toString(),
+                          );
+                        },
+                      ),
+                    )
+                  ],
                 ),
               ],
             ),
-            const SizedBox(height: 16),
-
-            // Question Cards
-            ...questions.map((q) => AddQuestionCard(question: q)).toList(),
-
-            const SizedBox(height: 10),
-
-            // Add Button
-            Align(
-              alignment: Alignment.centerRight,
-              child: IconButton(
-                icon: const Icon(Icons.add_circle,
-                    color: Color(0xff014479), size: 30),
-                onPressed: addQuestion,
-              ),
-            ),
-            const SizedBox(height: 10),
-
-            // Submit Button
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: darkBlue,
-                  padding: const EdgeInsets.symmetric(vertical: 14),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                ),
-                child: const Text('Submit',
-                    style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold)),
-              ),
-            ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }

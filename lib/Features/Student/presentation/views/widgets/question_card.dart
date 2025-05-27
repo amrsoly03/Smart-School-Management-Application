@@ -32,7 +32,7 @@ class QuestionCard extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 8),
-          ...List.generate(3, (index) {
+          ...List.generate(4, (index) {
             return RadioListTile<int>(
               value: index,
               groupValue: groupValue,

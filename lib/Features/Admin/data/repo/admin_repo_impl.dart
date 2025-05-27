@@ -4,6 +4,8 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:nexura/Core/models/activity_model.dart';
 import 'package:nexura/Core/models/grade_model.dart';
+import 'package:nexura/Core/models/question_model.dart';
+import 'package:nexura/Core/models/quiz_model.dart';
 import 'package:nexura/Core/models/report_model.dart';
 import 'package:nexura/Core/models/subject_model.dart';
 import 'package:nexura/Features/Admin/data/repo/admin_repo.dart';
@@ -106,7 +108,7 @@ class AdminRepoImpl implements AdminRepo {
       log('response: $response');
 
       if (response['status'] == 'failed') {
-        return left(ServerFailures('something went wrong, try again'));
+        return left(ServerFailures(response['message']));
       } else {
         return right(response['message']);
       }
@@ -136,7 +138,7 @@ class AdminRepoImpl implements AdminRepo {
       log('response: $response');
 
       if (response['status'] == 'failed') {
-        return left(ServerFailures('something went wrong, try again'));
+        return left(ServerFailures(response['message']));
       } else {
         return right(response['message']);
       }
@@ -166,7 +168,7 @@ class AdminRepoImpl implements AdminRepo {
       log('response: $response');
 
       if (response['status'] == 'failed') {
-        return left(ServerFailures('something went wrong, try again'));
+        return left(ServerFailures(response['message']));
       } else {
         return right(response['message']);
       }
@@ -190,7 +192,7 @@ class AdminRepoImpl implements AdminRepo {
       log('response: $response');
 
       if (response['status'] == 'failed') {
-        return left(ServerFailures('something went wrong, try again'));
+        return left(ServerFailures(response['message']));
       } else {
         List<ActivityModel> activities = [];
 
@@ -396,4 +398,71 @@ class AdminRepoImpl implements AdminRepo {
       return left(ServerFailures('something went wrong'));
     }
   }
+
+  @override
+  Future<Either<Failures, QuizModel>> addQuiz({
+    required String name,
+    required String sub_quiz,
+  }) async {
+    try {
+      Map<String, dynamic> response = await apiService.httpPost(
+        link: Links.linkAddQuiz,
+        data: {
+          'name': name,
+          'sub_quiz': sub_quiz,
+        },
+      );
+
+      log('response: $response');
+
+      if (response['status'] == 'failed') {
+        return left(ServerFailures('something went wrong, try again'));
+      } else {
+        QuizModel quizModel = QuizModel.fromJson(response['data']);
+        return right(quizModel);
+      }
+    } catch (e) {
+      if (e is SocketException) {
+        return left(ServerFailures('No internet connection'));
+      }
+      log('e: $e');
+      return left(ServerFailures('something went wrong'));
+    }
+  }
+
+  @override
+  Future<void> addAllQuestions({
+    required String question_quiz,
+    required List<QuestionModel> questions,
+  }) async {
+    try {
+      List<Future<void>> futures = [];
+      for (var item in questions) {futures.add(apiService.httpPost(
+        link: Links.linkAddQuestion,
+        data: {
+          'question_quiz': question_quiz,
+          'description': item.description,
+          'answer1': item.answer1,
+          'answer2': item.answer2,
+          'answer3': item.answer3,
+          'right_answer': item.rightAnswer,
+        },
+      ).then((response) {
+        log('response: $response');
+        if (response['status'] == 'failed') {
+          log((response['message']));
+        } else {
+          log(response['message']);
+        }
+      }));
+    }
+    await Future.wait(futures);
+  } catch (e) {
+    if (e is SocketException) {
+      return log(('No internet connection'));
+    }
+    log('e: $e');
+    return log(('something went wrong'));
+  }
+}
 }

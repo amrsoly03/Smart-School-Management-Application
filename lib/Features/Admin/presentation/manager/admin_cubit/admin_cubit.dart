@@ -1,6 +1,10 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nexura/Core/models/question_model.dart';
+import 'package:nexura/Core/models/quiz_model.dart';
 import 'package:nexura/Features/Admin/data/models/admin_model.dart';
 
 import '../../../../../Core/errors/failures.dart';
@@ -21,6 +25,8 @@ class AdminCubit extends Cubit<AdminState> {
   late Either<Failures, List<ReportModel>> viewSentReportsResult;
   late Either<Failures, String> sendActivityNotificationResult;
   late Either<Failures, String> updateDegreesResult;
+  late Either<Failures, QuizModel> addQuizResult;
+  late void addAllQuestionsResult;
 
   Future<void> adminLogin({
     required String email,
@@ -210,5 +216,47 @@ class AdminCubit extends Cubit<AdminState> {
         );
       },
     );
+  }
+
+  Future<void> addQuiz({
+    required String name,
+    required String sub_quiz,
+  }) async {
+    emit(AdminLoading());
+
+    addQuizResult = await adminRepo.addQuiz(
+      name: name,
+      sub_quiz: sub_quiz,
+    );
+
+    addQuizResult.fold(
+      (failures) {
+        emit(AdminFailure(failures.errMessage));
+      },
+      (quizModel) {
+        emit(
+          AddQuizSuccess(quizModel),
+        );
+      },
+    );
+  }
+
+  Future<void> addAllQuestions({
+    required String question_quiz,
+    required List<QuestionModel> questions,
+  }) async {
+    emit(AdminLoading());
+
+    try {
+      addAllQuestionsResult = await adminRepo.addAllQuestions(
+        question_quiz: question_quiz,
+        questions: questions,
+      );
+      emit(const AddAllQuestionsSuccess('Questions added successfully'));
+    } catch (e) {
+      log('Error in addAllQuestions: $e');
+      emit(const AdminFailure('Failed to add questions'));
+      return;
+    }
   }
 }

@@ -3,6 +3,8 @@ import 'package:dartz/dartz.dart';
 import '../../../../Core/errors/failures.dart';
 import '../../../../Core/models/activity_model.dart';
 import '../../../../Core/models/grade_model.dart';
+import '../../../../Core/models/question_model.dart';
+import '../../../../Core/models/quiz_model.dart';
 import '../../../../Core/models/report_model.dart';
 import '../../../../Core/models/subject_model.dart';
 import '../models/admin_model.dart';
@@ -39,7 +41,7 @@ abstract class AdminRepo {
     required String content,
   });
 
-   Future<Either<Failures, List<ReportModel>>> viewAdminSentReports();
+  Future<Either<Failures, List<ReportModel>>> viewAdminSentReports();
 
   Future<Either<Failures, String>> approveSubject({
     required String as_id,
@@ -61,5 +63,15 @@ abstract class AdminRepo {
     required String final_degree,
     required String mid,
     required String practical,
+  });
+
+  Future<Either<Failures, QuizModel>> addQuiz({
+    required String name,
+    required String sub_quiz,
+  });
+
+  Future<void> addAllQuestions({
+    required String question_quiz,
+    required List<QuestionModel> questions,
   });
 }

@@ -51,4 +51,22 @@ class QuestionModel extends Equatable {
       rightAnswer,
     ];
   }
+
+  QuestionModel updateQuestion({
+    String? newDescription,
+    String? newAnswer1,
+    String? newAnswer2,
+    String? newAnswer3,
+    String? newRightAnswer,
+  }){
+    return QuestionModel(
+      questionId: questionId,
+      questionQuiz: questionQuiz,
+      description: newDescription ?? description,
+      answer1: newAnswer1 ?? answer1,
+      answer2: newAnswer2 ?? answer2,
+      answer3: newAnswer3 ?? answer3,
+      rightAnswer: newRightAnswer ?? rightAnswer,
+    );
+  }
 }

@@ -6,7 +6,7 @@ import 'package:nexura/Core/widgets/custom_button.dart';
 import 'package:nexura/Core/widgets/custom_form_field.dart';
 import 'package:nexura/Core/widgets/custom_snackbar.dart';
 import 'package:nexura/Features/Admin/presentation/manager/select_models_cubit/select_models_cubit.dart';
-import 'package:nexura/Features/Admin/presentation/views/widgets/confirm_degrees_button.dart';
+import 'package:nexura/Features/Admin/presentation/views/widgets/confirm_button.dart';
 import 'package:nexura/Features/Admin/presentation/views/widgets/grades_sheet.dart';
 
 import '../../../../../Core/widgets/custom_bottom_sheet.dart';
@@ -92,7 +92,8 @@ class AddDegreeViewBody extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    ConfirmDegreesButton(
+                    ConfirmButton(
+                      title: 'confirm',
                       function: () {
                         if (subjectModel.subjectId == 0 ||
                             studentIdController.text.isEmpty) {
