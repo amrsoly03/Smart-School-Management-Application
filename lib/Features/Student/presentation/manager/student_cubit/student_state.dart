@@ -28,3 +28,9 @@ final class StudentDegreesSuccess extends StudentState {
 
   const StudentDegreesSuccess(this.degrees);
 }
+
+final class StudentScheduleSuccess extends StudentState {
+  final String scheduleImage;
+
+  const StudentScheduleSuccess(this.scheduleImage);
+}

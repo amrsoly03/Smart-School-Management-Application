@@ -4,6 +4,7 @@ class Links {
 
   // static const linkUploadExerciseImage =
   //     '$linkServerName/upload/exercises_image';
+  static const linkUploadSchedule = '$linkServerName/upload/schedules_images';
 
   static const linkAdminLogin = '$linkServerName/Admin/admin_login.php';
   static const linkCreateUser = '$linkServerName/Admin/create_user.php';
@@ -29,5 +30,6 @@ class Links {
 
   static const linkStudentLogin = '$linkServerName/Student/student_login.php';
   static const linkViewDegrees = '$linkServerName/Student/view_std_degrees.php';
+  static const linkViewSchedule = '$linkServerName/Student/view_std_schedule.php';
 
 }

@@ -46,6 +46,7 @@ class StudentRepoImpl implements StudentRepo {
     }
   }
 
+  @override
   Future<Either<Failures, List<DegreeModel>>> viewDegrees({
     required String std_degree,
   }) async {
@@ -69,6 +70,33 @@ class StudentRepoImpl implements StudentRepo {
         }
 
         return right(degrees);
+      }
+    } catch (e) {
+      if (e is SocketException) {
+        return left(ServerFailures('No internet connection'));
+      }
+      log('e: $e');
+      return left(ServerFailures('something went wrong'));
+    }
+  }
+
+  Future<Either<Failures, String>> viewSchedule({
+    required String grade_id,
+  }) async {
+    try {
+      Map<String, dynamic> response = await apiService.httpPost(
+        link: Links.linkViewSchedule,
+        data: {
+          'grade_id': grade_id,
+        },
+      );
+
+      log('response: $response');
+
+      if (response['status'] == 'failed') {
+        return left(ServerFailures(response['message']));
+      } else {
+        return right(response['data']['schedule_image']);
       }
     } catch (e) {
       if (e is SocketException) {

@@ -14,4 +14,8 @@ abstract class StudentRepo {
   Future<Either<Failures, List<DegreeModel>>> viewDegrees({
     required String std_degree,
   });
+
+  Future<Either<Failures, String>> viewSchedule({
+    required String grade_id,
+  });
 }

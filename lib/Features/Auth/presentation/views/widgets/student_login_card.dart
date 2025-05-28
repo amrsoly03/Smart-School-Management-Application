@@ -37,6 +37,10 @@ class StudentLoginCard extends StatelessWidget {
             'user_id',
             state.studentModel.studentId.toString(),
           );
+          sharedPref.setString(
+            'student_grade',
+            state.studentModel.grade.toString(),
+          );
           sharedPref.setString('user_type', 'student');
           GoRouter.of(context).push(AppRouter.kStudentHomeView).then(
             (value) {

@@ -44,6 +44,7 @@ class SchoolActivitiesViewBody extends StatelessWidget {
               CustomButton(
                 title: 'Schedule',
                 function: () {
+                  studentCubit.viewSchedule();
                   GoRouter.of(context).push(AppRouter.kScheduleView);
                 },
               ),

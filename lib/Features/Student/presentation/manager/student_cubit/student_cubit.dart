@@ -50,4 +50,21 @@ class StudentCubit extends Cubit<StudentState> {
       },
     );
   }
+
+  Future<void> viewSchedule() async {
+    emit(StudentLoading());
+
+    final scheduleResult = await studentRepo.viewSchedule(
+      grade_id: sharedPref.getString('student_grade')!,
+    );
+
+    scheduleResult.fold(
+      (failures) {
+        emit(StudentFailure(failures.errMessage));
+      },
+      (scheduleImage) {
+        emit(StudentScheduleSuccess(scheduleImage));
+      },
+    );
+  }
 }
