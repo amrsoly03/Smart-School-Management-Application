@@ -28,5 +28,6 @@ class Links {
   static const linkViewSubjects = '$linkServerName/Models/view_subjects.php';
 
   static const linkStudentLogin = '$linkServerName/Student/student_login.php';
+  static const linkViewDegrees = '$linkServerName/Student/view_std_degrees.php';
 
 }

@@ -1,7 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nexura/Features/Student/data/repo/student_repo.dart';
+import 'package:nexura/main.dart';
 
+import '../../../../../Core/models/degree_model.dart';
 import '../../../data/models/student_model.dart';
 
 part 'student_state.dart';
@@ -28,6 +30,23 @@ class StudentCubit extends Cubit<StudentState> {
       },
       (studentModel) {
         emit(StudentLoginSuccess(studentModel));
+      },
+    );
+  }
+
+  Future<void> viewDegrees() async {
+    emit(StudentLoading());
+
+    final degreesResult = await studentRepo.viewDegrees(
+      std_degree: sharedPref.getString('user_id')!,
+    );
+
+    degreesResult.fold(
+      (failures) {
+        emit(StudentFailure(failures.errMessage));
+      },
+      (degrees) {
+        emit(StudentDegreesSuccess(degrees));
       },
     );
   }

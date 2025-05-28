@@ -22,3 +22,9 @@ final class StudentLoginSuccess extends StudentState {
 
   const StudentLoginSuccess(this.studentModel);
 }
+
+final class StudentDegreesSuccess extends StudentState {
+  final List<DegreeModel> degrees;
+
+  const StudentDegreesSuccess(this.degrees);
+}

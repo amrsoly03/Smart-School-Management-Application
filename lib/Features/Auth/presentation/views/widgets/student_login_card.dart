@@ -34,7 +34,9 @@ class StudentLoginCard extends StatelessWidget {
           _isUploading = true;
         } else if (state is StudentLoginSuccess) {
           sharedPref.setString(
-              'user_id', state.studentModel.studentId.toString());
+            'user_id',
+            state.studentModel.studentId.toString(),
+          );
           sharedPref.setString('user_type', 'student');
           GoRouter.of(context).push(AppRouter.kStudentHomeView).then(
             (value) {

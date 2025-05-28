@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:nexura/Core/models/degree_model.dart';
 
 import '../../../../../Core/utils/theme.dart';
 
 class DegreeCard extends StatelessWidget {
-  final Map<String, dynamic> subject;
+  const DegreeCard({super.key, required this.degreeModel});
 
-  const DegreeCard({super.key, required this.subject});
+  final DegreeModel degreeModel;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class DegreeCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              subject["name"],
+              degreeModel.subjectDegreeName!,
               textAlign: TextAlign.center,
               style: const TextStyle(
                   fontSize: 20,
@@ -29,16 +30,21 @@ class DegreeCard extends StatelessWidget {
                   color: Colors.white),
             ),
             const SizedBox(height: 10),
+            const Divider(
+              color: Colors.white,
+              thickness: 1,
+            ),
+            const SizedBox(height: 10),
             Text(
-              "Practical: ${subject["practical"]}",
+              "Practical: ${degreeModel.practical}",
               style: const TextStyle(fontSize: 20, color: Colors.white),
             ),
             Text(
-              "Midterm: ${subject["midterm"]}",
+              "Midterm: ${degreeModel.mid}",
               style: const TextStyle(fontSize: 20, color: Colors.white),
             ),
             Text(
-              "Final: ${subject["final"]}",
+              "Final: ${degreeModel.finalDegree}",
               style: const TextStyle(fontSize: 20, color: Colors.white),
             ),
           ],

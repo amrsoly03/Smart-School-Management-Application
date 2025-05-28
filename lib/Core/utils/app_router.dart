@@ -81,7 +81,7 @@ abstract class AppRouter {
     routes: [
       GoRoute(
         path: '/',
-        builder: (context, state) => const FirstScreen(),
+        builder: (context, state) => const StudentHomeView(),
       ),
       GoRoute(
         path: kLoginView,
