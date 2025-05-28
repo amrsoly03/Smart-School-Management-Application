@@ -26,4 +26,7 @@ class Links {
       '$linkServerName/Models/view_approvment_subjects.php';
   static const linkViewGrades = '$linkServerName/Models/view_grades.php';
   static const linkViewSubjects = '$linkServerName/Models/view_subjects.php';
+
+  static const linkStudentLogin = '$linkServerName/Student/student_login.php';
+
 }

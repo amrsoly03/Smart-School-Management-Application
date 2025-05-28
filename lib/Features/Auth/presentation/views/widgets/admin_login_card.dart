@@ -11,6 +11,7 @@ import '../../../../../Core/widgets/custom_elevated_buttom.dart';
 import '../../../../../Core/widgets/custom_form_field.dart';
 import '../../../../../Core/widgets/custom_snackbar.dart';
 import '../../../../../first_screen.dart';
+import '../../../../../main.dart';
 
 // ignore: must_be_immutable
 class AdminLoginCard extends StatelessWidget {
@@ -35,6 +36,8 @@ class AdminLoginCard extends StatelessWidget {
         if (state is AdminLoading) {
           _isUploading = true;
         } else if (state is AdminLoginSuccess) {
+          sharedPref.setString('user_id', state.adminModel.adminId.toString());
+          sharedPref.setString('user_type', state.adminModel.type!);
           if (type == Users.schoolAdmin.name) {
             GoRouter.of(context)
                 .pushReplacement(AppRouter.kSchoolAdminHomeView)
