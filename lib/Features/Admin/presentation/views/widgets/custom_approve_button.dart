@@ -56,7 +56,7 @@ class CustomApproveButton extends StatelessWidget {
                   ),
                   backgroundColor: background,
                 ),
-                child:  Text(
+                child: Text(
                   'Approve',
                   style: Styles.textStyle16.copyWith(
                     color: darkBlue,

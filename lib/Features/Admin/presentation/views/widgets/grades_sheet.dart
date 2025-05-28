@@ -17,7 +17,8 @@ class GradesSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     ModelsCubit modelsCubit = BlocProvider.of<ModelsCubit>(context);
 
-    SelectModelsCubit selectModelsCubit = BlocProvider.of<SelectModelsCubit>(context);
+    SelectModelsCubit selectModelsCubit =
+        BlocProvider.of<SelectModelsCubit>(context);
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -38,11 +39,12 @@ class GradesSheet extends StatelessWidget {
                       state.grades[index],
                     );
                     GoRouter.of(context).pop();
-                    modelsCubit.viewSubjects(sub_grade: state.grades[index].gradeId.toString());
-                      CustomBottomSheet(
-                        context,
-                        const SubjectsSheet(),
-                      );
+                    modelsCubit.viewSubjects(
+                        sub_grade: state.grades[index].gradeId.toString());
+                    CustomBottomSheet(
+                      context,
+                      const SubjectsSheet(),
+                    );
                   },
                   child: Text(
                     capitalize(state.grades[index].grade.toString()),

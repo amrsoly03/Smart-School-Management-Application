@@ -30,7 +30,7 @@ class QuestionsListView extends StatelessWidget {
         } else if (state is QuestionsFailure) {
           return Center(child: Text(state.errMessage));
         } else {
-          return  Padding(
+          return Padding(
             padding: const EdgeInsets.symmetric(vertical: 25),
             child: Center(
               child: Text(

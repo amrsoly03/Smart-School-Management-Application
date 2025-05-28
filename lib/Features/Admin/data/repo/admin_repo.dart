@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 
 import '../../../../Core/errors/failures.dart';
@@ -74,5 +76,12 @@ abstract class AdminRepo {
   Future<void> addAllQuestions({
     required String question_quiz,
     required List<QuestionModel> questions,
+  });
+
+  Future<Either<Failures, String>> addProduct({
+    required String product_name,
+    required String product_category,
+    required String product_price,
+    required File product_image,
   });
 }

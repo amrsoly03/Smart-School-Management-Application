@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
@@ -26,6 +27,7 @@ class AdminCubit extends Cubit<AdminState> {
   late Either<Failures, String> sendActivityNotificationResult;
   late Either<Failures, String> updateDegreesResult;
   late Either<Failures, QuizModel> addQuizResult;
+  late Either<Failures, String> addProductResult;
   late void addAllQuestionsResult;
 
   Future<void> adminLogin({
@@ -262,5 +264,32 @@ class AdminCubit extends Cubit<AdminState> {
       emit(const AdminFailure('Failed to add questions'));
       return;
     }
+  }
+
+  Future<void> addProduct({
+    required String product_name,
+    required String product_category,
+    required String product_price,
+    required File product_image,
+  }) async {
+    emit(AdminLoading());
+
+    addProductResult = await adminRepo.addProduct(
+      product_name: product_name,
+      product_category: product_category,
+      product_price: product_price,
+      product_image: product_image,
+    );
+
+    addProductResult.fold(
+      (failures) {
+        emit(AdminFailure(failures.errMessage));
+      },
+      (message) {
+        emit(
+          AddProductSuccess(message),
+        );
+      },
+    );
   }
 }

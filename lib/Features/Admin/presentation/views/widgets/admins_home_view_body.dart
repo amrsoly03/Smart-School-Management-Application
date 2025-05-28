@@ -25,25 +25,29 @@ class AdminsHomeViewBody extends StatelessWidget {
               AdminsHomeButton(
                 title: 'School Admin',
                 onPressed: () {
-                  GoRouter.of(context).push(AppRouter.kLoginView, extra: Users.schoolAdmin);
+                  GoRouter.of(context)
+                      .push(AppRouter.kLoginView, extra: Users.schoolAdmin);
                 },
               ),
               AdminsHomeButton(
                 title: 'Cafeteria Admin',
                 onPressed: () {
-                  GoRouter.of(context).push(AppRouter.kLoginView, extra: Users.cafeteriaAdmin);
+                  GoRouter.of(context)
+                      .push(AppRouter.kLoginView, extra: Users.cafeteriaAdmin);
                 },
               ),
               AdminsHomeButton(
                 title: 'Activities Admin',
                 onPressed: () {
-                  GoRouter.of(context).push(AppRouter.kLoginView, extra: Users.activitiesAdmin);
+                  GoRouter.of(context)
+                      .push(AppRouter.kLoginView, extra: Users.activitiesAdmin);
                 },
               ),
               AdminsHomeButton(
                 title: 'Teacher',
                 onPressed: () {
-                  GoRouter.of(context).push(AppRouter.kLoginView, extra: Users.teacher);
+                  GoRouter.of(context)
+                      .push(AppRouter.kLoginView, extra: Users.teacher);
                 },
               ),
             ],

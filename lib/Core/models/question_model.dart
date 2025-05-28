@@ -58,7 +58,7 @@ class QuestionModel extends Equatable {
     String? newAnswer2,
     String? newAnswer3,
     String? newRightAnswer,
-  }){
+  }) {
     return QuestionModel(
       questionId: questionId,
       questionQuiz: questionQuiz,

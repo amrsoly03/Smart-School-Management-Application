@@ -470,4 +470,41 @@ class AdminRepoImpl implements AdminRepo {
       return log(('something went wrong'));
     }
   }
+
+  @override
+  Future<Either<Failures, String>> addProduct({
+    required String product_name,
+    required String product_category,
+    required String product_price,
+    required File product_image,
+  }) async {
+    try {
+      log('image: $product_image');
+      Map<String, dynamic> response = await apiService.postRequestWithFile(
+        link: Links.linkAddProduct,
+        fieldName: 'product_image',
+        data: {
+          'product_name': product_name,
+          'product_category': product_category,
+          'product_price': product_price,
+        },
+        file: product_image,
+      );
+
+      log('response: $response');
+
+      if (response['status'] == 'failed') {
+        return left(ServerFailures(response['message']));
+      } else {
+        return right(response['message']);
+      }
+    } catch (e) {
+      if (e is SocketException) {
+        return left(ServerFailures('No internet connection'));
+      }
+      log('e: $e');
+      return left(ServerFailures('something went wrong'));
+    }
+  }
+
 }

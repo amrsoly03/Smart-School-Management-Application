@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../Core/utils/app_router.dart';
@@ -30,7 +29,8 @@ class ActivitiesAdminHomeViewBody extends StatelessWidget {
               text: "Send Activity Notification",
               icon: Icons.notifications_outlined,
               onTap: () {
-                GoRouter.of(context).push(AppRouter.kActivitiesNotificationView);
+                GoRouter.of(context)
+                    .push(AppRouter.kActivitiesNotificationView);
               },
             ),
           ],

@@ -50,4 +50,3 @@ class ApproveSubjectViewBody extends StatelessWidget {
     );
   }
 }
-

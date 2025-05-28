@@ -13,7 +13,8 @@ class ActivitiesSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SelectModelsCubit selectModelsCubit = BlocProvider.of<SelectModelsCubit>(context);
+    SelectModelsCubit selectModelsCubit =
+        BlocProvider.of<SelectModelsCubit>(context);
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [

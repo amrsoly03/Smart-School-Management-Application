@@ -52,14 +52,18 @@ class ApiService {
     }
   }
 
-  postRequestWithFile(
-      {required String link, required Map data, required File file}) async {
+  postRequestWithFile({
+    required String link,
+    required String fieldName,
+    required Map data,
+    required File file,
+  }) async {
     var request = http.MultipartRequest('POST', Uri.parse(link));
     var length = await file.length();
     var stream = http.ByteStream(file.openRead());
 
     var multipartFile = http.MultipartFile(
-      'user_image',
+      fieldName,
       stream,
       length,
       filename: basename(file.path),
@@ -85,3 +89,29 @@ class ApiService {
     }
   }
 }
+
+
+// postRequestWithFile({
+//     required String link,
+//     required Map data,
+//     required File file,
+//   }) async {
+//     var request = http.MultipartRequest('POST', Uri.parse(link));
+//     request.headers['Content-Type'] = 'multipart/form-data';
+
+//     request.files.add(http.MultipartFile.fromBytes(
+//       'product_image',
+//       await file.readAsBytes(),
+//       filename: file.path.split('/').last,
+//     ));
+
+//     data.forEach((key, value) {
+//       request.fields[key] = value;
+//     });
+
+//     var myrequest = await request.send();
+//     var response = await http.Response.fromStream(myrequest);
+
+//     log('Response status code: ${response.statusCode}');
+//     log('Response body: ${response.body}');
+//   }

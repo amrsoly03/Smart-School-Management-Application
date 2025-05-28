@@ -8,10 +8,11 @@ import '../../../../../Core/utils/theme.dart';
 
 // ignore: must_be_immutable
 class AddQuestionCard extends StatelessWidget {
-  AddQuestionCard({super.key, required this.questionModel, required this.index});
+  AddQuestionCard(
+      {super.key, required this.questionModel, required this.index});
 
   QuestionModel questionModel;
-  final int index ;
+  final int index;
   final TextEditingController descriptionController = TextEditingController();
   final TextEditingController answerController1 = TextEditingController();
   final TextEditingController answerController2 = TextEditingController();

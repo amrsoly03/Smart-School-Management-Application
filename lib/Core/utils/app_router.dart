@@ -26,6 +26,7 @@ import 'package:nexura/Features/Student/presentation/views/school_activities_vie
 import 'package:nexura/Features/Student/presentation/views/student_home_view.dart';
 
 import '../../Features/Admin/presentation/views/activities_admin_home_view.dart';
+import '../../Features/Admin/presentation/views/add_product_view.dart';
 import '../../Features/Admin/presentation/views/admins_home_view.dart';
 import '../../Features/Admin/presentation/views/cafeteria_admin_home_view.dart';
 import '../../Features/Admin/presentation/views/create_account_view.dart';
@@ -51,6 +52,9 @@ abstract class AppRouter {
   static const kAddExamView = '/AddExamView';
   static const kSendReportView = '/SendReportView';
   static const kSentReportsView = '/SentReportsView';
+  static const kAddProductView = '/AddProductView';
+
+  //
   static const kActivitiesNotificationView = '/ActivitiesNotificationView';
   static const kSchoolActivitiesView = '/SchoolActivitiesView';
   static const kActivitiesView = '/ActivitiesView';
@@ -62,6 +66,8 @@ abstract class AppRouter {
   static const kScheduleView = '/ScheduleView';
   static const kQuizView = '/QuizView';
   static const kActivityDetailsView = '/ActivityDetailsView';
+
+  //
   static const kWalletDetailsView = '/WalletDetailsView';
   static const kPaymentView = '/PaymentView';
   static const kPreviousTransactionView = '/PreviousTransactionView';
@@ -136,6 +142,10 @@ abstract class AppRouter {
       GoRoute(
         path: kSentReportsView,
         builder: (context, state) => const SentReportsView(),
+      ),
+      GoRoute(
+        path: kAddProductView,
+        builder: (context, state) => const AddProductView(),
       ),
       GoRoute(
         path: kActivitiesNotificationView,

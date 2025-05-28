@@ -35,7 +35,10 @@ class LoginViewBody extends StatelessWidget {
               top: 50,
             ),
             width: SizeConfig.screenWidth * 0.5,
-            child: Image.asset('assets/logo.png', color: darkBlue,),
+            child: Image.asset(
+              'assets/logo.png',
+              color: darkBlue,
+            ),
           ),
           Align(
             alignment: Alignment.centerLeft,

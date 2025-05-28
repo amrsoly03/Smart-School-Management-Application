@@ -36,8 +36,7 @@ class FirstScreen extends StatelessWidget {
               CustomButton(
                 title: 'Admin',
                 function: () {
-                  GoRouter.of(context)
-                      .push(AppRouter.kAdminsHomeView);
+                  GoRouter.of(context).push(AppRouter.kAdminsHomeView);
                 },
               ),
               const SizedBox(

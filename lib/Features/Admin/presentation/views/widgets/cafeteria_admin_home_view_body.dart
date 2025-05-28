@@ -21,7 +21,7 @@ class CafeteriaAdminHomeViewBody extends StatelessWidget {
               text: "Add Product",
               icon: Icons.add_circle_outline,
               onTap: () {
-                GoRouter.of(context).push(AppRouter.kAddExamView);
+                GoRouter.of(context).push(AppRouter.kAddProductView);
               },
             ),
             const SizedBox(height: 40),

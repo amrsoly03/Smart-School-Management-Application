@@ -70,3 +70,9 @@ final class AddAllQuestionsSuccess extends AdminState {
 
   const AddAllQuestionsSuccess(this.message);
 }
+
+final class AddProductSuccess extends AdminState {
+  final String message;
+
+  const AddProductSuccess(this.message);
+}
