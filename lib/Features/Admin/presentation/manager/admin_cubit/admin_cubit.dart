@@ -28,6 +28,7 @@ class AdminCubit extends Cubit<AdminState> {
   late Either<Failures, String> updateDegreesResult;
   late Either<Failures, QuizModel> addQuizResult;
   late Either<Failures, String> addProductResult;
+  late Either<Failures, String> addActivityResult;
   late void addAllQuestionsResult;
 
   Future<void> adminLogin({
@@ -288,6 +289,33 @@ class AdminCubit extends Cubit<AdminState> {
       (message) {
         emit(
           AddProductSuccess(message),
+        );
+      },
+    );
+  }
+
+  Future<void> addActivity({
+    required String name,
+    required String description,
+    required String price,
+    required File image,
+  }) async {
+    emit(AdminLoading());
+
+    addActivityResult = await adminRepo.addActivity(
+      name: name,
+      description: description,
+      price: price,
+      image: image,
+    );
+
+    addActivityResult.fold(
+      (failures) {
+        emit(AdminFailure(failures.errMessage));
+      },
+      (message) {
+        emit(
+          AddActivitySuccess(message),
         );
       },
     );

@@ -21,7 +21,7 @@ class ActivitiesAdminHomeViewBody extends StatelessWidget {
               text: "Add Activity",
               icon: Icons.add_circle_outline,
               onTap: () {
-                GoRouter.of(context).push(AppRouter.kAddExamView);
+                GoRouter.of(context).push(AppRouter.kAddActivityView);
               },
             ),
             const SizedBox(height: 40),

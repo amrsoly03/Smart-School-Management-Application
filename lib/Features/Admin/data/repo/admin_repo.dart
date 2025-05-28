@@ -84,4 +84,11 @@ abstract class AdminRepo {
     required String product_price,
     required File product_image,
   });
+
+  Future<Either<Failures, String>> addActivity({
+    required String name,
+    required String description,
+    required String price,
+    required File image,
+  });
 }

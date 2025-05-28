@@ -507,4 +507,39 @@ class AdminRepoImpl implements AdminRepo {
     }
   }
 
+  @override
+  Future<Either<Failures, String>> addActivity({
+    required String name,
+    required String description,
+    required String price,
+    required File image,
+  }) async {
+    try {
+      log('image: $image');
+      Map<String, dynamic> response = await apiService.postRequestWithFile(
+        link: Links.linkAddActivity,
+        fieldName: 'image',
+        data: {
+          'name': name,
+          'description': description,
+          'price': price,
+        },
+        file: image,
+      );
+
+      log('response: $response');
+
+      if (response['status'] == 'failed') {
+        return left(ServerFailures(response['message']));
+      } else {
+        return right(response['message']);
+      }
+    } catch (e) {
+      if (e is SocketException) {
+        return left(ServerFailures('No internet connection'));
+      }
+      log('e: $e');
+      return left(ServerFailures('something went wrong'));
+    }
+  }
 }

@@ -76,3 +76,9 @@ final class AddProductSuccess extends AdminState {
 
   const AddProductSuccess(this.message);
 }
+
+final class AddActivitySuccess extends AdminState {
+  final String message;
+
+  const AddActivitySuccess(this.message);
+}

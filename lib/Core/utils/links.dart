@@ -18,6 +18,7 @@ class Links {
   static const linkAddQuiz = '$linkServerName/Admin/add_quiz.php';
   static const linkAddQuestion = '$linkServerName/Admin/add_question.php';
   static const linkAddProduct = '$linkServerName/Admin/add_product.php';
+  static const linkAddActivity = '$linkServerName/Admin/add_activity.php';
 
   static const linkViewActivities =
       '$linkServerName/Models/view_activities.php';
