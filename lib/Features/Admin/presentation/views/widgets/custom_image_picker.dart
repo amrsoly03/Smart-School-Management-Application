@@ -54,7 +54,7 @@ class _CustomImagePickerState extends State<CustomImagePicker> {
             Icons.image,
             color: darkBlue,
           ),
-          label:  Text(
+          label: Text(
             'Add Image',
             style: Styles.textStyle16.copyWith(
               color: darkBlue,

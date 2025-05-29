@@ -2,11 +2,11 @@ import 'package:dartz/dartz.dart';
 
 import '../../../../Core/errors/failures.dart';
 import '../../../../Core/models/degree_model.dart';
+import '../../../../Core/models/order_model.dart';
 import '../../../../Core/models/product_model.dart';
 import '../models/student_model.dart';
 
 abstract class StudentRepo {
-
   Future<Either<Failures, StudentModel>> studentLogin({
     required String student_Id,
     required String student_password,
@@ -27,5 +27,13 @@ abstract class StudentRepo {
 
   Future<Either<Failures, List<ProductModel>>> viewProducts({
     required String product_category,
+  });
+
+  Future<Either<Failures, OrderModel>> addOrder(
+      {required String order_student});
+
+  Future<void> addOrderProducts({
+    required String op_order,
+    required List<ProductModel> products,
   });
 }

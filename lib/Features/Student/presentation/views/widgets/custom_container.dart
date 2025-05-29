@@ -30,7 +30,6 @@ class CustomContainer extends StatelessWidget {
             image: isNetworkImage
                 ? CachedNetworkImageProvider(
                     image,
-                    
                   )
                 : AssetImage(
                     image,

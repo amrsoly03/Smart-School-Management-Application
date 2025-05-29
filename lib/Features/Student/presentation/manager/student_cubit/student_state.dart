@@ -40,3 +40,16 @@ final class SubscribeActivitySuccess extends StudentState {
 
   const SubscribeActivitySuccess(this.message);
 }
+
+
+final class AddOrderSuccess extends StudentState {
+  final OrderModel order;
+
+  const AddOrderSuccess(this.order);
+}
+
+final class AddOrderProductsSuccess extends StudentState {
+  final String message;
+
+  const AddOrderProductsSuccess(this.message);
+}

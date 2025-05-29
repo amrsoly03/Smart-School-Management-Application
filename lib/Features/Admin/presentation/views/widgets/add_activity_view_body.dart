@@ -8,7 +8,7 @@ class AddActivityViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: const CustomAppBar(title: 'add activity'),
       body: Center(
         child: SingleChildScrollView(
@@ -26,7 +26,7 @@ class AddActivityViewBody extends StatelessWidget {
             //     ),
             //   ),
             // ),
-            
+
             AddActivityForm(),
           ],
         )),

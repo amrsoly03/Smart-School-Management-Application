@@ -35,7 +35,8 @@ class ScheduleViewBody extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: CachedNetworkImage(
-                    imageUrl: '${Links.linkUploadSchedule}/${state.scheduleImage}',
+                    imageUrl:
+                        '${Links.linkUploadSchedule}/${state.scheduleImage}',
                     fit: BoxFit.cover,
                     placeholder: (context, url) => Shimmer.fromColors(
                       baseColor: darkBlue.withOpacity(0.5),
@@ -61,7 +62,6 @@ class ScheduleViewBody extends StatelessWidget {
               ),
             );
           }
-          
         },
       ),
     );

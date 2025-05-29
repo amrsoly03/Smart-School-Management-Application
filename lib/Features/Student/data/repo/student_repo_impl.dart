@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:nexura/Core/models/degree_model.dart';
+import 'package:nexura/Core/models/order_model.dart';
 import 'package:nexura/Core/models/product_model.dart';
 import 'package:nexura/Features/Student/data/models/student_model.dart';
 import 'package:nexura/Features/Student/data/repo/student_repo.dart';
@@ -170,6 +171,67 @@ class StudentRepoImpl implements StudentRepo {
       }
       log('e: $e');
       return left(ServerFailures('something went wrong'));
+    }
+  }
+
+  @override
+  Future<Either<Failures, OrderModel>> addOrder(
+      {required String order_student}) async {
+    try {
+      Map<String, dynamic> response = await apiService.httpPost(
+        link: Links.linkAddOrder,
+        data: {
+          'order_student': order_student,
+        },
+      );
+
+      log('response: $response');
+
+      if (response['status'] == 'failed') {
+        return left(ServerFailures(response['message']));
+      } else {
+        OrderModel orderModel = OrderModel.fromJson(response['data']);
+        return right(orderModel);
+      }
+    } catch (e) {
+      if (e is SocketException) {
+        return left(ServerFailures('No internet connection'));
+      }
+      log('e: $e');
+      return left(ServerFailures('something went wrong'));
+    }
+  }
+
+  @override
+  Future<void> addOrderProducts({
+    required String op_order,
+    required List<ProductModel> products,
+  }) async {
+    try {
+      List<Future<void>> futures = [];
+      for (var item in products) {
+        futures.add(apiService.httpPost(
+          link: Links.linkAddOrderProduct,
+          data: {
+            'op_order': op_order,
+            'op_product': item.productId.toString(),
+          },
+        ).then((response) {
+          log('response: $response');
+          if (response['status'] == 'failed') {
+            log((response['message']));
+          } else {
+            log(response['message']);
+          }
+        }));
+      }
+      await Future.wait(futures);
+    } catch (e) {
+      if (e is SocketException) {
+        return log(('No internet connection'));
+      }
+      log('e: $e');
+      return log(('something went wrong'));
     }
   }
 }

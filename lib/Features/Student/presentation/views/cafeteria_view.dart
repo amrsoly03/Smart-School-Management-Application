@@ -1,6 +1,8 @@
 import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nexura/Core/utils/theme.dart';
+import 'package:nexura/Features/Admin/presentation/manager/models_cubit/models_cubit.dart';
 import 'package:nexura/Features/Student/presentation/views/categories_view.dart';
 import 'package:nexura/Features/Student/presentation/views/shopping_cart_view.dart';
 
@@ -20,6 +22,8 @@ class _CafeteriaViewState extends State<CafeteriaView> {
 
   @override
   Widget build(BuildContext context) {
+    ModelsCubit modelsCubit = BlocProvider.of<ModelsCubit>(context);
+
     return Scaffold(
       extendBody: true,
       body: pages[current_index],
@@ -35,6 +39,9 @@ class _CafeteriaViewState extends State<CafeteriaView> {
           strokeColor: white,
           onTap: (index) {
             setState(() => current_index = index);
+            if (index == 1) {
+              modelsCubit.viewShoppingCart();
+            }
           },
           items: [
             CustomNavigationBarItem(

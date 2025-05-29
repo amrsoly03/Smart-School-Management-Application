@@ -13,7 +13,7 @@ import '../../manager/admin_cubit/admin_cubit.dart';
 
 // ignore: must_be_immutable
 class AddActivityForm extends StatelessWidget {
-   AddActivityForm({super.key});
+  AddActivityForm({super.key});
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 

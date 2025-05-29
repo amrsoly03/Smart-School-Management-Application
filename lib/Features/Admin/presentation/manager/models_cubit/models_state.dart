@@ -40,3 +40,9 @@ final class ProductsSuccess extends ModelsState {
 
   const ProductsSuccess(this.products);
 }
+
+final class ShoppingCartUpdated extends ModelsState {
+  final List<ProductModel> shoppingCart;
+
+  const ShoppingCartUpdated(this.shoppingCart);
+}

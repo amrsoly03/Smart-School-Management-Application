@@ -1,5 +1,9 @@
+import 'dart:developer';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nexura/Core/models/order_model.dart';
+import 'package:nexura/Core/models/product_model.dart';
 import 'package:nexura/Features/Student/data/repo/student_repo.dart';
 import 'package:nexura/main.dart';
 
@@ -12,6 +16,8 @@ class StudentCubit extends Cubit<StudentState> {
   StudentCubit(this.studentRepo) : super(StudentInitial());
 
   final StudentRepo studentRepo;
+
+  late void addOrderProductsResult;
 
   Future<void> studentLogin({
     required String student_Id,
@@ -87,5 +93,41 @@ class StudentCubit extends Cubit<StudentState> {
         emit(SubscribeActivitySuccess(message));
       },
     );
+  }
+
+  Future<void> addOrder() async {
+    emit(StudentLoading());
+
+    final addOrderResult = await studentRepo.addOrder(
+      order_student: sharedPref.getString('user_id')!,
+    );
+
+    addOrderResult.fold(
+      (failures) {
+        emit(StudentFailure(failures.errMessage));
+      },
+      (order) {
+        emit(AddOrderSuccess(order));
+      },
+    );
+  }
+
+  Future<void> addOrderProducts({
+    required String op_order,
+    required List<ProductModel> products,
+  }) async {
+    emit(StudentLoading());
+
+    try {
+       addOrderProductsResult = await studentRepo.addOrderProducts(
+        op_order: op_order,
+        products: products,
+      );
+      emit(const AddOrderProductsSuccess('Questions added successfully'));
+    } catch (e) {
+      log('Error in addOrderProducts: $e');
+      emit(const StudentFailure('Failed to add questions'));
+      return;
+    }
   }
 }

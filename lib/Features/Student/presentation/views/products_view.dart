@@ -3,7 +3,7 @@ import 'package:nexura/Features/Student/presentation/views/widgets/products_view
 
 class ProductsView extends StatelessWidget {
   const ProductsView({super.key, required this.category});
-  
+
   final String category;
 
   @override
