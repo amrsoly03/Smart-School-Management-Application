@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nexura/Core/models/quiz_model.dart';
 import 'package:nexura/Core/utils/app_router.dart';
+import 'package:nexura/Features/Student/presentation/manager/student_cubit/student_cubit.dart';
 
 import '../../../../../Core/utils/theme.dart';
 
@@ -15,9 +17,16 @@ class QuizInfoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    StudentCubit studentCubit = BlocProvider.of<StudentCubit>(context);
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppRouter.kQuizView);
+        studentCubit.viewQuizQuestions(
+          question_quiz: quizModel.quizId.toString(),
+        );
+        GoRouter.of(context).pushReplacement(
+          AppRouter.kQuizView,
+          extra: quizModel,
+        );
       },
       child: Container(
         margin: const EdgeInsets.only(bottom: 20),

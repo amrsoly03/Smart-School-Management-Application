@@ -8,6 +8,7 @@ import 'package:nexura/Features/Student/data/repo/student_repo.dart';
 import 'package:nexura/main.dart';
 
 import '../../../../../Core/models/degree_model.dart';
+import '../../../../../Core/models/question_model.dart';
 import '../../../../../Core/models/quiz_model.dart';
 import '../../../data/models/student_model.dart';
 
@@ -19,6 +20,8 @@ class StudentCubit extends Cubit<StudentState> {
   final StudentRepo studentRepo;
 
   late void addOrderProductsResult;
+  
+  List<Map<String, String>> choosenAnswers = [];
 
   Future<void> studentLogin({
     required String student_Id,
@@ -75,6 +78,23 @@ class StudentCubit extends Cubit<StudentState> {
     );
   }
 
+  Future<void> viewQuizQuestions({required String question_quiz}) async {
+    emit(StudentLoading());
+
+    final questionsResult = await studentRepo.viewQuizQuestions(
+      question_quiz: question_quiz,
+    );
+
+    questionsResult.fold(
+      (failures) {
+        emit(StudentFailure(failures.errMessage));
+      },
+      (questions) {
+        emit(QuizQuestionsSuccess(questions));
+      },
+    );
+  }
+
   Future<void> viewSchedule() async {
     emit(StudentLoading());
 
@@ -88,6 +108,48 @@ class StudentCubit extends Cubit<StudentState> {
       },
       (scheduleImage) {
         emit(StudentScheduleSuccess(scheduleImage));
+      },
+    );
+  }
+
+  Future<void> submitQuiz({
+    required String qd_quiz,
+  }) async {
+    emit(StudentLoading());
+
+    final submitResult = await studentRepo.submitQuiz(
+      qd_student: sharedPref.getString('user_id')!,
+      qd_quiz: qd_quiz,
+    );
+
+    submitResult.fold(
+      (failures) {
+        emit(StudentFailure(failures.errMessage));
+      },
+      (message) {
+        emit(SubmitQuizSuccess(message));
+      },
+    );
+  }
+
+  Future<void> increasePracticalDegree({
+    required String subject_degree,
+    required String increase_by,
+  }) async {
+    emit(StudentLoading());
+
+    final submitResult = await studentRepo.increasePracticalDegree(
+      std_degree: sharedPref.getString('user_id')!,
+      subject_degree: subject_degree,
+      increase_by: increase_by,
+    );
+
+    submitResult.fold(
+      (failures) {
+        //emit(StudentFailure(failures.errMessage));
+      },
+      (message) {
+        emit(SubmitQuizSuccess(message));
       },
     );
   }
@@ -147,5 +209,11 @@ class StudentCubit extends Cubit<StudentState> {
       emit(const StudentFailure('Failed to add questions'));
       return;
     }
+  }
+
+  void addAnswer(String questionId, String answer) {
+    choosenAnswers.add(
+      {'questionId': questionId, 'answer': answer},
+    );
   }
 }

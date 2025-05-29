@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:go_router/go_router.dart';
 import 'package:nexura/Features/Admin/presentation/views/activities_notification_view.dart';
 import 'package:nexura/Features/Admin/presentation/views/add_degree_view.dart';
@@ -36,6 +38,7 @@ import '../../Features/Admin/presentation/views/teacher_home_view.dart';
 import '../../Features/Auth/presentation/views/login_view.dart';
 import '../../first_screen.dart';
 import '../models/activity_model.dart';
+import '../models/quiz_model.dart';
 
 abstract class AppRouter {
   //static const kSplashScreen = '/SplashScreen';
@@ -194,7 +197,9 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kQuizView,
-        builder: (context, state) => const QuizView(),
+        builder: (context, state) =>  QuizView(
+          quizModel: state.extra as QuizModel,
+        ),
       ),
       GoRoute(
         path: kActivityDetailsView,

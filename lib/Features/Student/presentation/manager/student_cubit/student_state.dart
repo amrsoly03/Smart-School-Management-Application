@@ -35,10 +35,22 @@ final class StudentQuizzesSuccess extends StudentState {
   const StudentQuizzesSuccess(this.quizzes);
 }
 
+final class QuizQuestionsSuccess extends StudentState {
+  final List<QuestionModel> questions;
+
+  const QuizQuestionsSuccess(this.questions);
+}
+
 final class StudentScheduleSuccess extends StudentState {
   final String scheduleImage;
 
   const StudentScheduleSuccess(this.scheduleImage);
+}
+
+final class SubmitQuizSuccess extends StudentState {
+  final String message;
+
+  const SubmitQuizSuccess(this.message);
 }
 
 final class SubscribeActivitySuccess extends StudentState {
