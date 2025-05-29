@@ -2,24 +2,29 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nexura/Core/models/activity_model.dart';
+import 'package:nexura/Core/models/product_model.dart';
 
 import '../../../../../Core/errors/failures.dart';
 import '../../../../../Core/models/grade_model.dart';
 import '../../../../../Core/models/subject_model.dart';
+import '../../../../Student/data/repo/student_repo.dart';
 import '../../../data/repo/admin_repo.dart';
 
 part 'models_state.dart';
 
 class ModelsCubit extends Cubit<ModelsState> {
-  ModelsCubit(this.adminRepo) : super(ModelsInitial());
+  ModelsCubit(this.adminRepo, this.studentRepo) : super(ModelsInitial());
 
   final AdminRepo adminRepo;
+  final StudentRepo studentRepo;
 
   late Either<Failures, List<ActivityModel>> activitiesResult;
 
   late Either<Failures, List<GradeModel>> gradesResult;
 
   late Either<Failures, List<SubjectModel>> subjectsResult;
+
+  late Either<Failures, List<ProductModel>> productsResult;
 
   Future<void> viewActivities() async {
     emit(ModelsLoading());
@@ -77,6 +82,21 @@ class ModelsCubit extends Cubit<ModelsState> {
       },
       (grades) {
         emit(GradesSuccess(grades));
+      },
+    );
+  }
+
+  Future<void> viewProducts({required String product_category}) async {
+    emit(ModelsLoading());
+
+    productsResult = await studentRepo.viewProducts(product_category: product_category);
+
+    productsResult.fold(
+      (failure) {
+        emit(ModelsFailure(failure.errMessage));
+      },
+      (products) {
+        emit(ProductsSuccess(products));
       },
     );
   }

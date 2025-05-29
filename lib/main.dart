@@ -38,7 +38,10 @@ class MyApp extends StatelessWidget {
           create: (context) => AdminCubit(getIt.get<AdminRepoImpl>()),
         ),
         BlocProvider<ModelsCubit>(
-          create: (context) => ModelsCubit(getIt.get<AdminRepoImpl>()),
+          create: (context) => ModelsCubit(
+            getIt.get<AdminRepoImpl>(),
+            getIt.get<StudentRepoImpl>(),
+          ),
         ),
         BlocProvider<SelectModelsCubit>(
           create: (context) => SelectModelsCubit(),

@@ -34,3 +34,9 @@ final class GradesSuccess extends ModelsState {
 
   const GradesSuccess(this.grades);
 }
+
+final class ProductsSuccess extends ModelsState {
+  final List<ProductModel> products;
+
+  const ProductsSuccess(this.products);
+}

@@ -82,7 +82,7 @@ abstract class AppRouter {
     routes: [
       GoRoute(
         path: '/',
-        builder: (context, state) => const FirstScreen(),
+        builder: (context, state) => const StudentHomeView(),
       ),
       GoRoute(
         path: kLoginView,
@@ -176,7 +176,9 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kProductsView,
-        builder: (context, state) => const ProductsView(),
+        builder: (context, state) => ProductsView(
+          category: state.extra as String, // Pass the category as an extra
+        ),
       ),
       GoRoute(
         path: kQuizzesView,

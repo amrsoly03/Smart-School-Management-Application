@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 
 import '../../../../Core/errors/failures.dart';
 import '../../../../Core/models/degree_model.dart';
+import '../../../../Core/models/product_model.dart';
 import '../models/student_model.dart';
 
 abstract class StudentRepo {
@@ -22,5 +23,9 @@ abstract class StudentRepo {
   Future<Either<Failures, String>> subscribeActivity({
     required String student_as,
     required String activity_as,
+  });
+
+  Future<Either<Failures, List<ProductModel>>> viewProducts({
+    required String product_category,
   });
 }

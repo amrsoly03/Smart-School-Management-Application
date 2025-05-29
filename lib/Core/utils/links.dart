@@ -6,6 +6,7 @@ class Links {
   //     '$linkServerName/upload/exercises_image';
   static const linkUploadSchedule = '$linkServerName/upload/schedules_images';
   static const linkUploadActivities = '$linkServerName/upload/activities_images';
+  static const linkUploadProducts = '$linkServerName/upload/products_images';
 
   static const linkAdminLogin = '$linkServerName/Admin/admin_login.php';
   static const linkCreateUser = '$linkServerName/Admin/create_user.php';
@@ -28,6 +29,7 @@ class Links {
       '$linkServerName/Models/view_approvment_subjects.php';
   static const linkViewGrades = '$linkServerName/Models/view_grades.php';
   static const linkViewSubjects = '$linkServerName/Models/view_subjects.php';
+  static const linkViewProducts = '$linkServerName/Models/view_products.php';
 
   static const linkStudentLogin = '$linkServerName/Student/student_login.php';
   static const linkViewDegrees = '$linkServerName/Student/view_std_degrees.php';

@@ -1,19 +1,19 @@
+import 'dart:developer';
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:nexura/Core/functions/capitalize.dart';
+import 'package:nexura/Core/models/product_model.dart';
 import 'package:nexura/Core/utils/theme.dart';
+import 'package:shimmer/shimmer.dart';
 
+import '../../../../../Core/utils/links.dart';
 import '../../../../../Core/utils/styles.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard(
-      {super.key,
-      required this.name,
-      required this.price,
-      required this.image});
+  const ProductCard({super.key, required this.productModel});
 
-  final String name;
-  final int price;
-  final String image;
+  final ProductModel productModel;
 
   @override
   Widget build(BuildContext context) {
@@ -32,23 +32,36 @@ class ProductCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  capitalize(name),
+                  capitalize(productModel.productName!),
                   style: Styles.textStyle18,
                 ),
                 Text(
-                  capitalize('price: $price'),
+                  capitalize('price: ${productModel.productPrice}'),
                   style: Styles.textStyle16,
                 ),
               ],
             ),
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
-              child: Image.asset(
-                image,
-                fit: BoxFit.cover,
-                height: 100,
-                width: 120,
-              ),
+              child: CachedNetworkImage(
+                    imageUrl: '${Links.linkUploadProducts}/${productModel.productImage}',
+                    height: 100,
+                    width: 130,
+                    fit: BoxFit.cover,
+                    placeholder: (context, url) => Shimmer.fromColors(
+                      baseColor: darkBlue.withOpacity(0.5),
+                      highlightColor: darkBlue,
+                      child: Container(
+                        color: darkBlue,
+                        width: 130,
+                        height: 100,
+                      ),
+                    ),
+                    errorWidget: (context, url, error) {
+                      log('Error loading image: $error');
+                      return const Icon(Icons.error);
+                    },
+                  ),
             )
           ],
         ),
