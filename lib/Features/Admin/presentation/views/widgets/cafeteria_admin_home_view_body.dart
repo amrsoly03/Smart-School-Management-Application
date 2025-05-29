@@ -29,7 +29,7 @@ class CafeteriaAdminHomeViewBody extends StatelessWidget {
               text: "View Previous Orders",
               icon: Icons.history,
               onTap: () {
-                GoRouter.of(context).push(AppRouter.kAddDegreeView);
+                GoRouter.of(context).push(AppRouter.kPreviousTransactionView);
               },
             ),
           ],

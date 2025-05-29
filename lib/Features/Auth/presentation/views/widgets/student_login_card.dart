@@ -29,20 +29,20 @@ class StudentLoginCard extends StatelessWidget {
     StudentCubit studentCubit = BlocProvider.of<StudentCubit>(context);
 
     return BlocConsumer<StudentCubit, StudentState>(
-      listener: (context, state) {
+      listener: (context, state) async {
         if (state is StudentLoading) {
           _isUploading = true;
         } else if (state is StudentLoginSuccess) {
-          sharedPref.setString(
+          await sharedPref.setString(
             'user_id',
             state.studentModel.studentId.toString(),
           );
-          sharedPref.setString(
+          await sharedPref.setString(
             'student_grade',
             state.studentModel.grade.toString(),
           );
-          sharedPref.setString('user_type', 'student');
-          GoRouter.of(context).push(AppRouter.kStudentHomeView).then(
+          await sharedPref.setString('user_type', 'student');
+          GoRouter.of(context).pushReplacement(AppRouter.kStudentHomeView).then(
             (value) {
               _isUploading = false;
             },

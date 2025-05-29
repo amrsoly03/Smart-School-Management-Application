@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/widgets.dart';
 import 'package:nexura/Core/functions/capitalize.dart';
 import 'package:nexura/Core/utils/size_config.dart';
@@ -9,11 +10,13 @@ class CustomContainer extends StatelessWidget {
     required this.title,
     required this.image,
     this.onTap,
+    this.isNetworkImage = false,
   });
 
   final String title;
   final String image;
   final Function()? onTap;
+  final bool isNetworkImage;
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +27,14 @@ class CustomContainer extends StatelessWidget {
         height: SizeConfig.screenHeight * 0.17,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(
-              image,
-            ),
+            image: isNetworkImage
+                ? CachedNetworkImageProvider(
+                    image,
+                    
+                  )
+                : AssetImage(
+                    image,
+                  ),
             fit: BoxFit.cover,
             opacity: 0.4,
           ),

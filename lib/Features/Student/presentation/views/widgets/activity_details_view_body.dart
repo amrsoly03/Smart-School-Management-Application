@@ -1,11 +1,20 @@
+import 'dart:developer';
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:nexura/Core/functions/capitalize.dart';
+import 'package:nexura/Core/models/activity_model.dart';
 import 'package:nexura/Core/utils/size_config.dart';
 import 'package:nexura/Core/utils/styles.dart';
 import 'package:nexura/Core/utils/theme.dart';
+import 'package:shimmer/shimmer.dart';
+
+import '../../../../../Core/utils/links.dart';
 
 class ActivityDetailsViewBody extends StatelessWidget {
-  const ActivityDetailsViewBody({super.key});
+  const ActivityDetailsViewBody({super.key, required this.activityModel});
+
+  final ActivityModel activityModel;
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +28,24 @@ class ActivityDetailsViewBody extends StatelessWidget {
                   bottomLeft: Radius.circular(20),
                   bottomRight: Radius.circular(20),
                 ),
-                child: Image(
-                  image: const AssetImage('assets/football.jpg'),
-                  width: double.infinity,
+                child: CachedNetworkImage(
+                  imageUrl:
+                      '${Links.linkUploadActivities}/${activityModel.image}',
                   height: SizeConfig.screenHeight * 0.4,
                   fit: BoxFit.cover,
+                  placeholder: (context, url) => Shimmer.fromColors(
+                    baseColor: darkBlue.withOpacity(0.5),
+                    highlightColor: darkBlue,
+                    child: Container(
+                      color: darkBlue,
+                      width: double.infinity,
+                      height: SizeConfig.screenHeight * 0.4,
+                    ),
+                  ),
+                  errorWidget: (context, url, error) {
+                    log('Error loading image: $error');
+                    return const Icon(Icons.error);
+                  },
                 ),
               ),
               const SizedBox(height: 20),
@@ -40,8 +62,7 @@ class ActivityDetailsViewBody extends StatelessWidget {
                     ),
                     const SizedBox(height: 10),
                     Text(
-                      capitalize(
-                          'A football training subscription for kids in school can provide structured, age-appropriate development of fundamental skills, physical fitness, and teamwork. Programs like NFL FLAG-In-Schools offer curriculum and equipment for non-contact flag football, emphasizing safety and inclusivity. Alternatively, schools can partner with local youth football organizations or coaches offering after-school programs. These subscriptions often include weekly training sessions, skill-building drills, and sometimes even mini-games. When evaluating options, consider the programs focus on skill development versus competitive play, the coach-to-student ratio, safety protocols, and the overall cost'),
+                      capitalize(activityModel.description!),
                       style: Styles.textStyle14.copyWith(
                         color: darkBlue,
                       ),
@@ -50,7 +71,7 @@ class ActivityDetailsViewBody extends StatelessWidget {
                     SizedBox(
                       width: double.infinity,
                       child: Text(
-                        capitalize('Date: 12/12/2025'),
+                        capitalize('Price: ${activityModel.price}'),
                         textAlign: TextAlign.center,
                         style: Styles.textStyle20.copyWith(
                           color: darkBlue,

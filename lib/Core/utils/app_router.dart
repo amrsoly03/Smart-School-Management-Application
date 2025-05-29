@@ -35,6 +35,7 @@ import '../../Features/Admin/presentation/views/edit_user_view.dart';
 import '../../Features/Admin/presentation/views/teacher_home_view.dart';
 import '../../Features/Auth/presentation/views/login_view.dart';
 import '../../first_screen.dart';
+import '../models/activity_model.dart';
 
 abstract class AppRouter {
   //static const kSplashScreen = '/SplashScreen';
@@ -81,7 +82,7 @@ abstract class AppRouter {
     routes: [
       GoRoute(
         path: '/',
-        builder: (context, state) => const StudentHomeView(),
+        builder: (context, state) => const FirstScreen(),
       ),
       GoRoute(
         path: kLoginView,
@@ -195,7 +196,9 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kActivityDetailsView,
-        builder: (context, state) => const ActivityDetailsView(),
+        builder: (context, state) => ActivityDetailsView(
+          activityModel: state.extra as ActivityModel,
+        ),
       ),
       GoRoute(
         path: kWalletDetailsView,
