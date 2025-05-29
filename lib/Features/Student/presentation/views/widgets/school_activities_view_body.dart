@@ -25,6 +25,7 @@ class SchoolActivitiesViewBody extends StatelessWidget {
               CustomButton(
                 title: 'Quizzes',
                 function: () {
+                  studentCubit.viewStudentQuizzes();
                   GoRouter.of(context).push(AppRouter.kQuizzesView);
                 },
               ),

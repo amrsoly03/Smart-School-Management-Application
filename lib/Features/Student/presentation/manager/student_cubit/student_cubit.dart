@@ -8,6 +8,7 @@ import 'package:nexura/Features/Student/data/repo/student_repo.dart';
 import 'package:nexura/main.dart';
 
 import '../../../../../Core/models/degree_model.dart';
+import '../../../../../Core/models/quiz_model.dart';
 import '../../../data/models/student_model.dart';
 
 part 'student_state.dart';
@@ -53,6 +54,23 @@ class StudentCubit extends Cubit<StudentState> {
       },
       (degrees) {
         emit(StudentDegreesSuccess(degrees));
+      },
+    );
+  }
+
+  Future<void> viewStudentQuizzes() async {
+    emit(StudentLoading());
+
+    final quizzesResult = await studentRepo.viewStudentQuizzes(
+      student_id: sharedPref.getString('user_id')!,
+    );
+
+    quizzesResult.fold(
+      (failures) {
+        emit(StudentFailure(failures.errMessage));
+      },
+      (quizzes) {
+        emit(StudentQuizzesSuccess(quizzes));
       },
     );
   }
@@ -119,7 +137,7 @@ class StudentCubit extends Cubit<StudentState> {
     emit(StudentLoading());
 
     try {
-       addOrderProductsResult = await studentRepo.addOrderProducts(
+      addOrderProductsResult = await studentRepo.addOrderProducts(
         op_order: op_order,
         products: products,
       );

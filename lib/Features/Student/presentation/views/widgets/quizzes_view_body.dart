@@ -1,33 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nexura/Core/utils/styles.dart';
+import 'package:nexura/Features/Student/presentation/manager/student_cubit/student_cubit.dart';
 
+import '../../../../../Core/utils/theme.dart';
 import '../../../../../Core/widgets/custom_appBar.dart';
 import 'quiz_info_card.dart';
 
 class QuizzesViewBody extends StatelessWidget {
-  QuizzesViewBody({super.key});
-
-  final List<Map<String, String>> quizzes = [
-    {'subject': 'Math', 'quizName': 'unit 1', 'questions': '5'},
-    {'subject': 'English', 'quizName': 'unit 2', 'questions': '3'},
-    {'subject': 'Arabic', 'quizName': 'unit 3', 'questions': '8'},
-    {'subject': 'French', 'quizName': 'unit 4', 'questions': '10'},
-    {'subject': 'Science', 'quizName': 'unit 7', 'questions': '2'},
-    {'subject': 'History', 'quizName': 'unit 6', 'questions': '6'},
-  ];
+  const QuizzesViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(title: 'Quizzes'),
-      body: Container(
-        padding: const EdgeInsets.all(25),
-        child: ListView.builder(
-          itemCount: quizzes.length,
-          itemBuilder: (context, index) {
-            final quiz = quizzes[index];
-            return QuizInfoCard(quiz: quiz);
-          },
-        ),
+      body: BlocBuilder<StudentCubit, StudentState>(
+        builder: (context, state) {
+          if (state is StudentFailure) {
+            return Center(
+              child: Text(
+                state.errMessage,
+                style: Styles.textStyle20.copyWith(
+                  color: darkBlue,
+                ),
+              ),
+            );
+          } else if (state is StudentQuizzesSuccess) {
+            return Padding(
+              padding: const EdgeInsets.all(25),
+              child: ListView.builder(
+                itemCount: state.quizzes.length,
+                itemBuilder: (context, index) {
+                  return QuizInfoCard(quizModel: state.quizzes[index]);
+                },
+              ),
+            );
+          } else {
+            return const Center(
+              child: CircularProgressIndicator(
+                color: darkBlue,
+              ),
+            );
+          }
+        },
       ),
     );
   }

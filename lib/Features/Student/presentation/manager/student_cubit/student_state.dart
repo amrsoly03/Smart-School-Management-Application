@@ -29,6 +29,12 @@ final class StudentDegreesSuccess extends StudentState {
   const StudentDegreesSuccess(this.degrees);
 }
 
+final class StudentQuizzesSuccess extends StudentState {
+  final List<QuizModel> quizzes;
+
+  const StudentQuizzesSuccess(this.quizzes);
+}
+
 final class StudentScheduleSuccess extends StudentState {
   final String scheduleImage;
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nexura/Core/models/quiz_model.dart';
 import 'package:nexura/Core/utils/app_router.dart';
 
 import '../../../../../Core/utils/theme.dart';
@@ -7,10 +8,10 @@ import '../../../../../Core/utils/theme.dart';
 class QuizInfoCard extends StatelessWidget {
   const QuizInfoCard({
     super.key,
-    required this.quiz,
+    required this.quizModel,
   });
 
-  final Map<String, String> quiz;
+  final QuizModel quizModel;
 
   @override
   Widget build(BuildContext context) {
@@ -30,15 +31,15 @@ class QuizInfoCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Subject : ${quiz['subject']}',
+                'Subject : ${quizModel.subQuizName}',
                 style: const TextStyle(color: Colors.white, fontSize: 20),
               ),
               Text(
-                'Quiz Name : ${quiz['quizName']}',
+                'Quiz Name : ${quizModel.name}',
                 style: const TextStyle(color: Colors.white, fontSize: 20),
               ),
               Text(
-                'Questions : ${quiz['questions']}',
+                'Questions : ${quizModel.numOfQuestions}',
                 style: const TextStyle(color: Colors.white, fontSize: 20),
               ),
             ],

@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:nexura/Core/models/degree_model.dart';
 import 'package:nexura/Core/models/order_model.dart';
 import 'package:nexura/Core/models/product_model.dart';
+import 'package:nexura/Core/models/quiz_model.dart';
 import 'package:nexura/Features/Student/data/models/student_model.dart';
 import 'package:nexura/Features/Student/data/repo/student_repo.dart';
 
@@ -232,6 +233,39 @@ class StudentRepoImpl implements StudentRepo {
       }
       log('e: $e');
       return log(('something went wrong'));
+    }
+  }
+
+  Future<Either<Failures, List<QuizModel>>> viewStudentQuizzes({
+    required String student_id,
+  }) async {
+    try {
+      Map<String, dynamic> response = await apiService.httpPost(
+        link: Links.linkViewStudentQuizzes,
+        data: {
+          'student_id': student_id,
+        },
+      );
+
+      log('response: $response');
+
+      if (response['status'] == 'failed') {
+        return left(ServerFailures(response['message']));
+      } else {
+        List<QuizModel> quizzes = [];
+
+        for (var item in response['data']) {
+          quizzes.add(QuizModel.fromJson(item));
+        }
+
+        return right(quizzes);
+      }
+    } catch (e) {
+      if (e is SocketException) {
+        return left(ServerFailures('No internet connection'));
+      }
+      log('e: $e');
+      return left(ServerFailures('something went wrong'));
     }
   }
 }

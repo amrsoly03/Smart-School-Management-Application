@@ -4,6 +4,7 @@ import '../../../../Core/errors/failures.dart';
 import '../../../../Core/models/degree_model.dart';
 import '../../../../Core/models/order_model.dart';
 import '../../../../Core/models/product_model.dart';
+import '../../../../Core/models/quiz_model.dart';
 import '../models/student_model.dart';
 
 abstract class StudentRepo {
@@ -14,6 +15,10 @@ abstract class StudentRepo {
 
   Future<Either<Failures, List<DegreeModel>>> viewDegrees({
     required String std_degree,
+  });
+
+  Future<Either<Failures, List<QuizModel>>> viewStudentQuizzes({
+    required String student_id,
   });
 
   Future<Either<Failures, String>> viewSchedule({

@@ -5,12 +5,14 @@ class QuizModel extends Equatable {
   final String? name;
   final int? subQuiz;
   final String? subQuizName;
+  final int? numOfQuestions;
 
   const QuizModel({
     this.quizId,
     this.name,
     this.subQuiz,
     this.subQuizName,
+    this.numOfQuestions,
   });
 
   factory QuizModel.fromJson(Map<String, dynamic> json) => QuizModel(
@@ -18,6 +20,7 @@ class QuizModel extends Equatable {
         name: json['name'] as String?,
         subQuiz: json['sub_quiz'] as int?,
         subQuizName: json['sub_quiz_name'] as String?,
+        numOfQuestions: json['num_of_questions'] as int?,
       );
 
   Map<String, dynamic> toJson() => {
@@ -25,6 +28,7 @@ class QuizModel extends Equatable {
         'name': name,
         'sub_quiz': subQuiz,
         'sub_quiz_name': subQuizName,
+        'num_of_questions': numOfQuestions,
       };
 
   @override
@@ -33,5 +37,6 @@ class QuizModel extends Equatable {
         name,
         subQuiz,
         subQuizName,
+        numOfQuestions,
       ];
 }
