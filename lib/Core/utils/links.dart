@@ -32,5 +32,6 @@ class Links {
   static const linkStudentLogin = '$linkServerName/Student/student_login.php';
   static const linkViewDegrees = '$linkServerName/Student/view_std_degrees.php';
   static const linkViewSchedule = '$linkServerName/Student/view_std_schedule.php';
+  static const linkSubscribeActivity = '$linkServerName/Student/subscribe_activity.php';
 
 }

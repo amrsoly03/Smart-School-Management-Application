@@ -67,4 +67,25 @@ class StudentCubit extends Cubit<StudentState> {
       },
     );
   }
+
+  Future<void> subscribeActivity({
+    required String student_as,
+    required String activity_as,
+  }) async {
+    emit(StudentLoading());
+
+    final subscribeResult = await studentRepo.subscribeActivity(
+      student_as: student_as,
+      activity_as: activity_as,
+    );
+
+    subscribeResult.fold(
+      (failures) {
+        emit(StudentFailure(failures.errMessage));
+      },
+      (message) {
+        emit(SubscribeActivitySuccess(message));
+      },
+    );
+  }
 }

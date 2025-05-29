@@ -34,3 +34,9 @@ final class StudentScheduleSuccess extends StudentState {
 
   const StudentScheduleSuccess(this.scheduleImage);
 }
+
+final class SubscribeActivitySuccess extends StudentState {
+  final String message;
+
+  const SubscribeActivitySuccess(this.message);
+}

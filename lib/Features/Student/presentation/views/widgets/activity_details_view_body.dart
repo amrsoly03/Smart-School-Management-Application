@@ -2,11 +2,15 @@ import 'dart:developer';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nexura/Core/functions/capitalize.dart';
 import 'package:nexura/Core/models/activity_model.dart';
 import 'package:nexura/Core/utils/size_config.dart';
 import 'package:nexura/Core/utils/styles.dart';
 import 'package:nexura/Core/utils/theme.dart';
+import 'package:nexura/Core/widgets/custom_snackbar.dart';
+import 'package:nexura/Features/Student/presentation/manager/student_cubit/student_cubit.dart';
+import 'package:nexura/main.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../../../../Core/utils/links.dart';
@@ -18,6 +22,8 @@ class ActivityDetailsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    StudentCubit studentCubit = BlocProvider.of<StudentCubit>(context);
+
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -84,15 +90,29 @@ class ActivityDetailsViewBody extends StatelessWidget {
             ],
           ),
         ),
-        floatingActionButton: Container(
-          padding: const EdgeInsets.only(bottom: 10),
-          width: SizeConfig.screenWidth / 1.25,
-          child: FloatingActionButton(
-            onPressed: () {},
-            backgroundColor: darkBlue,
-            child: Text(
-              capitalize('subscribe'),
-              style: Styles.textStyle18,
+        floatingActionButton: BlocListener<StudentCubit, StudentState>(
+          listener: (context, state) {
+            if (state is SubscribeActivitySuccess) {
+              kShowSnackBar(context, state.message);
+            } else if (state is StudentFailure) {
+              kShowSnackBar(context, state.errMessage);
+            }
+          },
+          child: Container(
+            padding: const EdgeInsets.only(bottom: 10),
+            width: SizeConfig.screenWidth / 1.25,
+            child: FloatingActionButton(
+              onPressed: () {
+                studentCubit.subscribeActivity(
+                  student_as: sharedPref.getString('user_id')!,
+                  activity_as: activityModel.activityId.toString(),
+                );
+              },
+              backgroundColor: darkBlue,
+              child: Text(
+                capitalize('subscribe'),
+                style: Styles.textStyle18,
+              ),
             ),
           ),
         ),
