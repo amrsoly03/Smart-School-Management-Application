@@ -46,4 +46,7 @@ class Links {
       '$linkServerName/Student/view_std_schedule.php';
   static const linkSubscribeActivity =
       '$linkServerName/Student/subscribe_activity.php';
+
+    static const linkParentLogin = '$linkServerName/Parent/parent_login.php';
+
 }

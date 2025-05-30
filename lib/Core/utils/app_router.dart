@@ -40,7 +40,7 @@ import '../models/quiz_model.dart';
 
 abstract class AppRouter {
   //static const kSplashScreen = '/SplashScreen';
-  static const kLoginView = '/FirstScreen';
+  static const kLoginView = '/LoginView';
   static const kAdminsHomeView = '/AdminsHomeView';
   static const kSchoolAdminHomeView = '/SchoolAdminHomeView';
   static const kCafeteriaAdminHomeView = '/CafeteriaAdminHomeView';
@@ -83,7 +83,7 @@ abstract class AppRouter {
     routes: [
       GoRoute(
         path: '/',
-        builder: (context, state) => const StudentHomeView(),
+        builder: (context, state) => const FirstScreen(),
       ),
       GoRoute(
         path: kLoginView,

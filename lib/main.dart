@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nexura/Features/Admin/presentation/manager/models_cubit/models_cubit.dart';
 import 'package:nexura/Features/Admin/presentation/manager/select_models_cubit/select_models_cubit.dart';
+import 'package:nexura/Features/Parent/presentation/manager/parent_cubit/parent_cubit.dart';
 import 'package:nexura/Features/Student/data/repo/student_repo_impl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -13,6 +14,7 @@ import 'Core/utils/theme.dart';
 import 'Features/Admin/data/repo/admin_repo_impl.dart';
 import 'Features/Admin/presentation/manager/admin_cubit/admin_cubit.dart';
 import 'Features/Admin/presentation/manager/questions_cubit/questions_cubit.dart';
+import 'Features/Parent/data/repo/parent_repo_impl.dart';
 import 'Features/Student/presentation/manager/student_cubit/student_cubit.dart';
 
 late SharedPreferences sharedPref;
@@ -51,6 +53,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<StudentCubit>(
           create: (context) => StudentCubit(getIt.get<StudentRepoImpl>()),
+        ),
+        BlocProvider<ParentCubit>(
+          create: (context) => ParentCubit(getIt.get<ParentRepoImpl>()),
         ),
       ],
       child: MaterialApp.router(
