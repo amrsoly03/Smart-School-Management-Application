@@ -47,6 +47,6 @@ class Links {
   static const linkSubscribeActivity =
       '$linkServerName/Student/subscribe_activity.php';
 
-    static const linkParentLogin = '$linkServerName/Parent/parent_login.php';
-
+  static const linkParentLogin = '$linkServerName/Parent/parent_login.php';
+  static const linkParentSendReport = '$linkServerName/Parent/parent_send_report.php';
 }

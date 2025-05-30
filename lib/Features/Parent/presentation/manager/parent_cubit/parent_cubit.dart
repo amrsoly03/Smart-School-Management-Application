@@ -30,4 +30,25 @@ class ParentCubit extends Cubit<ParentState> {
       },
     );
   }
+
+  Future<void> parentSendReport({
+    required String std_report,
+    required String content,
+  }) async {
+    emit(ParentLoading());
+
+    final loginResult = await parentRepo.parentSendReport(
+      std_report: std_report,
+      content: content,
+    );
+
+    loginResult.fold(
+      (failures) {
+        emit(ParentFailure(failures.errMessage));
+      },
+      (message) {
+        emit(SendReportSuccess(message));
+      },
+    );
+  }
 }

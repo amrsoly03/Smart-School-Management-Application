@@ -22,3 +22,9 @@ final class ParentLoginSuccess extends ParentState {
 
   const ParentLoginSuccess(this.parentModel);
 }
+
+final class SendReportSuccess extends ParentState {
+  final String message;
+
+  const SendReportSuccess(this.message);
+}

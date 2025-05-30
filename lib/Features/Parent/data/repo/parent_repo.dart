@@ -9,5 +9,10 @@ abstract class ParentRepo {
     required String student_id,
     required String parent_password,
   });
+
+  Future<Either<Failures, String>> parentSendReport({
+    required String std_report,
+    required String content,
+  });
   
 }
