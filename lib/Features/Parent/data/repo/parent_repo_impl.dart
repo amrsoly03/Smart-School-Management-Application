@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
+import 'package:nexura/Core/models/order_model.dart';
 import 'package:nexura/Core/models/parent_model.dart';
 import 'package:nexura/Features/Parent/data/repo/parent_repo.dart';
 
@@ -127,6 +128,41 @@ class ParentRepoImpl implements ParentRepo {
         return left(ServerFailures(response['message']));
       } else {
         return right(response['data']['coins']);
+      }
+    } catch (e) {
+      if (e is SocketException) {
+        return left(ServerFailures('No internet connection'));
+      }
+      log('e: $e');
+      return left(ServerFailures('something went wrong'));
+    }
+  }
+
+  Future<Either<Failures, List<OrderModel>>> viewPreviousTransactions({
+    required String order_student,
+    required String order_approved,
+  }) async {
+    try {
+      Map<String, dynamic> response = await apiService.httpPost(
+        link: Links.linkViewPreviousTransactions,
+        data: {
+          'order_student': order_student,
+          'order_approved': order_approved,
+        },
+      );
+
+      log('response: $response');
+
+      if (response['status'] == 'failed') {
+        return left(ServerFailures(response['message']));
+      } else {
+        List<OrderModel> orders = [];
+
+        for (var item in response['data']) {
+          orders.add(OrderModel.fromJson(item));
+        }
+
+        return right(orders);
       }
     } catch (e) {
       if (e is SocketException) {

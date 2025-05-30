@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../../Core/errors/failures.dart';
+import '../../../../Core/models/order_model.dart';
 import '../../../../Core/models/parent_model.dart';
 import '../../../../Core/models/report_model.dart';
 
@@ -21,5 +22,10 @@ abstract class ParentRepo {
 
   Future<Either<Failures, int>> viewCoins({
     required String parent_id,
+  });
+
+  Future<Either<Failures, List<OrderModel>>> viewPreviousTransactions({
+    required String order_student,
+    required String order_approved,
   });
 }

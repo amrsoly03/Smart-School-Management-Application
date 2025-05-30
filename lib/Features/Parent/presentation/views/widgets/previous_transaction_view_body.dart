@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nexura/Features/Parent/presentation/manager/parent_cubit/parent_cubit.dart';
+import '../../../../../Core/utils/styles.dart';
+import '../../../../../Core/utils/theme.dart';
 import '../../../../../Core/widgets/custom_appBar.dart';
 import 'custom_drawer.dart';
 import 'previous_transaction_card.dart';
@@ -23,25 +27,33 @@ class PreviousTransactionViewBody extends StatelessWidget {
         ],
       ),
       drawer: const CustomDrawer(),
-      body: const Padding(
-        padding: EdgeInsets.all(16),
-        child: Column(
-          children: [
-            PreviousTransactionCard(
-              amount: '100 EGP',
-              by: 'Student',
-              method: 'Cash-on',
-              dateTime: '09 feb 2025    2:30 PM',
-            ),
-            SizedBox(height: 16),
-            PreviousTransactionCard(
-              amount: '5,000 EGP',
-              by: 'Parent',
-              method: 'Cash-on',
-              dateTime: '15 Apr 2025   10:00 AM',
-            ),
-          ],
-        ),
+      body: BlocBuilder<ParentCubit, ParentState>(
+        builder: (context, state) {
+          if (state is ParentFailure) {
+            return Center(
+                child: Text(
+              state.errMessage,
+              style: Styles.textStyle20.copyWith(color: darkBlue),
+            ));
+          } else if (state is ViewPreviousTransactionsSuccess) {
+            return ListView.separated(
+              padding: const EdgeInsets.all(12.0),
+              itemCount: state.orders.length,
+              separatorBuilder: (context, index) => const SizedBox(height: 20),
+              itemBuilder: (context, index) {
+                return PreviousTransactionCard(
+                  orderModel: state.orders[index],
+                );
+              },
+            );
+          } else {
+            return const Center(
+              child: CircularProgressIndicator(
+                color: darkBlue,
+              ),
+            );
+          }
+        },
       ),
     );
   }

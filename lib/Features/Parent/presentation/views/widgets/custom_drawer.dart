@@ -6,6 +6,7 @@ import 'package:nexura/Core/utils/app_router.dart';
 import 'package:nexura/Core/utils/styles.dart';
 import 'package:nexura/Core/utils/theme.dart';
 import 'package:nexura/Features/Parent/presentation/manager/parent_cubit/parent_cubit.dart';
+import 'package:nexura/main.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({
@@ -65,6 +66,10 @@ class CustomDrawer extends StatelessWidget {
                 style: Styles.textStyle18,
               ),
               onTap: () {
+                parentCubit.viewPreviousTransactions(
+                  order_student: sharedPref.getString('student_id')!,
+                  order_approved: '1',
+                );
                 GoRouter.of(context)
                     .pushReplacement(AppRouter.kPreviousTransactionView);
               },

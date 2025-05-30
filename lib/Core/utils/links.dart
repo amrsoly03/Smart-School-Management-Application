@@ -51,4 +51,5 @@ class Links {
   static const linkParentSendReport = '$linkServerName/Parent/parent_send_report.php';
   static const linkViewParentSentReports = '$linkServerName/Parent/view_sent_reports.php';
   static const linkViewCoins = '$linkServerName/Parent/view_coins.php';
+  static const linkViewPreviousTransactions = '$linkServerName/Parent/view_previous_transactions.php';
 }

@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:nexura/Core/models/order_model.dart';
 import 'package:nexura/Core/utils/theme.dart';
 
 class PreviousTransactionCard extends StatelessWidget {
-  final String amount;
-  final String by;
-  final String method;
-  final String dateTime;
-
   const PreviousTransactionCard({
     super.key,
-    required this.amount,
-    required this.by,
-    required this.method,
-    required this.dateTime,
+    required this.orderModel,
   });
+
+  final OrderModel orderModel;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +23,7 @@ class PreviousTransactionCard extends StatelessWidget {
         children: [
           Center(
             child: Text(
-              amount,
+              '${orderModel.totalPrice} EGP',
               style: const TextStyle(
                   color: Colors.white,
                   fontSize: 25,
@@ -38,19 +33,14 @@ class PreviousTransactionCard extends StatelessWidget {
           const SizedBox(height: 8),
           Center(
             child: Text(
-              'By $by',
+              'By ${orderModel.orderStudent}',
               style: const TextStyle(color: Colors.white, fontSize: 20),
             ),
           ),
+
           Center(
             child: Text(
-              method,
-              style: const TextStyle(color: Colors.white, fontSize: 20),
-            ),
-          ),
-          Center(
-            child: Text(
-              dateTime,
+              'Date: ${orderModel.date!}',
               style: const TextStyle(color: Colors.white, fontSize: 20),
             ),
           ),

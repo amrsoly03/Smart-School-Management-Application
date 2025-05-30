@@ -4,6 +4,7 @@ import 'package:nexura/Core/models/parent_model.dart';
 import 'package:nexura/Features/Parent/data/repo/parent_repo.dart';
 import 'package:nexura/main.dart';
 
+import '../../../../../Core/models/order_model.dart';
 import '../../../../../Core/models/report_model.dart';
 
 part 'parent_state.dart';
@@ -84,6 +85,27 @@ class ParentCubit extends Cubit<ParentState> {
       },
       (coins) {
         emit(ViewCoinsSuccess(coins));
+      },
+    );
+  }
+
+  Future<void> viewPreviousTransactions({
+    required String order_student,
+    required String order_approved,
+  }) async {
+    emit(ParentLoading());
+
+    final loginResult = await parentRepo.viewPreviousTransactions(
+      order_student: order_student,
+      order_approved: order_approved,
+    );
+
+    loginResult.fold(
+      (failures) {
+        emit(ParentFailure(failures.errMessage));
+      },
+      (orders) {
+        emit(ViewPreviousTransactionsSuccess(orders));
       },
     );
   }

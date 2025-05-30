@@ -40,3 +40,9 @@ final class ViewCoinsSuccess extends ParentState {
 
   const ViewCoinsSuccess(this.coins);
 }
+
+final class ViewPreviousTransactionsSuccess extends ParentState {
+  final List<OrderModel> orders;
+
+  const ViewPreviousTransactionsSuccess(this.orders);
+}
