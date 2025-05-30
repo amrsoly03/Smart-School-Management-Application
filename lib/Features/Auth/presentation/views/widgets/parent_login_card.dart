@@ -41,6 +41,10 @@ class ParentLoginCard extends StatelessWidget {
             'student_id',
             state.parentModel.studentId.toString(),
           );
+          await sharedPref.setString(
+            'student_name',
+            state.parentModel.sName!,
+          );
           await sharedPref.setString('user_type', 'parent');
           GoRouter.of(context).pushReplacement(AppRouter.kParentHomeView).then(
             (value) {

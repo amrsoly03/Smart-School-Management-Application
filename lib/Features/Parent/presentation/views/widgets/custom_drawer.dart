@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nexura/Core/functions/capitalize.dart';
 import 'package:nexura/Core/utils/app_router.dart';
 import 'package:nexura/Core/utils/styles.dart';
 import 'package:nexura/Core/utils/theme.dart';
+import 'package:nexura/Features/Parent/presentation/manager/parent_cubit/parent_cubit.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({
@@ -12,13 +14,15 @@ class CustomDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+      ParentCubit parentCubit = BlocProvider.of<ParentCubit>(context);
     return Drawer(
       backgroundColor: darkBlue,
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            buildMenuItem(context),
+            buildMenuItem(context, parentCubit: parentCubit),
           ],
         ),
       ),
@@ -27,7 +31,7 @@ class CustomDrawer extends StatelessWidget {
 
   Widget buildHeader(BuildContext context) => Container();
 
-  Widget buildMenuItem(BuildContext context) => Padding(
+  Widget buildMenuItem(BuildContext context, {required ParentCubit parentCubit}) => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
         child: Wrap(
           runSpacing: 15,
@@ -39,6 +43,7 @@ class CustomDrawer extends StatelessWidget {
                 style: Styles.textStyle18,
               ),
               onTap: () {
+                parentCubit.viewCoins();
                 GoRouter.of(context)
                     .pushReplacement(AppRouter.kWalletDetailsView);
               },

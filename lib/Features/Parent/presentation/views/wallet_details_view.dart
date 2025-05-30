@@ -6,6 +6,6 @@ class WalletDetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WalletDetailsViewBody();
+    return const WalletDetailsViewBody();
   }
 }

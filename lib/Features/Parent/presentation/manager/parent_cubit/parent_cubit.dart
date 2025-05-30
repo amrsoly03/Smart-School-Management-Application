@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nexura/Core/models/parent_model.dart';
 import 'package:nexura/Features/Parent/data/repo/parent_repo.dart';
+import 'package:nexura/main.dart';
 
 import '../../../../../Core/models/report_model.dart';
 
@@ -57,7 +58,8 @@ class ParentCubit extends Cubit<ParentState> {
   Future<void> viewParentSentReports({required String std_report}) async {
     emit(ParentLoading());
 
-    final loginResult = await parentRepo.viewParentSentReports(std_report: std_report);
+    final loginResult =
+        await parentRepo.viewParentSentReports(std_report: std_report);
 
     loginResult.fold(
       (failures) {
@@ -65,6 +67,23 @@ class ParentCubit extends Cubit<ParentState> {
       },
       (reports) {
         emit(ViewSentReportsSuccess(reports));
+      },
+    );
+  }
+
+  Future<void> viewCoins() async {
+    emit(ParentLoading());
+
+    final loginResult = await parentRepo.viewCoins(
+      parent_id: sharedPref.getString('user_id')!,
+    );
+
+    loginResult.fold(
+      (failures) {
+        emit(ParentFailure(failures.errMessage));
+      },
+      (coins) {
+        emit(ViewCoinsSuccess(coins));
       },
     );
   }

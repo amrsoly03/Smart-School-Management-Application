@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nexura/Core/utils/app_router.dart';
 import 'package:nexura/Core/widgets/custom_appBar.dart';
+import 'package:nexura/Features/Parent/presentation/manager/parent_cubit/parent_cubit.dart';
 
 import 'custom_rounded_button.dart';
 
@@ -10,6 +12,8 @@ class ParentHomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ParentCubit parentCubit = BlocProvider.of<ParentCubit>(context);
+    
     return Scaffold(
       appBar: const CustomAppBar(title: 'Parent Home'),
       body: Padding(
@@ -29,6 +33,7 @@ class ParentHomeViewBody extends StatelessWidget {
               text: "Wallet Management",
               icon: Icons.wallet_sharp,
               onTap: () {
+                parentCubit.viewCoins();
                 GoRouter.of(context).push(AppRouter.kWalletDetailsView);
               },
             ),

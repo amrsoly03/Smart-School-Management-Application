@@ -76,6 +76,7 @@ class ParentRepoImpl implements ParentRepo {
     }
   }
 
+  @override
   Future<Either<Failures, List<ReportModel>>> viewParentSentReports(
       {required String std_report}) async {
     try {
@@ -98,6 +99,34 @@ class ParentRepoImpl implements ParentRepo {
         }
 
         return right(reports);
+      }
+    } catch (e) {
+      if (e is SocketException) {
+        return left(ServerFailures('No internet connection'));
+      }
+      log('e: $e');
+      return left(ServerFailures('something went wrong'));
+    }
+  }
+
+  @override
+  Future<Either<Failures, int>> viewCoins({
+    required String parent_id,
+  }) async {
+    try {
+      Map<String, dynamic> response = await apiService.httpPost(
+        link: Links.linkViewCoins,
+        data: {
+          'parent_id': parent_id,
+        },
+      );
+
+      log('response: $response');
+
+      if (response['status'] == 'failed') {
+        return left(ServerFailures(response['message']));
+      } else {
+        return right(response['data']['coins']);
       }
     } catch (e) {
       if (e is SocketException) {

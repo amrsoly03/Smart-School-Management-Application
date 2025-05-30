@@ -34,3 +34,9 @@ final class ViewSentReportsSuccess extends ParentState {
 
   const ViewSentReportsSuccess(this.reports);
 }
+
+final class ViewCoinsSuccess extends ParentState {
+  final int coins;
+
+  const ViewCoinsSuccess(this.coins);
+}
