@@ -5,6 +5,7 @@ import 'package:nexura/Core/widgets/custom_appBar.dart';
 import 'package:nexura/Features/Student/presentation/manager/student_cubit/student_cubit.dart';
 import '../../../../../Core/utils/app_router.dart';
 import '../../../../../Core/widgets/custom_button.dart';
+import '../../../../../main.dart';
 
 class SchoolActivitiesViewBody extends StatelessWidget {
   const SchoolActivitiesViewBody({super.key});
@@ -35,7 +36,9 @@ class SchoolActivitiesViewBody extends StatelessWidget {
               CustomButton(
                 title: 'Degrees',
                 function: () {
-                  studentCubit.viewDegrees();
+                  studentCubit.viewDegrees(
+                    std_degree: sharedPref.getString('user_id')!,
+                  );
                   GoRouter.of(context).push(AppRouter.kDegreesView);
                 },
               ),

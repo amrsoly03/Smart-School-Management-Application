@@ -267,6 +267,7 @@ class ParentRepoImpl implements ParentRepo {
     }
   }
 
+  @override
   Future<Either<Failures, String>> PayFees({
     required String parent_id,
   }) async {
@@ -275,6 +276,38 @@ class ParentRepoImpl implements ParentRepo {
         link: Links.linkPayFees,
         data: {
           'parent_id': parent_id,
+        },
+      );
+
+      log('response: $response');
+
+      if (response['status'] == 'failed') {
+        return left(ServerFailures(response['message']));
+      } else {
+        return right(response['message']);
+      }
+    } catch (e) {
+      if (e is SocketException) {
+        return left(ServerFailures('No internet connection'));
+      }
+      log('e: $e');
+      return left(ServerFailures('something went wrong'));
+    }
+  }
+
+    @override
+  Future<Either<Failures, String>> approveOrder({
+    required String parent_id,
+    required String order_id,
+    required String total_price,
+  }) async {
+    try {
+      Map<String, dynamic> response = await apiService.httpPost(
+        link: Links.linkApproveOrder,
+        data: {
+          'parent_id': parent_id,
+          'order_id': order_id,
+          'total_price': total_price
         },
       );
 

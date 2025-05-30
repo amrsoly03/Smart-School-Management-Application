@@ -25,7 +25,7 @@ class ParentHomeViewBody extends StatelessWidget {
               text: "Student Follow up",
               icon: Icons.person,
               onTap: () {
-                GoRouter.of(context).push(AppRouter.kStudentHomeView);
+                GoRouter.of(context).push(AppRouter.kStudentFollowUpView);
               },
             ),
             const SizedBox(height: 40),

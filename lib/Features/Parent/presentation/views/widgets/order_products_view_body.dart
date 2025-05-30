@@ -8,7 +8,9 @@ import '../../../../../Core/widgets/custom_appBar.dart';
 import 'order_product_card.dart';
 
 class OrderProductsViewBody extends StatelessWidget {
-  const OrderProductsViewBody({super.key});
+  const OrderProductsViewBody({super.key, required this.approvedProducts});
+
+  final bool approvedProducts;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,7 @@ class OrderProductsViewBody extends StatelessWidget {
         anotherFunction: () {
           parentCubit.viewPreviousTransactions(
             order_student: sharedPref.getString('student_id')!,
-            order_approved: '1',
+            order_approved: approvedProducts ? '1' : '0',
           );
         },
       ),

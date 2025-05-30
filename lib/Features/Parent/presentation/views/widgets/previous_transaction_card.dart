@@ -22,7 +22,10 @@ class PreviousTransactionCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         parentCubit.viewOrderProducts(op_order: orderModel.orderId.toString());
-        GoRouter.of(context).push(AppRouter.kOrderProductsView);
+        GoRouter.of(context).push(
+          AppRouter.kOrderProductsView,
+          extra: true,
+        );
       },
       child: Container(
         padding: const EdgeInsets.all(16),
@@ -49,7 +52,6 @@ class PreviousTransactionCard extends StatelessWidget {
                 style: const TextStyle(color: Colors.white, fontSize: 20),
               ),
             ),
-      
             Center(
               child: Text(
                 'Date: ${orderModel.date!}',

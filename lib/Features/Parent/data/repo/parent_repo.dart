@@ -46,4 +46,10 @@ abstract class ParentRepo {
   Future<Either<Failures, String>> PayFees({
     required String parent_id,
   });
+
+    Future<Either<Failures, String>> approveOrder({
+    required String parent_id,
+    required String order_id,
+    required String total_price,
+  });
 }

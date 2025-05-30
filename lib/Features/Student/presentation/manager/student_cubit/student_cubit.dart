@@ -44,11 +44,11 @@ class StudentCubit extends Cubit<StudentState> {
     );
   }
 
-  Future<void> viewDegrees() async {
+  Future<void> viewDegrees({required String std_degree}) async {
     emit(StudentLoading());
 
     final degreesResult = await studentRepo.viewDegrees(
-      std_degree: sharedPref.getString('user_id')!,
+      std_degree: std_degree,
     );
 
     degreesResult.fold(

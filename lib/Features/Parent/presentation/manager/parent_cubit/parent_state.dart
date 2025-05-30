@@ -64,3 +64,9 @@ final class PayFeesSuccess extends ParentState {
 
   const PayFeesSuccess(this.message);
 }
+
+final class ApproveOrderSuccess extends ParentState {
+  final String message;
+
+  const ApproveOrderSuccess(this.message);
+}

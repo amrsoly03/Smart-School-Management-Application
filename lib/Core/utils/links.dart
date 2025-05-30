@@ -57,4 +57,5 @@ class Links {
   static const linkViewOrderProducts = '$linkServerName/Parent/view_order_products.php';
   static const linkChargeCoins = '$linkServerName/Parent/charge_coins.php';
   static const linkPayFees = '$linkServerName/Parent/pay_fees.php';
+  static const linkApproveOrder = '$linkServerName/Parent/approve_order.php';
 }
