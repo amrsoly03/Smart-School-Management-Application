@@ -34,6 +34,7 @@ import '../../Features/Admin/presentation/views/create_account_view.dart';
 import '../../Features/Admin/presentation/views/edit_user_view.dart';
 import '../../Features/Admin/presentation/views/teacher_home_view.dart';
 import '../../Features/Auth/presentation/views/login_view.dart';
+import '../../Features/Parent/presentation/views/order_products_view.dart';
 import '../../first_screen.dart';
 import '../models/activity_model.dart';
 import '../models/quiz_model.dart';
@@ -78,6 +79,7 @@ abstract class AppRouter {
   static const kNotificationsAndReportsView = '/NotificationsAndReportsView';
   static const kParentSendReportView = '/ParentSendReportView';
   static const kParentSentReportsView = '/ParentSentReportsView';
+  static const kOrderProductsView = '/OrderProductsView';
 
   static final router = GoRouter(
     routes: [
@@ -228,6 +230,10 @@ abstract class AppRouter {
       GoRoute(
         path: kParentSentReportsView,
         builder: (context, state) => const ParentSentReportsView(),
+      ),
+      GoRoute(
+        path: kOrderProductsView,
+        builder: (context, state) => const OrderProductsView(),
       ),
     ],
   );

@@ -7,6 +7,7 @@ import 'package:nexura/Core/models/parent_model.dart';
 import 'package:nexura/Features/Parent/data/repo/parent_repo.dart';
 
 import '../../../../Core/errors/failures.dart';
+import '../../../../Core/models/product_model.dart';
 import '../../../../Core/models/report_model.dart';
 import '../../../../Core/utils/api_service.dart';
 import '../../../../Core/utils/links.dart';
@@ -138,6 +139,7 @@ class ParentRepoImpl implements ParentRepo {
     }
   }
 
+  @override
   Future<Either<Failures, List<OrderModel>>> viewPreviousTransactions({
     required String order_student,
     required String order_approved,
@@ -172,4 +174,38 @@ class ParentRepoImpl implements ParentRepo {
       return left(ServerFailures('something went wrong'));
     }
   }
-}
+
+
+  @override
+  Future<Either<Failures, List<ProductModel>>> viewOrderProducts({
+    required String op_order,
+  }) async {
+    try {
+      Map<String, dynamic> response = await apiService.httpPost(
+        link: Links.linkViewOrderProducts,
+        data: {
+          'op_order': op_order,
+        },
+      );
+
+      log('response: $response');
+
+      if (response['status'] == 'failed') {
+        return left(ServerFailures(response['message']));
+      } else {
+        List<ProductModel> products = [];
+
+        for (var item in response['data']) {
+          products.add(ProductModel.fromJson(item));
+        }
+
+        return right(products);
+      }
+    } catch (e) {
+      if (e is SocketException) {
+        return left(ServerFailures('No internet connection'));
+      }
+      log('e: $e');
+      return left(ServerFailures('something went wrong'));
+    }
+  }}

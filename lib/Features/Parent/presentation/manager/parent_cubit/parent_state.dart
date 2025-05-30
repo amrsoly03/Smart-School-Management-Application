@@ -46,3 +46,9 @@ final class ViewPreviousTransactionsSuccess extends ParentState {
 
   const ViewPreviousTransactionsSuccess(this.orders);
 }
+
+final class ViewOrderProductsSuccess extends ParentState {
+  final List<ProductModel> products;
+
+  const ViewOrderProductsSuccess(this.products);
+}

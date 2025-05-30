@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nexura/Core/models/parent_model.dart';
+import 'package:nexura/Core/models/product_model.dart';
 import 'package:nexura/Features/Parent/data/repo/parent_repo.dart';
 import 'package:nexura/main.dart';
 
@@ -106,6 +107,21 @@ class ParentCubit extends Cubit<ParentState> {
       },
       (orders) {
         emit(ViewPreviousTransactionsSuccess(orders));
+      },
+    );
+  }
+
+  Future<void> viewOrderProducts({required String op_order}) async {
+    emit(ParentLoading());
+
+    final loginResult = await parentRepo.viewOrderProducts(op_order: op_order);
+
+    loginResult.fold(
+      (failures) {
+        emit(ParentFailure(failures.errMessage));
+      },
+      (products) {
+        emit(ViewOrderProductsSuccess(products));
       },
     );
   }
