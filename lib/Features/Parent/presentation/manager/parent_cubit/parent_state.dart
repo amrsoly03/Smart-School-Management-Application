@@ -52,3 +52,15 @@ final class ViewOrderProductsSuccess extends ParentState {
 
   const ViewOrderProductsSuccess(this.products);
 }
+
+final class ChargeCoinsSuccess extends ParentState {
+  final String message;
+
+  const ChargeCoinsSuccess(this.message);
+}
+
+final class PayFeesSuccess extends ParentState {
+  final String message;
+
+  const PayFeesSuccess(this.message);
+}

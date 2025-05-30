@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nexura/Features/Admin/presentation/manager/models_cubit/models_cubit.dart';
 import 'package:nexura/Features/Admin/presentation/manager/select_models_cubit/select_models_cubit.dart';
+import 'package:nexura/Features/Parent/presentation/manager/fees_cubit/fees_cubit.dart';
 import 'package:nexura/Features/Parent/presentation/manager/parent_cubit/parent_cubit.dart';
 import 'package:nexura/Features/Student/data/repo/student_repo_impl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -56,6 +57,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<ParentCubit>(
           create: (context) => ParentCubit(getIt.get<ParentRepoImpl>()),
+        ),
+        BlocProvider<FeesCubit>(
+          create: (context) => FeesCubit(getIt.get<ParentRepoImpl>()),
         ),
       ],
       child: MaterialApp.router(

@@ -43,7 +43,7 @@ class CustomFormField extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(10)),
         ),
       ),
-      keyboardType: TextInputType.emailAddress,
+      keyboardType: keyboardType,
       textCapitalization: TextCapitalization.none,
       onSaved: onSaved,
       validator: validator,

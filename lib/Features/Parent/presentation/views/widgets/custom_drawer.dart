@@ -56,7 +56,7 @@ class CustomDrawer extends StatelessWidget {
                 style: Styles.textStyle18,
               ),
               onTap: () {
-                GoRouter.of(context).pushReplacement(AppRouter.kPaymentView);
+                GoRouter.of(context).pushReplacement(AppRouter.kChargeCoinsView);
               },
             ),
             ListTile(

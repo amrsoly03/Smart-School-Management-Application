@@ -51,7 +51,10 @@ class Links {
   static const linkParentSendReport = '$linkServerName/Parent/parent_send_report.php';
   static const linkViewParentSentReports = '$linkServerName/Parent/view_sent_reports.php';
   static const linkViewCoins = '$linkServerName/Parent/view_coins.php';
+  static const linkViewFees = '$linkServerName/Parent/view_fees.php';
   static const linkViewPreviousTransactions = '$linkServerName/Parent/view_previous_transactions.php';
   static const linkViewOrderDetails = '$linkServerName/Parent/view_order_details.php';
   static const linkViewOrderProducts = '$linkServerName/Parent/view_order_products.php';
+  static const linkChargeCoins = '$linkServerName/Parent/charge_coins.php';
+  static const linkPayFees = '$linkServerName/Parent/pay_fees.php';
 }

@@ -33,4 +33,17 @@ abstract class ParentRepo {
   Future<Either<Failures, List<ProductModel>>> viewOrderProducts({
     required String op_order,
   });
+
+  Future<Either<Failures, String>> chargeCoins({
+    required String parent_id,
+    required String increase_by,
+  });
+
+  Future<Either<Failures, int>> viewFees({
+    required String student_id,
+  });
+
+  Future<Either<Failures, String>> PayFees({
+    required String parent_id,
+  });
 }

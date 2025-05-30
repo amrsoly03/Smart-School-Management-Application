@@ -10,7 +10,7 @@ import 'package:nexura/Features/Parent/presentation/views/notifications_and_repo
 import 'package:nexura/Features/Parent/presentation/views/parent_home_view.dart';
 import 'package:nexura/Features/Parent/presentation/views/parent_send_report_view.dart';
 import 'package:nexura/Features/Parent/presentation/views/parent_sent_reports_view.dart';
-import 'package:nexura/Features/Parent/presentation/views/payment_view.dart';
+import 'package:nexura/Features/Parent/presentation/views/charge_coins_view.dart';
 import 'package:nexura/Features/Parent/presentation/views/previous_transaction_view.dart';
 import 'package:nexura/Features/Parent/presentation/views/wallet_details_view.dart';
 import 'package:nexura/Features/Student/presentation/views/activities_view.dart';
@@ -35,6 +35,7 @@ import '../../Features/Admin/presentation/views/edit_user_view.dart';
 import '../../Features/Admin/presentation/views/teacher_home_view.dart';
 import '../../Features/Auth/presentation/views/login_view.dart';
 import '../../Features/Parent/presentation/views/order_products_view.dart';
+import '../../Features/Parent/presentation/views/pay_fees_view.dart';
 import '../../first_screen.dart';
 import '../models/activity_model.dart';
 import '../models/quiz_model.dart';
@@ -74,7 +75,8 @@ abstract class AppRouter {
 
   //
   static const kWalletDetailsView = '/WalletDetailsView';
-  static const kPaymentView = '/PaymentView';
+  static const kChargeCoinsView = '/ChargeCoinsView';
+  static const kPayFeesView = '/PayFeesView';
   static const kPreviousTransactionView = '/PreviousTransactionView';
   static const kNotificationsAndReportsView = '/NotificationsAndReportsView';
   static const kParentSendReportView = '/ParentSendReportView';
@@ -212,8 +214,12 @@ abstract class AppRouter {
         builder: (context, state) => const WalletDetailsView(),
       ),
       GoRoute(
-        path: kPaymentView,
-        builder: (context, state) => const PaymentView(),
+        path: kChargeCoinsView,
+        builder: (context, state) => const ChargeCoinsView(),
+      ),
+      GoRoute(
+        path: kPayFeesView,
+        builder: (context, state) => const PayFeesView(),
       ),
       GoRoute(
         path: kPreviousTransactionView,

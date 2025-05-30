@@ -175,7 +175,6 @@ class ParentRepoImpl implements ParentRepo {
     }
   }
 
-
   @override
   Future<Either<Failures, List<ProductModel>>> viewOrderProducts({
     required String op_order,
@@ -208,4 +207,90 @@ class ParentRepoImpl implements ParentRepo {
       log('e: $e');
       return left(ServerFailures('something went wrong'));
     }
-  }}
+  }
+
+  @override
+  Future<Either<Failures, String>> chargeCoins({
+    required String parent_id,
+    required String increase_by,
+  }) async {
+    try {
+      Map<String, dynamic> response = await apiService.httpPost(
+        link: Links.linkChargeCoins,
+        data: {
+          'parent_id': parent_id,
+          'increase_by': increase_by,
+        },
+      );
+
+      log('response: $response');
+
+      if (response['status'] == 'failed') {
+        return left(ServerFailures(response['message']));
+      } else {
+        return right(response['message']);
+      }
+    } catch (e) {
+      if (e is SocketException) {
+        return left(ServerFailures('No internet connection'));
+      }
+      log('e: $e');
+      return left(ServerFailures('something went wrong'));
+    }
+  }
+
+  @override
+  Future<Either<Failures, int>> viewFees({
+    required String student_id,
+  }) async {
+    try {
+      Map<String, dynamic> response = await apiService.httpPost(
+        link: Links.linkViewFees,
+        data: {
+          'student_id': student_id,
+        },
+      );
+
+      log('response: $response');
+
+      if (response['status'] == 'failed') {
+        return left(ServerFailures(response['message']));
+      } else {
+        return right(response['data']['fees']);
+      }
+    } catch (e) {
+      if (e is SocketException) {
+        return left(ServerFailures('No internet connection'));
+      }
+      log('e: $e');
+      return left(ServerFailures('something went wrong'));
+    }
+  }
+
+  Future<Either<Failures, String>> PayFees({
+    required String parent_id,
+  }) async {
+    try {
+      Map<String, dynamic> response = await apiService.httpPost(
+        link: Links.linkPayFees,
+        data: {
+          'parent_id': parent_id,
+        },
+      );
+
+      log('response: $response');
+
+      if (response['status'] == 'failed') {
+        return left(ServerFailures(response['message']));
+      } else {
+        return right(response['message']);
+      }
+    } catch (e) {
+      if (e is SocketException) {
+        return left(ServerFailures('No internet connection'));
+      }
+      log('e: $e');
+      return left(ServerFailures('something went wrong'));
+    }
+  }
+}

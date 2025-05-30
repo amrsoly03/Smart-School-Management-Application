@@ -7,9 +7,13 @@ class ProcessButton extends StatelessWidget {
   const ProcessButton({
     super.key,
     required this.title,
+    required this.function,
+    required this.color,
   });
 
   final String title;
+  final Function() function;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +21,10 @@ class ProcessButton extends StatelessWidget {
     return Expanded(
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          //backgroundColor: isSelected ? darkBlue : Colors.white,
-          //foregroundColor: isSelected ? Colors.white : darkBlue,
+          backgroundColor: color,
           side: const BorderSide(color: darkBlue),
         ),
-        onPressed: () {},
+        onPressed: function,
         child: Text(
           title,
           style: Styles.textStyle16,

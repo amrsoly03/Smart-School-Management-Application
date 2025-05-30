@@ -1,3 +1,4 @@
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nexura/Core/models/parent_model.dart';
@@ -122,6 +123,43 @@ class ParentCubit extends Cubit<ParentState> {
       },
       (products) {
         emit(ViewOrderProductsSuccess(products));
+      },
+    );
+  }
+
+  Future<void> chargeCoins({
+    required String increase_by,
+  }) async {
+    emit(ParentLoading());
+
+    final loginResult = await parentRepo.chargeCoins(
+      parent_id: sharedPref.getString('user_id')!,
+      increase_by: increase_by,
+    );
+
+    loginResult.fold(
+      (failures) {
+        emit(ParentFailure(failures.errMessage));
+      },
+      (message) {
+        emit(ChargeCoinsSuccess(message));
+      },
+    );
+  }
+
+   Future<void> payFees() async {
+    emit(ParentLoading());
+
+    final loginResult = await parentRepo.PayFees(
+      parent_id: sharedPref.getString('user_id')!,
+    );
+
+    loginResult.fold(
+      (failures) {
+        emit(ParentFailure(failures.errMessage));
+      },
+      (message) {
+        emit(PayFeesSuccess(message));
       },
     );
   }

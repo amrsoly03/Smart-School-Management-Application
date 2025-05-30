@@ -12,6 +12,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.title,
     this.actions,
     this.canPop = true,
+    this.anotherFunction,
   });
 
   @override
@@ -20,6 +21,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final List<Widget>? actions;
   final bool canPop;
+  final dynamic anotherFunction;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: actions,
       leading: canPop
           ? IconButton(
-              onPressed: GoRouter.of(context).pop,
+              onPressed: () {
+                GoRouter.of(context).pop();
+                if (anotherFunction != null) {
+                  anotherFunction();
+                }
+
+              },
               icon: const Icon(Icons.arrow_back_ios_new),
             )
           : null,
