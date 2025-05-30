@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 class SizeConfig {
@@ -10,7 +12,7 @@ class SizeConfig {
   void init(BuildContext context) {
     _mediaQueryData = MediaQuery.of(context);
     screenWidth = _mediaQueryData.size.width;
-    print('$screenWidth');
+    log('$screenWidth');
     screenHeight = _mediaQueryData.size.height;
     orientation = _mediaQueryData.orientation;
   }

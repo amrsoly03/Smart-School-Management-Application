@@ -20,7 +20,7 @@ class StudentCubit extends Cubit<StudentState> {
   final StudentRepo studentRepo;
 
   late void addOrderProductsResult;
-  
+
   List<Map<String, String>> choosenAnswers = [];
 
   Future<void> studentLogin({

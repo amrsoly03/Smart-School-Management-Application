@@ -92,7 +92,8 @@ class QuizViewBody extends StatelessWidget {
                             increase_by: correctAnswersCount.toString(),
                           );
 
-                          studentCubit.submitQuiz(qd_quiz: quizModel.quizId.toString());
+                          studentCubit.submitQuiz(
+                              qd_quiz: quizModel.quizId.toString());
                         },
                       ),
                     ],

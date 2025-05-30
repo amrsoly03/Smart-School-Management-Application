@@ -59,7 +59,6 @@ final class SubscribeActivitySuccess extends StudentState {
   const SubscribeActivitySuccess(this.message);
 }
 
-
 final class AddOrderSuccess extends StudentState {
   final OrderModel order;
 

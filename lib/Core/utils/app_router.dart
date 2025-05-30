@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:go_router/go_router.dart';
 import 'package:nexura/Features/Admin/presentation/views/activities_notification_view.dart';
 import 'package:nexura/Features/Admin/presentation/views/add_degree_view.dart';
@@ -42,7 +40,7 @@ import '../models/quiz_model.dart';
 
 abstract class AppRouter {
   //static const kSplashScreen = '/SplashScreen';
-  static const kLoginView = '/LoginView';
+  static const kLoginView = '/FirstScreen';
   static const kAdminsHomeView = '/AdminsHomeView';
   static const kSchoolAdminHomeView = '/SchoolAdminHomeView';
   static const kCafeteriaAdminHomeView = '/CafeteriaAdminHomeView';
@@ -197,7 +195,7 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kQuizView,
-        builder: (context, state) =>  QuizView(
+        builder: (context, state) => QuizView(
           quizModel: state.extra as QuizModel,
         ),
       ),

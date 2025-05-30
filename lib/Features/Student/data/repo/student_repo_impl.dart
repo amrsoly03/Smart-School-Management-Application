@@ -271,7 +271,7 @@ class StudentRepoImpl implements StudentRepo {
     }
   }
 
-    @override
+  @override
   Future<Either<Failures, List<QuestionModel>>> viewQuizQuestions({
     required String question_quiz,
   }) async {
@@ -305,7 +305,7 @@ class StudentRepoImpl implements StudentRepo {
     }
   }
 
-   @override
+  @override
   Future<Either<Failures, String>> submitQuiz({
     required String qd_quiz,
     required String qd_student,

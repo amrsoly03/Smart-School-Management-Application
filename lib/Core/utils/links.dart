@@ -2,8 +2,6 @@ class Links {
   //static const linkServerName = 'http://10.0.2.2/ssma';
   static const linkServerName = 'http://192.168.1.8/ssma';
 
-  // static const linkUploadExerciseImage =
-  //     '$linkServerName/upload/exercises_image';
   static const linkUploadSchedule = '$linkServerName/upload/schedules_images';
   static const linkUploadActivities =
       '$linkServerName/upload/activities_images';
@@ -34,12 +32,16 @@ class Links {
 
   static const linkStudentLogin = '$linkServerName/Student/student_login.php';
   static const linkViewDegrees = '$linkServerName/Student/view_std_degrees.php';
-  static const linkViewStudentQuizzes = '$linkServerName/Student/view_std_quizzes.php';
-  static const linkViewQuizQuestions = '$linkServerName/Student/view_quiz_questions.php';
+  static const linkViewStudentQuizzes =
+      '$linkServerName/Student/view_std_quizzes.php';
+  static const linkViewQuizQuestions =
+      '$linkServerName/Student/view_quiz_questions.php';
   static const linkAddOrder = '$linkServerName/Student/add_order.php';
-  static const linkAddOrderProduct = '$linkServerName/Student/add_order_product.php';
+  static const linkAddOrderProduct =
+      '$linkServerName/Student/add_order_product.php';
   static const linkSubmitQuiz = '$linkServerName/Student/submit_quiz.php';
-  static const linkIncreasePracticalDegree = '$linkServerName/Student/increase_practical_degree.php';
+  static const linkIncreasePracticalDegree =
+      '$linkServerName/Student/increase_practical_degree.php';
   static const linkViewSchedule =
       '$linkServerName/Student/view_std_schedule.php';
   static const linkSubscribeActivity =
