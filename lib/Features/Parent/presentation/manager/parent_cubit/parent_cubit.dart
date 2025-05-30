@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nexura/Core/models/parent_model.dart';
 import 'package:nexura/Features/Parent/data/repo/parent_repo.dart';
 
+import '../../../../../Core/models/report_model.dart';
+
 part 'parent_state.dart';
 
 class ParentCubit extends Cubit<ParentState> {
@@ -48,6 +50,21 @@ class ParentCubit extends Cubit<ParentState> {
       },
       (message) {
         emit(SendReportSuccess(message));
+      },
+    );
+  }
+
+  Future<void> viewParentSentReports({required String std_report}) async {
+    emit(ParentLoading());
+
+    final loginResult = await parentRepo.viewParentSentReports(std_report: std_report);
+
+    loginResult.fold(
+      (failures) {
+        emit(ParentFailure(failures.errMessage));
+      },
+      (reports) {
+        emit(ViewSentReportsSuccess(reports));
       },
     );
   }

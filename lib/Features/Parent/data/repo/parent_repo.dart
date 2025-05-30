@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 
 import '../../../../Core/errors/failures.dart';
 import '../../../../Core/models/parent_model.dart';
+import '../../../../Core/models/report_model.dart';
 
 abstract class ParentRepo {
   
@@ -14,5 +15,8 @@ abstract class ParentRepo {
     required String std_report,
     required String content,
   });
+
+  Future<Either<Failures, List<ReportModel>>> viewParentSentReports(
+      {required String std_report});
   
 }

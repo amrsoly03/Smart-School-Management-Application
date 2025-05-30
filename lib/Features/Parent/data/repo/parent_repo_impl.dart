@@ -6,6 +6,7 @@ import 'package:nexura/Core/models/parent_model.dart';
 import 'package:nexura/Features/Parent/data/repo/parent_repo.dart';
 
 import '../../../../Core/errors/failures.dart';
+import '../../../../Core/models/report_model.dart';
 import '../../../../Core/utils/api_service.dart';
 import '../../../../Core/utils/links.dart';
 
@@ -45,7 +46,7 @@ class ParentRepoImpl implements ParentRepo {
     }
   }
 
-   @override
+  @override
   Future<Either<Failures, String>> parentSendReport({
     required String std_report,
     required String content,
@@ -65,6 +66,38 @@ class ParentRepoImpl implements ParentRepo {
         return left(ServerFailures(response['message']));
       } else {
         return right(response['message']);
+      }
+    } catch (e) {
+      if (e is SocketException) {
+        return left(ServerFailures('No internet connection'));
+      }
+      log('e: $e');
+      return left(ServerFailures('something went wrong'));
+    }
+  }
+
+  Future<Either<Failures, List<ReportModel>>> viewParentSentReports(
+      {required String std_report}) async {
+    try {
+      Map<String, dynamic> response = await apiService.httpPost(
+        link: Links.linkViewParentSentReports,
+        data: {
+          'std_report': std_report,
+        },
+      );
+
+      log('response: $response');
+
+      if (response['status'] == 'failed') {
+        return left(ServerFailures(response['message']));
+      } else {
+        List<ReportModel> reports = [];
+
+        for (var item in response['data']) {
+          reports.add(ReportModel.fromJson(item));
+        }
+
+        return right(reports);
       }
     } catch (e) {
       if (e is SocketException) {

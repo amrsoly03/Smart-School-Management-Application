@@ -28,3 +28,9 @@ final class SendReportSuccess extends ParentState {
 
   const SendReportSuccess(this.message);
 }
+
+final class ViewSentReportsSuccess extends ParentState {
+  final List<ReportModel> reports;
+
+  const ViewSentReportsSuccess(this.reports);
+}
