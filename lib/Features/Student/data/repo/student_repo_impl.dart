@@ -86,13 +86,13 @@ class StudentRepoImpl implements StudentRepo {
 
   @override
   Future<Either<Failures, String>> viewSchedule({
-    required String grade_id,
+    required String student_id,
   }) async {
     try {
       Map<String, dynamic> response = await apiService.httpPost(
         link: Links.linkViewSchedule,
         data: {
-          'grade_id': grade_id,
+          'student_id': student_id,
         },
       );
 

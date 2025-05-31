@@ -53,13 +53,13 @@ class StudentFollowUpViewBody extends StatelessWidget {
                   GoRouter.of(context).push(AppRouter.kDegreesView);
                 },
               ),
-              // AdminsHomeButton(
-              //   title: 'View Student Schedule',
-              //   onPressed: () {
-              //     studentCubit.viewSchedule();
-              //     GoRouter.of(context).push(AppRouter.kScheduleView);
-              //   },
-              // ),
+              AdminsHomeButton(
+                title: 'View Student Schedule',
+                onPressed: () {
+                  studentCubit.viewSchedule(student_id: sharedPref.getString('student_id')!);
+                  GoRouter.of(context).push(AppRouter.kScheduleView);
+                },
+              ),
             ],
           ),
         ),

@@ -3,9 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nexura/Core/models/order_model.dart';
 import 'package:nexura/Core/utils/theme.dart';
-import 'package:nexura/Core/widgets/custom_snackbar.dart';
 import 'package:nexura/Features/Parent/presentation/manager/parent_cubit/parent_cubit.dart';
-import 'package:nexura/main.dart';
 
 import '../../../../../Core/utils/app_router.dart';
 import '../../../../../Core/utils/styles.dart';

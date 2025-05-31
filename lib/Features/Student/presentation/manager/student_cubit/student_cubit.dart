@@ -95,11 +95,11 @@ class StudentCubit extends Cubit<StudentState> {
     );
   }
 
-  Future<void> viewSchedule() async {
+  Future<void> viewSchedule({required String student_id}) async {
     emit(StudentLoading());
 
     final scheduleResult = await studentRepo.viewSchedule(
-      grade_id: sharedPref.getString('student_grade')!,
+      student_id: student_id,
     );
 
     scheduleResult.fold(

@@ -38,7 +38,7 @@ abstract class StudentRepo {
   });
 
   Future<Either<Failures, String>> viewSchedule({
-    required String grade_id,
+    required String student_id,
   });
 
   Future<Either<Failures, String>> subscribeActivity({
