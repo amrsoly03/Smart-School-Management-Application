@@ -58,4 +58,6 @@ class Links {
   static const linkChargeCoins = '$linkServerName/Parent/charge_coins.php';
   static const linkPayFees = '$linkServerName/Parent/pay_fees.php';
   static const linkApproveOrder = '$linkServerName/Parent/approve_order.php';
+  static const linkApproveActivity = '$linkServerName/Parent/approve_activity.php';
+  static const linkViewApproveActivities = '$linkServerName/Parent/view_approve_activities.php';
 }

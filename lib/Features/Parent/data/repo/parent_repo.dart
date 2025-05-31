@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../../Core/errors/failures.dart';
+import '../../../../Core/models/activity_model.dart';
 import '../../../../Core/models/order_model.dart';
 import '../../../../Core/models/parent_model.dart';
 import '../../../../Core/models/product_model.dart';
@@ -50,6 +51,17 @@ abstract class ParentRepo {
     Future<Either<Failures, String>> approveOrder({
     required String parent_id,
     required String order_id,
+    required String total_price,
+  });
+
+  Future<Either<Failures, List<ActivityModel>>> viewApproveActivities({
+    required String student_id,
+  });
+
+  Future<Either<Failures, String>> approveActivity({
+    required String parent_id,
+    required String student_as,
+    required String activity_as,
     required String total_price,
   });
 }

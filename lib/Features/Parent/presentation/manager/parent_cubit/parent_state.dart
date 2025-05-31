@@ -70,3 +70,15 @@ final class ApproveOrderSuccess extends ParentState {
 
   const ApproveOrderSuccess(this.message);
 }
+
+final class ViewApproveActivitiesSuccess extends ParentState {
+  final List<ActivityModel> activities;
+
+  const ViewApproveActivitiesSuccess(this.activities);
+}
+
+final class ApproveActivitySuccess extends ParentState {
+  final String message;
+
+  const ApproveActivitySuccess(this.message);
+}

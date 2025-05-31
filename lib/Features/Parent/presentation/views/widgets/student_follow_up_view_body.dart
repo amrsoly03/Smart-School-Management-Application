@@ -39,9 +39,10 @@ class StudentFollowUpViewBody extends StatelessWidget {
                 },
               ),
               AdminsHomeButton(
-                title: 'Approve Activity Subscription',
+                title: 'Approve Activity Subscriptions',
                 onPressed: () {
-                  //GoRouter.of(context).push(AppRouter.kLoginView);
+                  parentCubit.viewApproveActivities();
+                  GoRouter.of(context).push(AppRouter.kApproveActivitiesView);
                 },
               ),
               AdminsHomeButton(

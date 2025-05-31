@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
+import 'package:nexura/Core/models/activity_model.dart';
 import 'package:nexura/Core/models/order_model.dart';
 import 'package:nexura/Core/models/parent_model.dart';
 import 'package:nexura/Features/Parent/data/repo/parent_repo.dart';
@@ -307,6 +308,74 @@ class ParentRepoImpl implements ParentRepo {
         data: {
           'parent_id': parent_id,
           'order_id': order_id,
+          'total_price': total_price
+        },
+      );
+
+      log('response: $response');
+
+      if (response['status'] == 'failed') {
+        return left(ServerFailures(response['message']));
+      } else {
+        return right(response['message']);
+      }
+    } catch (e) {
+      if (e is SocketException) {
+        return left(ServerFailures('No internet connection'));
+      }
+      log('e: $e');
+      return left(ServerFailures('something went wrong'));
+    }
+  }
+
+  
+    Future<Either<Failures, List<ActivityModel>>> viewApproveActivities({
+    required String student_id,
+  }) async {
+    try {
+      Map<String, dynamic> response = await apiService.httpPost(
+        link: Links.linkViewApproveActivities,
+        data: {
+          'student_id': student_id,
+        },
+      );
+
+      log('response: $response');
+
+      if (response['status'] == 'failed') {
+        return left(ServerFailures(response['message']));
+      } else {
+        List<ActivityModel> activities = [];
+
+        for (var item in response['data']) {
+          activities.add(ActivityModel.fromJson(item));
+        }
+
+        return right(activities);
+      }
+    } catch (e) {
+      if (e is SocketException) {
+        return left(ServerFailures('No internet connection'));
+      }
+      log('e: $e');
+      return left(ServerFailures('something went wrong'));
+    }
+  }
+  
+  @override
+  Future<Either<Failures, String>> approveActivity({
+    required String parent_id,
+    required String student_as,
+    required String activity_as,
+    required String total_price,
+  }) async {
+    try {
+      Map<String, dynamic> response = await apiService.httpPost(
+        link: Links.linkApproveActivity,
+        data: {
+          'parent_id': parent_id,
+          'student_as': student_as,
+          'activity_as': activity_as,
           'total_price': total_price
         },
       );

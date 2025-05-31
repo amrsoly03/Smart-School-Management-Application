@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nexura/Core/models/activity_model.dart';
 import 'package:nexura/Core/models/parent_model.dart';
 import 'package:nexura/Core/models/product_model.dart';
 import 'package:nexura/Features/Parent/data/repo/parent_repo.dart';
@@ -178,6 +179,10 @@ class ParentCubit extends Cubit<ParentState> {
     loginResult.fold(
       (failures) {
         emit(ParentFailure(failures.errMessage));
+        viewPreviousTransactions(
+          order_student: sharedPref.getString('student_id')!,
+          order_approved: '0',
+        );
       },
       (message) {
         emit(ApproveOrderSuccess(message));
@@ -185,6 +190,48 @@ class ParentCubit extends Cubit<ParentState> {
           order_student: sharedPref.getString('student_id')!,
           order_approved: '0',
         );
+      },
+    );
+  }
+
+  Future<void> viewApproveActivities() async {
+    emit(ParentLoading());
+
+    final loginResult = await parentRepo.viewApproveActivities(
+      student_id: sharedPref.getString('student_id')!,
+    );
+
+    loginResult.fold(
+      (failures) {
+        emit(ParentFailure(failures.errMessage));
+      },
+      (activities) {
+        emit(ViewApproveActivitiesSuccess(activities));
+      },
+    );
+  }
+
+  Future<void> approveActivity({
+    required String activity_as,
+    required String total_price,
+  }) async {
+    emit(ParentLoading());
+
+    final loginResult = await parentRepo.approveActivity(
+      parent_id: sharedPref.getString('user_id')!,
+      student_as: sharedPref.getString('student_id')!,
+      activity_as: activity_as,
+      total_price: total_price,
+    );
+
+    loginResult.fold(
+      (failures) {
+        emit(ParentFailure(failures.errMessage));
+        viewApproveActivities();
+      },
+      (message) {
+        emit(ApproveActivitySuccess(message));
+        viewApproveActivities();
       },
     );
   }
