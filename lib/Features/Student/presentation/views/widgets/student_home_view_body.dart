@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nexura/Core/utils/app_router.dart';
-import 'package:nexura/Core/widgets/custom_appBar.dart';
+import 'package:nexura/Core/widgets/home_appbar.dart';
 import 'package:nexura/Features/Student/presentation/views/widgets/custom_container.dart';
 
 import '../../../../Admin/presentation/manager/models_cubit/models_cubit.dart';
@@ -15,7 +15,7 @@ class StudentHomeViewBody extends StatelessWidget {
     ModelsCubit modelsCubit = BlocProvider.of<ModelsCubit>(context);
 
     return Scaffold(
-      appBar: const CustomAppBar(title: 'home'),
+      appBar: const HomeAppbar(title: 'home'),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

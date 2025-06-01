@@ -41,11 +41,13 @@ import '../../Features/Parent/presentation/views/order_products_view.dart';
 import '../../Features/Parent/presentation/views/pay_fees_view.dart';
 import '../../Features/Parent/presentation/views/student_follow_up_view.dart';
 import '../../first_screen.dart';
+import '../../main.dart';
 import '../models/activity_model.dart';
 import '../models/quiz_model.dart';
 
 abstract class AppRouter {
   //static const kSplashScreen = '/SplashScreen';
+  static const kFirstScreen = '/FirstScreen';
   static const kLoginView = '/LoginView';
   static const kAdminsHomeView = '/AdminsHomeView';
   static const kSchoolAdminHomeView = '/SchoolAdminHomeView';
@@ -95,6 +97,29 @@ abstract class AppRouter {
     routes: [
       GoRoute(
         path: '/',
+        builder: (context, state) {
+          String userType = sharedPref.getString('user_type') ?? '';
+
+          switch (userType) {
+            case 'student':
+              return const StudentHomeView();
+            case 'parent':
+              return const ParentHomeView();
+            case 'teacher':
+              return const TeacherHomeView();
+            case 'schoolAdmin':
+              return const SchoolAdminHomeView();
+            case 'cafeteriaAdmin':
+              return const CafeteriaAdminHomeView();
+            case 'activitiesAdmin':
+              return const ActivitiesAdminHomeView();
+            default:
+              return const FirstScreen();
+          }
+        },
+      ),
+      GoRoute(
+        path: kFirstScreen,
         builder: (context, state) => const FirstScreen(),
       ),
       GoRoute(
@@ -251,7 +276,7 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kOrderProductsView,
-        builder: (context, state) =>  OrderProductsView(
+        builder: (context, state) => OrderProductsView(
           approvedProducts: state.extra as bool,
         ),
       ),

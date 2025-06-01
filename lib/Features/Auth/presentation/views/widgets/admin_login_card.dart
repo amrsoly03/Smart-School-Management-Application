@@ -27,29 +27,29 @@ class AdminLoginCard extends StatelessWidget {
 
   final String type;
 
-  void loginSuccessHandler(AdminLoginSuccess state) async {
-    await sharedPref.setString('user_id', state.adminModel.adminId.toString());
-    await sharedPref.setString('user_type', state.adminModel.type!);
-    log('User ID: ${state.adminModel.adminId}');
-    log('User Type: ${state.adminModel.type}');
-    // ...
-  }
+  // void loginSuccessHandler(AdminLoginSuccess state) async {
+  //   await sharedPref.setString('user_id', state.adminModel.adminId.toString());
+  //   await sharedPref.setString('user_type', state.adminModel.type!);
+  //   log('User ID: ${state.adminModel.adminId}');
+  //   log('User Type: ${state.adminModel.type}');
+  //   // ...
+  // }
 
   @override
   Widget build(BuildContext context) {
     AdminCubit adminCubit = BlocProvider.of<AdminCubit>(context);
 
     return BlocConsumer<AdminCubit, AdminState>(
-      listener: (context, state) {
+      listener: (context, state) async {
         if (state is AdminLoading) {
           _isUploading = true;
         } else if (state is AdminLoginSuccess) {
+           
           if (type == Users.schoolAdmin.name) {
             GoRouter.of(context)
                 .pushReplacement(AppRouter.kSchoolAdminHomeView)
                 .then(
               (value) {
-                loginSuccessHandler(state);
                 _isUploading = false;
               },
             );
@@ -58,7 +58,6 @@ class AdminLoginCard extends StatelessWidget {
                 .pushReplacement(AppRouter.kCafeteriaAdminHomeView)
                 .then(
               (value) {
-                loginSuccessHandler(state);
                 _isUploading = false;
               },
             );
@@ -67,7 +66,6 @@ class AdminLoginCard extends StatelessWidget {
                 .pushReplacement(AppRouter.kActivitiesAdminHomeView)
                 .then(
               (value) {
-                loginSuccessHandler(state);
                 _isUploading = false;
               },
             );
@@ -76,11 +74,16 @@ class AdminLoginCard extends StatelessWidget {
                 .pushReplacement(AppRouter.kTeacherHomeView)
                 .then(
               (value) {
-                loginSuccessHandler(state);
                 _isUploading = false;
               },
             );
           }
+          log('User Type: ${state.adminModel.type}');
+          await sharedPref.setString(
+            'user_id',
+            state.adminModel.adminId.toString(),
+          );
+          await sharedPref.setString('user_type', state.adminModel.type!);
         } else if (state is AdminFailure) {
           kShowSnackBar(context, state.errMessage);
           log(state.errMessage);

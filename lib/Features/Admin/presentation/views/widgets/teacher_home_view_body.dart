@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nexura/Core/widgets/home_appbar.dart';
 
 import '../../../../../Core/utils/app_router.dart';
-import '../../../../../Core/widgets/custom_appBar.dart';
 import '../../../../Parent/presentation/views/widgets/custom_rounded_button.dart';
 import '../../manager/questions_cubit/questions_cubit.dart';
 
@@ -15,7 +15,7 @@ class TeacherHomeViewBody extends StatelessWidget {
     QuestionsCubit questionsCubit = BlocProvider.of<QuestionsCubit>(context);
 
     return Scaffold(
-      appBar: const CustomAppBar(title: 'Teacher Home'),
+      appBar: const HomeAppbar(title: 'Teacher Home'),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Column(

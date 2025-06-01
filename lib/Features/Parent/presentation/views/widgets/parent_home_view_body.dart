@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nexura/Core/utils/app_router.dart';
-import 'package:nexura/Core/widgets/custom_appBar.dart';
 import 'package:nexura/Features/Parent/presentation/manager/parent_cubit/parent_cubit.dart';
 
+import '../../../../../Core/widgets/home_appbar.dart';
 import 'custom_rounded_button.dart';
 
 class ParentHomeViewBody extends StatelessWidget {
@@ -13,9 +13,11 @@ class ParentHomeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ParentCubit parentCubit = BlocProvider.of<ParentCubit>(context);
-    
+
     return Scaffold(
-      appBar: const CustomAppBar(title: 'Parent Home'),
+      appBar:  const HomeAppbar(
+        title: 'categories',
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Column(

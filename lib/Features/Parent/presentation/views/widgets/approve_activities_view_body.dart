@@ -14,7 +14,7 @@ class ApproveActivitiesViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(title: 'Approve Orders'),
+      appBar: const CustomAppBar(title: 'Approve Activities'),
       body: BlocConsumer<ParentCubit, ParentState>(
         listener: (context, state) {
           if (state is ParentFailure) {

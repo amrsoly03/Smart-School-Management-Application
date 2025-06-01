@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nexura/Core/widgets/home_appbar.dart';
 import 'package:nexura/Features/Admin/presentation/manager/admin_cubit/admin_cubit.dart';
 
 import '../../../../../Core/utils/app_router.dart';
-import '../../../../../Core/widgets/custom_appBar.dart';
 import '../../../../Parent/presentation/views/widgets/custom_rounded_button.dart';
 
 class CafeteriaAdminHomeViewBody extends StatelessWidget {
@@ -14,7 +14,7 @@ class CafeteriaAdminHomeViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     AdminCubit adminCubit = BlocProvider.of<AdminCubit>(context);
     return Scaffold(
-      appBar: const CustomAppBar(title: 'Cafeteria Admin Home'),
+      appBar: const HomeAppbar(title: 'Cafeteria Admin Home'),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Column(

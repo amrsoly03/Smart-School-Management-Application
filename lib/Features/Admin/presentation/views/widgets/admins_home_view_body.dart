@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nexura/Core/widgets/custom_appBar.dart';
 
 import '../../../../../Core/utils/app_router.dart';
-import '../../../../../Core/widgets/custom_appBar.dart';
 import '../../../../../first_screen.dart';
 import 'admins_home_button.dart';
 
@@ -12,7 +12,9 @@ class AdminsHomeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(title: 'categories'),
+      appBar: const CustomAppBar(
+        title: 'choose your role',
+      ),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(20.0),

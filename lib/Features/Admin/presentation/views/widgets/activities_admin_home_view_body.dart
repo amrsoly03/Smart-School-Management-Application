@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nexura/Core/widgets/home_appbar.dart';
 
 import '../../../../../Core/utils/app_router.dart';
-import '../../../../../Core/widgets/custom_appBar.dart';
 import '../../../../Parent/presentation/views/widgets/custom_rounded_button.dart';
 
 class ActivitiesAdminHomeViewBody extends StatelessWidget {
@@ -11,7 +11,7 @@ class ActivitiesAdminHomeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(title: 'Activities Admin Home'),
+      appBar: const HomeAppbar(title: 'Activities Admin Home'),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Column(

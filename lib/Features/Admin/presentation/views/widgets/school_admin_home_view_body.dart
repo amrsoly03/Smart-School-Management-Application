@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:focused_menu/modals.dart';
 import 'package:go_router/go_router.dart';
-import 'package:nexura/Core/widgets/custom_appBar.dart';
+import 'package:nexura/Core/widgets/home_appbar.dart';
 import 'package:nexura/Features/Admin/presentation/manager/admin_cubit/admin_cubit.dart';
 
 import '../../../../../Core/functions/capitalize.dart';
@@ -20,7 +20,7 @@ class SchoolAdminHomeViewBody extends StatelessWidget {
     AdminCubit adminCubit = BlocProvider.of<AdminCubit>(context);
 
     return Scaffold(
-      appBar: const CustomAppBar(title: 'Home'),
+      appBar: const HomeAppbar(title: 'Home'),
       body: Padding(
         padding: const EdgeInsets.all(15),
         child: SizedBox(
