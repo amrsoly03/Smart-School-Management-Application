@@ -11,6 +11,7 @@ import 'package:nexura/Core/models/subject_model.dart';
 import 'package:nexura/Features/Admin/data/repo/admin_repo.dart';
 
 import '../../../../Core/errors/failures.dart';
+import '../../../../Core/models/order_model.dart';
 import '../../../../Core/utils/api_service.dart';
 import '../../../../Core/utils/links.dart';
 import '../models/admin_model.dart';
@@ -533,6 +534,35 @@ class AdminRepoImpl implements AdminRepo {
         return left(ServerFailures(response['message']));
       } else {
         return right(response['message']);
+      }
+    } catch (e) {
+      if (e is SocketException) {
+        return left(ServerFailures('No internet connection'));
+      }
+      log('e: $e');
+      return left(ServerFailures('something went wrong'));
+    }
+  }
+
+  Future<Either<Failures, List<OrderModel>>> viewAllOrders() async {
+    try {
+      Map<String, dynamic> response = await apiService.httpPost(
+        link: Links.linkViewAllOrders,
+        data: {},
+      );
+
+      log('response: $response');
+
+      if (response['status'] == 'failed') {
+        return left(ServerFailures(response['message']));
+      } else {
+        List<OrderModel> orders = [];
+
+        for (var item in response['data']) {
+          orders.add(OrderModel.fromJson(item));
+        }
+
+        return right(orders);
       }
     } catch (e) {
       if (e is SocketException) {

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nexura/Features/Admin/presentation/manager/admin_cubit/admin_cubit.dart';
 
 import '../../../../../Core/utils/app_router.dart';
 import '../../../../../Core/widgets/custom_appBar.dart';
@@ -10,6 +12,7 @@ class CafeteriaAdminHomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AdminCubit adminCubit = BlocProvider.of<AdminCubit>(context);
     return Scaffold(
       appBar: const CustomAppBar(title: 'Cafeteria Admin Home'),
       body: Padding(
@@ -29,7 +32,8 @@ class CafeteriaAdminHomeViewBody extends StatelessWidget {
               text: "View Previous Orders",
               icon: Icons.history,
               onTap: () {
-                GoRouter.of(context).push(AppRouter.kPreviousTransactionView);
+                adminCubit.viewAllOrders();
+                GoRouter.of(context).push(AppRouter.kAllOrdersView);
               },
             ),
           ],

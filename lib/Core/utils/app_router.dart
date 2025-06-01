@@ -29,6 +29,7 @@ import '../../Features/Admin/presentation/views/activities_admin_home_view.dart'
 import '../../Features/Admin/presentation/views/add_activity_view.dart';
 import '../../Features/Admin/presentation/views/add_product_view.dart';
 import '../../Features/Admin/presentation/views/admins_home_view.dart';
+import '../../Features/Admin/presentation/views/all_orders_view.dart';
 import '../../Features/Admin/presentation/views/cafeteria_admin_home_view.dart';
 import '../../Features/Admin/presentation/views/create_account_view.dart';
 import '../../Features/Admin/presentation/views/edit_user_view.dart';
@@ -62,6 +63,7 @@ abstract class AppRouter {
   static const kSentReportsView = '/SentReportsView';
   static const kAddProductView = '/AddProductView';
   static const kAddActivityView = '/AddActivityView';
+  static const kAllOrdersView = '/AllOrdersView';
 
   //
   static const kActivitiesNotificationView = '/ActivitiesNotificationView';
@@ -93,7 +95,7 @@ abstract class AppRouter {
     routes: [
       GoRoute(
         path: '/',
-        builder: (context, state) => const ParentHomeView(),
+        builder: (context, state) => const CafeteriaAdminHomeView(),
       ),
       GoRoute(
         path: kLoginView,
@@ -164,6 +166,10 @@ abstract class AppRouter {
       GoRoute(
         path: kAddActivityView,
         builder: (context, state) => const AddActivityView(),
+      ),
+      GoRoute(
+        path: kAllOrdersView,
+        builder: (context, state) => const AllOrdersView(),
       ),
       GoRoute(
         path: kActivitiesNotificationView,

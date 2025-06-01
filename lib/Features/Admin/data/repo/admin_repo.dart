@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart';
 import '../../../../Core/errors/failures.dart';
 import '../../../../Core/models/activity_model.dart';
 import '../../../../Core/models/grade_model.dart';
+import '../../../../Core/models/order_model.dart';
 import '../../../../Core/models/question_model.dart';
 import '../../../../Core/models/quiz_model.dart';
 import '../../../../Core/models/report_model.dart';
@@ -91,4 +92,6 @@ abstract class AdminRepo {
     required String price,
     required File image,
   });
+
+  Future<Either<Failures, List<OrderModel>>> viewAllOrders();
 }

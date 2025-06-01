@@ -9,6 +9,7 @@ import 'package:nexura/Core/models/quiz_model.dart';
 import 'package:nexura/Features/Admin/data/models/admin_model.dart';
 
 import '../../../../../Core/errors/failures.dart';
+import '../../../../../Core/models/order_model.dart';
 import '../../../../../Core/models/report_model.dart';
 import '../../../data/repo/admin_repo.dart';
 
@@ -317,6 +318,21 @@ class AdminCubit extends Cubit<AdminState> {
         emit(
           AddActivitySuccess(message),
         );
+      },
+    );
+  }
+
+   Future<void> viewAllOrders() async {
+    emit(AdminLoading());
+
+    final viewAllOrders = await adminRepo.viewAllOrders();
+
+    viewAllOrders.fold(
+      (failure) {
+        emit(AdminFailure(failure.errMessage));
+      },
+      (orders) {
+        emit(ViewAllOrdersSuccess(orders));
       },
     );
   }

@@ -82,3 +82,11 @@ final class AddActivitySuccess extends AdminState {
 
   const AddActivitySuccess(this.message);
 }
+
+final class ViewAllOrdersSuccess extends AdminState {
+  final List<OrderModel> orders;
+
+  const ViewAllOrdersSuccess(this.orders);
+}
+
+

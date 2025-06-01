@@ -21,6 +21,7 @@ class Links {
   static const linkAddQuestion = '$linkServerName/Admin/add_question.php';
   static const linkAddProduct = '$linkServerName/Admin/add_product.php';
   static const linkAddActivity = '$linkServerName/Admin/add_activity.php';
+  static const linkViewAllOrders = '$linkServerName/Admin/view_orders.php';
 
   static const linkViewActivities =
       '$linkServerName/Models/view_activities.php';

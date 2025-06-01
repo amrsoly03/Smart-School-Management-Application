@@ -296,7 +296,7 @@ class ParentRepoImpl implements ParentRepo {
     }
   }
 
-    @override
+  @override
   Future<Either<Failures, String>> approveOrder({
     required String parent_id,
     required String order_id,
@@ -328,8 +328,8 @@ class ParentRepoImpl implements ParentRepo {
     }
   }
 
-  
-    Future<Either<Failures, List<ActivityModel>>> viewApproveActivities({
+  @override
+  Future<Either<Failures, List<ActivityModel>>> viewApproveActivities({
     required String student_id,
   }) async {
     try {
@@ -361,7 +361,7 @@ class ParentRepoImpl implements ParentRepo {
       return left(ServerFailures('something went wrong'));
     }
   }
-  
+
   @override
   Future<Either<Failures, String>> approveActivity({
     required String parent_id,
