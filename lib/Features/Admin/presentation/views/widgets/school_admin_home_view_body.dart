@@ -53,6 +53,17 @@ class SchoolAdminHomeViewBody extends StatelessWidget {
                       GoRouter.of(context).push(AppRouter.kEditUserView);
                     },
                   ),
+                  FocusedMenuItem(
+                    title: Text(
+                      capitalize('charge user coins'),
+                      style: Styles.textStyle18,
+                    ),
+                    trailingIcon: const Icon(Icons.payment),
+                    backgroundColor: darkBlue,
+                    onPressed: () {
+                      GoRouter.of(context).push(AppRouter.kChargeCoinsView);
+                    },
+                  ),
                 ],
               ),
               SizedBox(height: SizeConfig.screenHeight * 0.03),

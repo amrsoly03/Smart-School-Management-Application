@@ -129,11 +129,12 @@ class ParentCubit extends Cubit<ParentState> {
 
   Future<void> chargeCoins({
     required String increase_by,
+    required String parent_id,
   }) async {
     emit(ParentLoading());
 
     final loginResult = await parentRepo.chargeCoins(
-      parent_id: sharedPref.getString('user_id')!,
+      parent_id: parent_id,
       increase_by: increase_by,
     );
 

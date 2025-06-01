@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:nexura/Core/functions/capitalize.dart';
-import 'package:nexura/Core/utils/app_router.dart';
 import 'package:nexura/Core/utils/styles.dart';
 import 'package:nexura/Core/utils/theme.dart';
 import 'package:nexura/Core/widgets/custom_button.dart';
@@ -12,7 +10,6 @@ import 'package:nexura/Features/Parent/presentation/manager/parent_cubit/parent_
 
 import '../../../../../Core/widgets/custom_appBar.dart';
 import 'custom_drawer.dart';
-import 'process_button.dart';
 
 class PayFeesViewBody extends StatelessWidget {
   const PayFeesViewBody({super.key});
@@ -41,32 +38,33 @@ class PayFeesViewBody extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "Select The Process",
+              "Pay Your Fees",
               style: Styles.textStyle20.copyWith(
                 color: darkBlue,
               ),
             ),
             const SizedBox(height: 10),
-            Row(
-              children: [
-                ProcessButton(
-                  title: 'coins charging',
-                  color: grey,
-                  function: () {
-                    GoRouter.of(context)
-                        .pushReplacement(AppRouter.kChargeCoinsView);
-                  },
-                ),
-                const SizedBox(width: 10),
-                ProcessButton(
-                  title: 'pay expenses',
-                  color: darkBlue,
-                  function: () {},
-                ),
-              ],
-            ),
+            // Row(
+            //   children: [
+            //     ProcessButton(
+            //       title: 'coins charging',
+            //       color: grey,
+            //       function: () {
+            //         GoRouter.of(context)
+            //             .pushReplacement(AppRouter.kChargeCoinsView);
+            //       },
+            //     ),
+            //     const SizedBox(width: 10),
+            //     ProcessButton(
+            //       title: 'pay expenses',
+            //       color: darkBlue,
+            //       function: () {},
+            //     ),
+            //   ],
+            // ),
             const SizedBox(height: 30),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8),

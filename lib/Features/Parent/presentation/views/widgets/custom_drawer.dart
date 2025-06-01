@@ -8,6 +8,8 @@ import 'package:nexura/Core/utils/theme.dart';
 import 'package:nexura/Features/Parent/presentation/manager/parent_cubit/parent_cubit.dart';
 import 'package:nexura/main.dart';
 
+import '../../manager/fees_cubit/fees_cubit.dart';
+
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({
     super.key,
@@ -15,15 +17,20 @@ class CustomDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ParentCubit parentCubit = BlocProvider.of<ParentCubit>(context);
+    FeesCubit feesCubit = BlocProvider.of<FeesCubit>(context);
 
-      ParentCubit parentCubit = BlocProvider.of<ParentCubit>(context);
     return Drawer(
       backgroundColor: darkBlue,
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            buildMenuItem(context, parentCubit: parentCubit),
+            buildMenuItem(
+              context,
+              parentCubit: parentCubit,
+              feesCubit: feesCubit,
+            ),
           ],
         ),
       ),
@@ -32,7 +39,9 @@ class CustomDrawer extends StatelessWidget {
 
   Widget buildHeader(BuildContext context) => Container();
 
-  Widget buildMenuItem(BuildContext context, {required ParentCubit parentCubit}) => Padding(
+  Widget buildMenuItem(BuildContext context,
+          {required ParentCubit parentCubit, required FeesCubit feesCubit}) =>
+      Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
         child: Wrap(
           runSpacing: 15,
@@ -56,7 +65,8 @@ class CustomDrawer extends StatelessWidget {
                 style: Styles.textStyle18,
               ),
               onTap: () {
-                GoRouter.of(context).pushReplacement(AppRouter.kChargeCoinsView);
+                feesCubit.viewFees();
+                GoRouter.of(context).pushReplacement(AppRouter.kPayFeesView);
               },
             ),
             ListTile(
